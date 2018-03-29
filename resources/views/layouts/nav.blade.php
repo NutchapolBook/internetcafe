@@ -10,11 +10,19 @@
           <a class="nav-link ml-auto" href="/login">Login</a>
           <a class="nav-link" href="/register">Register</a>
 
-      @else
+      @elseif (Auth::user()->role === "user")
           <a class="nav-link" href="/booking">Booking</a>
           <a class="nav-link" href="/booking/cancle">Cancle Booking</a>
 
           <a class="nav-link" href="/addcredit">Add Credit</a>
+
+          <a class="nav-link ml-auto"  href="/profile">{{Auth::user()->email}}</a>
+          <a class="nav-link" href="/logout">Logout</a>
+
+      @elseif (Auth::user()->role === "admin")
+          <a class="nav-link" href="#">View Users</a>
+          <a class="nav-link" href="#">Edit Seat</a>
+          <a class="nav-link" href="#">User information</a>
 
           <a class="nav-link ml-auto"  href="/profile">{{Auth::user()->email}}</a>
           <a class="nav-link" href="/logout">Logout</a>
