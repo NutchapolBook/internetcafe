@@ -18,6 +18,17 @@
         </div>
 
         <div class="form-group">
+          <label for="radio">Role:</label>
+          <br>
+          <input type="radio" name="role"
+            <?php if (isset($role) && $role=="admin") echo "checked";?>
+            value="admin">&ensp; admin &ensp;&ensp;
+            <input type="radio" name="role"
+            <?php if (isset($role) && $role=="user") echo "checked";?>
+            value="user">&ensp; user
+        </div>
+
+        <div class="form-group">
           <label for="password">Password:</label>
           <input type="password" name="password" id="password" class="form-control" required>
         </div>
