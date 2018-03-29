@@ -33,7 +33,7 @@ class ProfileController extends Controller
       $input['password'] = bcrypt($input['password']);
 
       //create and save the user
-      $user = User::updated($input);
+      $user = User::index($input);
 
       //sign them in
       auth()->login($user);
