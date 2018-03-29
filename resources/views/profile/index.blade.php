@@ -2,28 +2,36 @@
 
 @section('content')
 
+<?php global $name,$email,$pass;
+$name = Auth::user()->name;
+$email = Auth::user()->email;
+$pass = Auth::user()->password;
+?>
+
+
 <div class="col-sm-8 blog-main">
     <h2>My profile Info</h2><br>
 
     <div class="form-group">
       <label for="name">Name:</label>
-      <input type="text" name="name" id="name" class="form-control" value="XXXXXX" autocomplete="off">
+      <input type="text" name="name" id="name" class="form-control" value=<?php echo $name ?> autocomplete="off">
     </div>
+
 
     <div class="form-group">
       <label for="email">Email:</label>
-      <input type="email" name="email" id="email" class="form-control" value="XXXXXX" autocomplete="off">
+      <input type="email" name="email" id="email" class="form-control" value=<?php echo $email ?> autocomplete="off">
     </div>
 
     <div class="form-group">
       <label for="password">Password:</label>
-      <input type="password" name="password" id="password" class="form-control" value="XXXXXX" autocomplete="off">
+      <input type="password" name="password" id="password" class="form-control" value=<?php echo $pass ?> autocomplete="off">
     </div>
 
     <div class="form-group">
       <label for="password">Password Confirmation:</label>
       <input type="password" name="password_confirmation" id="password_confirmation"
-      class="form-control" value="XXXXXX" autocomplete="off">
+      class="form-control" value="<?php echo $pass ?>" autocomplete="off">
     </div>
 
   <nav class="blog-pagination">
