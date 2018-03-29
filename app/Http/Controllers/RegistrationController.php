@@ -17,10 +17,11 @@ class RegistrationController extends Controller
       $this->validate($request, [
         'name'=>'required',
         'email'=>'required|email',
-        'password'=>'required|confirmed'
+        'password'=>'required|confirmed',
+        'role'=>'required',
       ]);
 
-      $input = $request->only(['name','email','password']);
+      $input = $request->only(['name','email','password','role']);
       //เข้ารหัส
       $input['password'] = bcrypt($input['password']);
 
