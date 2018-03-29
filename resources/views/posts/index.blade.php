@@ -14,7 +14,7 @@
       <a class="btn btn-outline-secondary disabled" href="#">Newer</a>
     </div>
 
-    @if (Auth::check())
+    @if ((Auth::user()->role === "admin"))
         <div class="form-group">
         <a href="/posts/create" class="btn btn-primary">Create new promotion</a>
         </div>
