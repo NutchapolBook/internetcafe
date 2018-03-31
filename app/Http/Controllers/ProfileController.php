@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use App\User;
 
@@ -24,6 +25,7 @@ class ProfileController extends Controller
         ]);
     }
 
+
     public function updated(Request $request) {
       //validate form
       $this->validate($request, [
@@ -36,14 +38,23 @@ class ProfileController extends Controller
       //เข้ารหัส
       $input['password'] = bcrypt($input['password']);
 
-      //create and save the user
-      $user = User::index($input);
+      //update
+      $data = DB::table('users')
+                  ->where([
+                    ['name',Auth::user()->name],
+                    ['name',Auth::user()->name]
+                  ])
+                  ->update([
+                    'name'=> $input['name'],
+                    'email'=> $input['email'],
+                    'password' => $input['password']
+                  ]);
 
-      //sign them in
-      auth()->login($user);
+
 
       //redirect to the home
       return redirect()->home();
 
     }
+
 }

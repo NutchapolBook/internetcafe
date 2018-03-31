@@ -16,7 +16,7 @@
 
           <a class="nav-link" href="/addcredit">Add Credit</a>
 
-          <a class="nav-link ml-auto"  href="/profile">{{Auth::user()->email}}</a>
+          <a class="nav-link ml-auto"  href="/profile">{{Auth::user()->name}}</a>
           <a class="nav-link" href="/logout">Logout</a>
 
       @elseif (Auth::user()->role === "admin")
@@ -24,7 +24,7 @@
           <a class="nav-link" href="#">Edit Seat</a>
           <a class="nav-link" href="#">User information</a>
 
-          <a class="nav-link ml-auto"  href="/profile">{{Auth::user()->email}}</a>
+          <a class="nav-link ml-auto"  href="/profile">{{Auth::user()->name}}</a>
           <a class="nav-link" href="/logout">Logout</a>
       @endif
 

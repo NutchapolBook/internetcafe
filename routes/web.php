@@ -23,7 +23,7 @@ Route::get('/logout','SessionsController@destroy');
 
 #Profile Info
 Route::get('/profile','ProfileController@index');
-Route::put('/profile','ProfileController@updated');
+Route::post('/profile','ProfileController@updated');
 #Addcredit
 Route::get('/addcredit','AddcreditController@index');
 
