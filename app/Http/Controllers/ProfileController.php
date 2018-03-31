@@ -29,25 +29,23 @@ class ProfileController extends Controller
     public function updated(Request $request) {
       //validate form
       $this->validate($request, [
-        'name'=>'required',
-        'email'=>'required|email',
-        'password'=>'required|confirmed',
+        'name' => 'required|string|max:255',
+        'email' => 'required|string|email|max:255|',
+        'password' => 'required|string|min:4|confirmed'
       ]);
 
       $input = $request->only(['name','email','password']);
-      //เข้ารหัส
-      $input['password'] = bcrypt($input['password']);
 
       //update
       $data = DB::table('users')
                   ->where([
                     ['name',Auth::user()->name],
-                    ['name',Auth::user()->name]
+                    ['email',Auth::user()->email]
                   ])
                   ->update([
                     'name'=> $input['name'],
                     'email'=> $input['email'],
-                    'password' => $input['password']
+                    'password' => bcrypt($input['password']),
                   ]);
 
 
