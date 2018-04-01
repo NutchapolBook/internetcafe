@@ -32,8 +32,6 @@ class ProfileController extends Controller
     public function update(Request $request) {
     //dd($request);
       $input = $request->only(['name','email','password']);
-      //เข้ารหัส
-      $input['password'] = bcrypt($input['password']);
       //dd($input);
 
       //update

@@ -16,6 +16,7 @@ class RegistrationController extends Controller
       //dd($request);
       $this->validate($request, [
         'name' => 'required|string|max:255',
+        'cafename' => 'string|max:255',
         'email' => 'required|string|email|max:255|unique:users',
         'password' => 'required|string|min:4|confirmed',
         'role'=>'required',
@@ -24,7 +25,7 @@ class RegistrationController extends Controller
       $input = $request->only(['name','email','password','role','cafename']);
       //เข้ารหัส
       $input['password'] = bcrypt($input['password']);
-
+      //dd($input);
       //create and save the user
       $user = User::create($input);
 

@@ -24,13 +24,6 @@
           <input type="text" name="cafename" id="cafename" class="form-control">
         </div>
 
-        <script>
-                $('#roleselector').change(function(){
-                    $('.cafename').hide();
-                    $('#' + $(this).val()).show();
-                });
-        </script>
-
         <div class="form-group">
           <label for="email">Email:</label>
           <input type="email" name="email" id="email" class="form-control" required>
@@ -55,6 +48,14 @@
           @include('layouts.error')
 
       </>
+
+      <script>
+              $('#roleselector').change(function(){
+                  $('.cafename').hide();
+                  $('#' + $(this).val()).show();
+              });
+      </script>
+
 
   </div>
 

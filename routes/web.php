@@ -24,9 +24,13 @@ Route::get('/logout','SessionsController@destroy');
 #Profile Info
 Route::get('/profile','ProfileController@index');
 Route::post('/profile','ProfileController@update');
+
 #Addcredit
 Route::get('/addcredit','AddcreditController@index');
 
 #Booking
 Route::get('/booking','BookingController@index');
 Route::get('/booking/cancle','BookingController@cancle');
+
+#Edit Seat
+Route::get('/editseat','EditseatController@index');
