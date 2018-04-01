@@ -15,7 +15,7 @@
           <a class="nav-link" href="#">Edit Seat</a>
           <a class="nav-link" href="#">User information</a>
 
-          <a class="nav-link ml-auto"  href="#">{{Auth::user()->email}}</a>
+          <a class="nav-link ml-auto"  href="#">{{Auth::user()->name}}</a>
           <a class="nav-link" href="/logout">Logout</a>
       @endif
 

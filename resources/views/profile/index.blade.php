@@ -8,7 +8,7 @@
 <div class="col-sm-8 blog-main">
     <h2>My profile Info</h2><br>
 
-    <form action="/profile/update" method="PUT">
+    <form action="/profile" method="post">
       {{ csrf_field() }}
 
 

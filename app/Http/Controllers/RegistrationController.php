@@ -15,9 +15,9 @@ class RegistrationController extends Controller
     public function store(Request $request) {
       dd($request);
       $this->validate($request, [
-        'name'=>'required',
-        'email'=>'required|email',
-        'password'=>'required|confirmed',
+        'name' => 'required|string|max:255',
+        'email' => 'required|string|email|max:255|unique:users',
+        'password' => 'required|string|min:4|confirmed',
         'role'=>'required',
       ]);
 

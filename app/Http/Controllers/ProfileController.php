@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use App\User;
 use Illuminate\Support\Facades\DB;
@@ -36,14 +37,23 @@ class ProfileController extends Controller
       $input['password'] = bcrypt($input['password']);
       //dd($input);
 
-      //create and save the user
-      $user = User::index($input);
+      //update
+      $data = DB::table('users')
+                  ->where([
+                    ['name',Auth::user()->name],
+                    ['email',Auth::user()->email]
+                  ])
+                  ->update([
+                    'name'=> $input['name'],
+                    'email'=> $input['email'],
+                    'password' => bcrypt($input['password']),
+                  ]);
 
-      //sign them in
-      auth()->login($user);
+
 
       //redirect to the home
       return redirect()->home();
 
     }
+
 }

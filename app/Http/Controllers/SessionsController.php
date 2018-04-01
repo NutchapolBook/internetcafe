@@ -23,7 +23,7 @@ class SessionsController extends Controller
   public function store(){
     if (!auth()->attempt(request(['email','password']))) {
       return back()->withErrors([
-        'message' => 'Please check na ja.'
+        'message' => 'email or password does not match.'
       ]);
     }
 
