@@ -6,7 +6,6 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use App\User;
-use Illuminate\Support\Facades\DB;
 
 
 class ProfileController extends Controller
@@ -31,7 +30,7 @@ class ProfileController extends Controller
     }
 
     public function update(Request $request) {
-    dd($request);
+    //dd($request);
       $input = $request->only(['name','email','password']);
       //เข้ารหัส
       $input['password'] = bcrypt($input['password']);

@@ -13,7 +13,7 @@ class RegistrationController extends Controller
     }
 
     public function store(Request $request) {
-      dd($request);
+      //dd($request);
       $this->validate($request, [
         'name' => 'required|string|max:255',
         'email' => 'required|string|email|max:255|unique:users',
@@ -21,7 +21,7 @@ class RegistrationController extends Controller
         'role'=>'required',
       ]);
 
-      $input = $request->only(['name','email','password','role']);
+      $input = $request->only(['name','email','password','role','cafename']);
       //เข้ารหัส
       $input['password'] = bcrypt($input['password']);
 
@@ -29,7 +29,7 @@ class RegistrationController extends Controller
       $user = User::create($input);
 
       //sign them in
-      auth()->login($user);
+      //auth()->login($user);
 
       //redirect to the home
       return redirect()->home();

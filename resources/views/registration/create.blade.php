@@ -2,26 +2,34 @@
 
 @section('content')
   <div class="col-sm-8">
-      <h2>Register</h2>
+      <h2>Register</h2><br>
 
       <form action="/register" method="post">
         {{ csrf_field() }}
-
         <div class="form-group">
-          <label for="radio">Role:</label>
-          <br>
-          <input type="radio" name="role"
-            <?php if (isset($role) && $role=="admin") echo "checked";?>
-            value="admin">&ensp; Admin &ensp;&ensp;
-            <input type="radio" name="role"
-            <?php if (isset($role) && $role=="user") echo "checked";?>
-            value="user">&ensp; User
+            <label for="radio">Role:</label>
+            <select class="custom-select" name="role" id="roleselector">
+                <option selected name="role" value="user">User</option>
+                <option name="role" value="admin">Admin</option>
+             </select>
         </div>
 
         <div class="form-group">
           <label for="name">Name:</label>
           <input type="text" name="name" id="name" class="form-control" required>
         </div>
+
+        <div class="cafename form-group" id="admin" style="display:none">
+          <label for="cafename">Internet Cafe Name:</label>
+          <input type="text" name="cafename" id="cafename" class="form-control">
+        </div>
+
+        <script>
+                $('#roleselector').change(function(){
+                    $('.cafename').hide();
+                    $('#' + $(this).val()).show();
+                });
+        </script>
 
         <div class="form-group">
           <label for="email">Email:</label>

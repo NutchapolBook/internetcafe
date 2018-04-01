@@ -14,24 +14,24 @@
 
     <div class="form-group">
       <label for="name">Name:</label>
-      <input type="text" name="name" id="name" class="form-control" value="{{$user[0]->name}}" >
+      <input type="text" name="name" id="name" class="form-control" value="{{$user[0]->name}}" autocomplete="on">
     </div>
 
 
     <div class="form-group">
       <label for="email">Email:</label>
-      <input type="email" name="email" id="email" class="form-control" value="{{$user[0]->email}}" >
+      <input type="email" name="email" id="email" class="form-control" value="{{$user[0]->email}}" autocomplete="on">
     </div>
 
     <div class="form-group">
       <label for="password">Password:</label>
-      <input type="password" name="password" id="password" class="form-control" value="" >
+      <input type="password" name="password" id="password" class="form-control" value="{{$user[0]->password}}" >
     </div>
 
     <div class="form-group">
       <label for="password">Password Confirmation:</label>
       <input type="password" name="password_confirmation" id="password_confirmation"
-      class="form-control" value="" autocomplete="off">
+      class="form-control" value="{{$user[0]->password}}" autocomplete="off">
     </div>
 
 
