@@ -1,6 +1,7 @@
 <?php
 #Home
 Route::get('/','HomeController@index')->name('home');
+Route::get('/home/{cafename}','HomeController@indexCafe')->name('homeCafe');
 Route::get('/about','HomeController@about');
 
 #promotions

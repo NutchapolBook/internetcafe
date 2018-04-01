@@ -21,6 +21,11 @@ class HomeController extends Controller
         return view('home');
     }
 
+    public function indexCafe($cafename)
+    {
+        return view('homeCafe',compact('cafename'));
+    }
+
     public function about()
     {
         return view('about');

@@ -19,7 +19,17 @@
         </div>
 
         <div class="form-group">
+            <label for="radio">InternetCafe:</label><br>
+            <select class="custom-select" name="cafename"  id="roleselector">
+                @foreach($cafenames as $cafename)
+                    <option name="cafename" value="{{ $cafename->cafename }}">{{ $cafename->cafename}}</option>
+                @endforeach
+             </select>
+        </div>
+
+        <div class="form-group">
           <button type="submit" class="btn btn-primary">Sign In</button>
+          <button type="reset" class="btn btn-primary">Cancle</button>
         </div>
 
         @include('layouts.error')
