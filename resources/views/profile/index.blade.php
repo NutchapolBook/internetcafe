@@ -25,19 +25,19 @@
 
     <div class="form-group">
       <label for="password">Password:</label>
-      <input type="password" name="password" id="password" class="form-control" value="{{$user[0]->password}}" >
+      <input type="password" name="password" id="password" class="form-control" value="" >
     </div>
 
     <div class="form-group">
       <label for="password">Password Confirmation:</label>
       <input type="password" name="password_confirmation" id="password_confirmation"
-      class="form-control" value="{{$user[0]->password}}" autocomplete="off">
+      class="form-control" value="" autocomplete="off">
     </div>
 
 
     <div class="form-group">
       <button type="submit" class="btn btn-primary">Update</button>
-      <a href="#" class="btn btn-primary">Cancle</a>
+      <button type="reset" class="btn btn-primary">Cancle</button>
     </div>
 
     @include('layouts.error')

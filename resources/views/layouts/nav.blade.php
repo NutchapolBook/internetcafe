@@ -2,7 +2,6 @@
   <div class="container">
     <nav class="nav blog-nav">
       <a class="nav-link active" href="/">Home</a>
-      <a class="nav-link" href="/post">Promotions</a>
 
 
 
@@ -11,6 +10,7 @@
           <a class="nav-link" href="/register">Register</a>
 
       @elseif (Auth::user()->role === "user")
+          <a class="nav-link" href="/post">Promotions</a>
           <a class="nav-link" href="/booking">Booking</a>
           <a class="nav-link" href="/booking/cancle">Cancle Booking</a>
 
@@ -20,6 +20,7 @@
           <a class="nav-link" href="/logout">Logout</a>
 
       @elseif (Auth::user()->role === "admin")
+          <a class="nav-link" href="/post">Promotions</a>
           <a class="nav-link" href="#">View Users</a>
           <a class="nav-link" href="/editseat">Edit Seat</a>
           <a class="nav-link" href="#">User information</a>
