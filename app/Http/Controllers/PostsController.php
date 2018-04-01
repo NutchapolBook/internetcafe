@@ -35,11 +35,13 @@ class PostsController extends Controller
     //or
 
     $id = Auth::id();
+    $cafename = Auth::user()->cafename;
 
     Post::create([
       'title'=>request('title'),
       'body' => request('body'),
-      'user_id' => $id
+      'user_id' => $id,
+      'cafename' => $cafename,
     ]);
 
     //or

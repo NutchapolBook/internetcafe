@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Post extends Model
 {
     protected $table = 'posts'; //ระบุ talble
-    protected $fillable = ['title','body','user_id']; //สามารถแสดง ใส่ได้แค่นี้
+    protected $fillable = ['title','body','user_id','cafename']; //สามารถแสดง ใส่ได้แค่นี้
 
     public function comments(){
       return $this->hasMany(Comment::class);
