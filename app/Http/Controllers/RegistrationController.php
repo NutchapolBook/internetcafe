@@ -13,7 +13,7 @@ class RegistrationController extends Controller
     }
 
     public function store(Request $request) {
-      //validate form
+      dd($request);
       $this->validate($request, [
         'name'=>'required',
         'email'=>'required|email',
