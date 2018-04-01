@@ -42,7 +42,7 @@
 
         <div class="form-group">
           <button type="submit" class="btn btn-primary">Register</button>
-          <a href="#" class="btn btn-primary">Cancle</a>
+          <button type="reset" class="btn btn-primary">Cancle</button>
         </div>
 
           @include('layouts.error')

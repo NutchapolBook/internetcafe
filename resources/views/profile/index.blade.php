@@ -14,30 +14,30 @@
 
     <div class="form-group">
       <label for="name">Name:</label>
-      <input type="text" name="name" id="name" class="form-control" value="{{$user[0]->name}}" autocomplete="on">
+      <input type="text" name="name" id="name" class="form-control" value="{{$user[0]->name}}" >
     </div>
 
 
     <div class="form-group">
       <label for="email">Email:</label>
-      <input type="email" name="email" id="email" class="form-control" value="{{$user[0]->email}}" autocomplete="on">
+      <input type="email" name="email" id="email" class="form-control" value="{{$user[0]->email}}" >
     </div>
 
     <div class="form-group">
       <label for="password">Password:</label>
-      <input type="password" name="password" id="password" class="form-control" value="{{$user[0]->password}}" >
+      <input type="password" name="password" id="password" class="form-control" value="" >
     </div>
 
     <div class="form-group">
       <label for="password">Password Confirmation:</label>
       <input type="password" name="password_confirmation" id="password_confirmation"
-      class="form-control" value="{{$user[0]->password}}" autocomplete="off">
+      class="form-control" value="" autocomplete="off">
     </div>
 
 
     <div class="form-group">
       <button type="submit" class="btn btn-primary">Update</button>
-      <a href="#" class="btn btn-primary">Cancle</a>
+      <button type="reset" class="btn btn-primary">Cancle</button>
     </div>
 
     @include('layouts.error')
