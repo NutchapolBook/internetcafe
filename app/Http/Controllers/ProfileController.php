@@ -21,19 +21,21 @@ class ProfileController extends Controller
 
     public function index()
     {
-        $username = Auth::user()->email;
+        $cafename = Auth::user()->cafename;
+        $email = Auth::user()->email;
         $user = DB::table('users')
-           ->where('email','=',$username)
+           ->where('email','=',$email)
            ->get();
         //dd($user[0]);
-        return view('profile.index',compact('user'));
+        //dd($cafename);
+        return view('profile.index',compact('user','cafename'));
     }
 
     public function update(Request $request) {
     //dd($request);
       $input = $request->only(['name','email','password']);
       //dd($input);
-
+      $cafename = Auth::user()->cafename;
       //update
       $data = DB::table('users')
                   ->where([
@@ -45,11 +47,8 @@ class ProfileController extends Controller
                     'email'=> $input['email'],
                     'password' => bcrypt($input['password']),
                   ]);
-
-
-
       //redirect to the home
-      return redirect()->home();
+      return redirect()->back();
 
     }
 

@@ -1,4 +1,4 @@
-@extends('layouts.master')
+@extends('layouts.masterCafe')
 
 @section('content')
   <div class="col-sm-8 blog-main">
@@ -25,7 +25,7 @@
 
       <div class="card">
         <div class="card-block">
-          <form action="/posts/{{$post->id}}/comments" method="POST">
+          <form action="{{route('cafe.promotions.comments'  , ['post' => $post->id, 'cafename' =>  $cafename]) }}" method="POST">
           {{ csrf_field() }}
             <div class="form-group">
               <textarea name="body" id="body" class="form-control" rows="5" placeholder="Your comment here." required></textarea>

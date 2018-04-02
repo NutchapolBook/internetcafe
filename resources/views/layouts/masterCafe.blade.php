@@ -34,7 +34,7 @@
 
   <body>
 
-@include('layouts.nav')
+@include('layouts.navCafe')
 
     <div class="blog-header">
       <div class="container">

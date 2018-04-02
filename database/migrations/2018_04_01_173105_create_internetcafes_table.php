@@ -15,12 +15,14 @@ class CreateInternetcafesTable extends Migration
     {
         Schema::create('internetcafes', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('name');
+            $table->string('name')->unique();
             $table->string('colour')->nullable();
             $table->string('location')->nullable();
             $table->string('tel')->nullable();
             $table->string('facebook')->nullable();
             $table->string('line')->nullable();
+            $table->string('picture')->nullable();
+            $table->string('icon')->nullable();
             $table->timestamps();
         });
     }

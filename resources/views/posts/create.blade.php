@@ -1,10 +1,10 @@
-@extends('layouts.master')
+@extends('layouts.masterCafe')
 
 @section('content')
 <div class="col-sm-8 blog-main">
   <h2>Create a promotion</h2>
 
-      <form method="POST" action="/posts">
+      <form method="POST" action="{{route('cafe.promotions.posts',  $cafename)}}">
          {{ csrf_field() }}
 
         <div class="form-group">

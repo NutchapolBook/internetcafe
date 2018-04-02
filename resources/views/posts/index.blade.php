@@ -1,4 +1,4 @@
-@extends('layouts.master')
+@extends('layouts.masterCafe')
 
 @section('content')
 <div class="col-sm-8 blog-main">
@@ -16,7 +16,7 @@
 
     @if ((Auth::user()->role === "admin"))
         <div class="form-group">
-        <a href="/posts/create" class="btn btn-primary">Create new promotion</a>
+        <a href="{{route('cafe.promotions.create' , $cafename) }} " class="btn btn-primary">Create new promotion</a>
         </div>
     @endif
 

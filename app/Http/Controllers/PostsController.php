@@ -8,17 +8,23 @@ use App\Post;
 
 class PostsController extends Controller
 {
+
     public function __construct(){
       $this->middleware('auth')->except(['index','show']);
     }
+
     public function index(){
       // $posts = Post::all();
-      $posts = Post::latest()->get();
-      return view('posts.index',compact('posts'));
+      $cafename = Auth::user()->cafename;
+      $posts = Post::latest()
+                ->where('cafename','=',$cafename)
+                ->get();
+      return view('posts.index',compact('cafename','posts'));
     }
 
     public function create(){
-      return view('posts.create');
+        $cafename = Auth::user()->cafename;
+        return view('posts.create',compact('cafename'));
     }
 
     public function store(){
@@ -55,11 +61,12 @@ class PostsController extends Controller
 
     //
     // #And to homepage
-    return redirect('/');
+    return redirect()->route('cafe.promotions.index',compact('cafename'));
     }
 
-    public function show(Post $post){
-      return view('posts.show',compact('post'));
+    public function show( $cafename  , Post $post){
+        $cafename = Auth::user()->cafename;
+        return view('posts.show',compact('post','cafename'));
     }
 
 

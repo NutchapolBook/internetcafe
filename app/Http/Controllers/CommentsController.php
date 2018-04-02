@@ -3,12 +3,14 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use App\Post;
 use App\Comment;
 
 class CommentsController extends Controller
 {
-    public function store(Post $post){
+    public function store($cafename ,Post $post){
+        $cafename = Auth::user()->cafename;
         $post->addComment(request('body'));
 
       return back();

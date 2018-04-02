@@ -8,6 +8,6 @@ class Internetcafe extends Model
 {
     protected $table = 'Internetcafe';
     protected $fillable = [
-        'cafename', 'colour', 'location','tel','facebook' , 'line'
+        'cafename', 'colour', 'location','tel','facebook' , 'line' ,'picture' , 'icon'
     ];
 }

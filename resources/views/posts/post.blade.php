@@ -1,6 +1,6 @@
 <div class="blog-post">
   <h2 class="blog-post-title">
-    <a href="/posts/{{$post->id}}">
+    <a href="{{route('cafe.promotions.post'  , ['post' => $post->id, 'cafename' =>  $cafename]) }}">
         {{$post->title}}
     </a>
 

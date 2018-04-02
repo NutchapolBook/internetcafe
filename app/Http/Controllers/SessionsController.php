@@ -36,13 +36,21 @@ class SessionsController extends Controller
 
     //dd($request);
 
-    $cafename = request('cafename');
+    if (Auth::user()->role === "admin")
+        {
+            $cafename = Auth::user()->cafename;
+        }
+    else
+        {
+            $cafename = request('cafename');
+        }
     //
     //dd($cafename);
 
     //if so sign them in
     //redired to home
-    return redirect()->route('homeCafe',compact('cafename'));
+    //return redirect()->route('home',compact('cafename'));
+    return redirect()->route('cafe.indexCafe',compact('cafename'));
   }
 
 
