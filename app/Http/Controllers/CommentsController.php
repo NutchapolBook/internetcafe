@@ -11,6 +11,7 @@ class CommentsController extends Controller
 {
     public function store($cafename ,Post $post){
         $cafename = Auth::user()->cafename;
+        // $user_id =  Auth::user()->id;
         $post->addComment(request('body'));
 
       return back();

@@ -1,4 +1,4 @@
-@extends('layouts.master')
+@extends('layouts.masterCafe')
 
 @section('content')
   <div class="col-sm-12">

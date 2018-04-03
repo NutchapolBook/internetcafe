@@ -25,13 +25,13 @@
 
     <div class="form-group">
       <label for="password">Password:</label>
-      <input type="password" name="password" id="password" class="form-control" value="" >
+      <input type="password" name="password" id="password" class="form-control" value="" required >
     </div>
 
     <div class="form-group">
       <label for="password">Password Confirmation:</label>
       <input type="password" name="password_confirmation" id="password_confirmation"
-      class="form-control" value="" autocomplete="off">
+      class="form-control" value="" autocomplete="off" required>
     </div>
 
 

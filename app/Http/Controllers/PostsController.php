@@ -37,9 +37,7 @@ class PostsController extends Controller
     // $post = new Post;
     // $post->title = request('title');
     // $post->body = request('body');
-
     //or
-
     $id = Auth::id();
     $cafename = Auth::user()->cafename;
 
@@ -49,7 +47,6 @@ class PostsController extends Controller
       'user_id' => $id,
       'cafename' => $cafename,
     ]);
-
     //or
     //Post::create(request(['title','body','user_id']));
 

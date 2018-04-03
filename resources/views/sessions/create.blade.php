@@ -3,10 +3,17 @@
 
 @section('content')
   <div class="col-md-8">
-    <h1>User Login</h1>
+    <h1>User Login</h1><br>
 
     <form action="/login" method="post">
         {{ csrf_field() }}
+        <div class="form-group">
+            <label for="radio">Role:</label>
+            <select class="custom-select" name="role" id="roleselector">
+                <option selected name="role" value="user">User</option>
+                <option name="role" value="admin">Admin</option>
+             </select>
+        </div>
 
         <div class="form-group">
           <label for="email">Email Address:</label>
@@ -18,11 +25,11 @@
           <input type="password" name="password" id="password" class="form-control">
         </div>
 
-        <div class="form-group">
+        <div class="cafename form-group" id="user" >
             <label for="radio">InternetCafe:</label><br>
             <select class="custom-select" name="cafename"  id="roleselector">
                 @foreach($cafenames as $cafename)
-                    <option name="cafename" value="{{ $cafename->cafename }}">{{ $cafename->cafename}}</option>
+                    <option name="cafename" value="{{ $cafename->name }}">{{ $cafename->name}}</option>
                 @endforeach
              </select>
         </div>
@@ -37,5 +44,12 @@
     </form>
 
   </div>
+
+  <script>
+          $('#roleselector').change(function(){
+              $('.cafename').hide();
+              $('#' + $(this).val()).show();
+          });
+  </script>
 
 @endsection

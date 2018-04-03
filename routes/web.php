@@ -18,6 +18,8 @@ Route::group([], function() {
     #Cafe Home
     Route::group(['as' => 'cafe.' , 'prefix' => 'cafe'], function() {
         Route::get('{cafename}','HomeController@indexCafe')->name('indexCafe');
+        #Addcredit
+        Route::get('{cafename}/addcredit','AddcreditController@index')->name('addcredit');
 
         #promotions
         Route::group(['as' => 'promotions.' , 'prefix' => '{cafename}/promotions'], function() {
@@ -29,7 +31,18 @@ Route::group([], function() {
             Route::post('posts/{post}/comments','CommentsController@store')->name('comments');
         });
 
+        #Booking
+        Route::group(['as' => 'booking.' , 'prefix' => '{cafename}/booking'], function() {
+            Route::get('/','BookingController@index')->name('index');
+            Route::get('cancle','BookingController@cancle')->name('cancle');
+        });
+
+        #Edit Seat
+        // Route::group(['as' => 'editseat.' , 'prefix' => '{cafename}/editseat'], function() {
+        //     Route::get('/','EditseatController@index')->name('index');
+        // });
     });
+
 
     Route::group([], function() {
 
@@ -38,24 +51,9 @@ Route::group([], function() {
 
 });
 
-
-// #promotions
-// Route::get('/post/{cafename}','PostsController@index');
-// Route::get('/posts/create','PostsController@create');
-// Route::post('/posts','PostsController@store');
-// Route::get('/posts/{post}','PostsController@show');
-
-
-#Profile Info
+#Profile
 Route::get('/profile','ProfileController@index');
 Route::post('/profile','ProfileController@update');
-
-#Addcredit
-Route::get('/addcredit','AddcreditController@index');
-
-#Booking
-Route::get('/booking','BookingController@index');
-Route::get('/booking/cancle','BookingController@cancle');
 
 #Edit Seat
 Route::get('/editseat','EditseatController@index');

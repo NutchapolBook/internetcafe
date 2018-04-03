@@ -15,10 +15,10 @@ class SessionsController extends Controller
   }
 
   public function create(){
-    $cafenames = DB::table('users')
-            ->whereNotNull('cafename')
-            ->get();
-    //dd($cafenames);
+      $cafenames = DB::table('internetcafes')
+              ->select('name')
+              ->get();
+      //dd($cafenames);
     return view('sessions.create',compact('cafenames'));
   }
 
@@ -43,6 +43,14 @@ class SessionsController extends Controller
     else
         {
             $cafename = request('cafename');
+            $data = DB::table('users')
+                        ->where([
+                          ['name',Auth::user()->name],
+                          ['email',Auth::user()->email]
+                        ])
+                        ->update([
+                          'cafename'=> $cafename,
+                        ]);
         }
     //
     //dd($cafename);

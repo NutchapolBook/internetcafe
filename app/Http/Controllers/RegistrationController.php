@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\User;
+use App\InternetCafe;
 
 class RegistrationController extends Controller
 {
@@ -21,10 +22,21 @@ class RegistrationController extends Controller
         'role'=>'required',
       ]);
 
+     #ถ้าเป็น admin จะสร้างตาราง intercafes เพิ่มลง DB
+      if ($request->role === "admin")
+          {
+              $inputcafe = array(
+                  'name' => $request->cafename,
+              );
+              //dd($inputcafe);
+              $internetcafe = InternetCafe::create($inputcafe);
+          }
+
       $input = $request->only(['name','email','password','role','cafename']);
       //เข้ารหัส
       $input['password'] = bcrypt($input['password']);
       //dd($input);
+      
       //create and save the user
       $user = User::create($input);
 
