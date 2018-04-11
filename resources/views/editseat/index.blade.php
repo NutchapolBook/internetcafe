@@ -3,7 +3,7 @@
 
 @section('content')
   <div class="col-sm-12">
-      <h2>Editseat</h2><br>
+      <h2>Edit Seat</h2><br>
 
       <style type="text/css">
       .ui-accordion .ui-accordion-content {

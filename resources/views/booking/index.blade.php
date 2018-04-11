@@ -46,7 +46,7 @@
     myDiagram.nodeTemplate =
       $(go.Node, "Auto",
         {
-          resizable: true, resizeObjectName: "SHAPE",
+          resizable: false, resizeObjectName: "SHAPE",
           // because the gridSnapCellSpot is Center, offset the Node's location
           locationSpot: new go.Spot(0, 0, CellSize.width / 2, CellSize.height / 2),
           // provide a visual warning about dropping anything onto an "item"
@@ -102,7 +102,7 @@
       $(go.Group,
         {
           layerName: "Background",
-          resizable: true, resizeObjectName: "SHAPE",
+          resizable: false, resizeObjectName: "SHAPE",
           // because the gridSnapCellSpot is Center, offset the Group's location
           locationSpot: new go.Spot(0, 0, CellSize.width/2, CellSize.height/2)
         },
@@ -130,7 +130,7 @@
     myDiagram.commandHandler.memberValidation = function(grp, node) {
       if (grp instanceof go.Group && node instanceof go.Group) return false;  // cannot add Groups to Groups
       // but dropping a Group onto the background is always OK
-      return true;
+      return false;
     };
     // what to do when a drag-drop occurs in the Diagram's background
     myDiagram.mouseDragOver = function(e) {
@@ -158,9 +158,7 @@
     // start off with four "racks" that are positioned next to each other
     myDiagram.model = new go.GraphLinksModel([
       { key: "G1", isGroup: true, pos: "0 0", size: "200 200" },
-      { key: "G2", isGroup: true, pos: "200 0", size: "200 200" },
-      { key: "G3", isGroup: true, pos: "0 200", size: "200 200" },
-      { key: "G4", isGroup: true, pos: "200 200", size: "200 200" }
+
     ]);
     // this sample does not make use of any links
     jQuery("#accordion").accordion({
@@ -168,6 +166,7 @@
         myPaletteSmall.requestUpdate();
       }
     });
+    load();
     // initialize the first Palette
     myPaletteSmall =
       $(go.Palette, "myPaletteSmall",
@@ -184,26 +183,29 @@
       { key: "Seat", color: yellow }
     ]);
   }
+
+
+  function load() {
+    var tjs = document.getElementById("tjs").value
+    myDiagram.model = go.Model.fromJson(tjs);
+      }
+
+
 </script>
 </head>
+<div class="form-group">
+  <input type="hidden" name="tjs" id="tjs" class="form-control" value="{{$user[0]->tojson}}">
+</div>
 
 <body onload="init()">
 <div id="sample">
   <div style="width: 100%; display: flex; justify-content: space-between">
-    <div style="width: 135px; margin-right: 2px; background-color: whitesmoke; border: solid 1px black">
-      <div id="accordion">
-        <h4>Drag a seat</h4>
-        <div>
-          <div id="myPaletteSmall" style="width: 140px; height: 360px"></div>
-        </div>
-      </div>
-    </div>
+
     <div id="myDiagramDiv" style="flex-grow: 1; height: 500px; border: solid 1px black"></div>
   </div>
 
   <div>
-    Diagram Model saved in JSON format, automatically updated after each transaction:
-    <pre id="savedModel" style="height:250px"></pre>
+    <pre  id="savedModel" style="height:250px"></pre>
   </div>
 
 </div>
