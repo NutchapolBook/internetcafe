@@ -22,6 +22,7 @@ class CreateUsersTable extends Migration
             $table->string('role');
             $table->string('status')->default('useable');
             $table->integer('balance')->default('0');
+            $table->longText('tojson')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });

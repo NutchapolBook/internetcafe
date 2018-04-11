@@ -32,7 +32,7 @@ class ProfileController extends Controller
     }
 
     public function update(Request $request) {
-    //dd($request);
+      //dd($request);
       $input = $request->only(['name','email','password']);
       //dd($input);
       $cafename = Auth::user()->cafename;

@@ -1,8 +1,9 @@
-@extends('layouts.master')
+
+@extends('layouts.masterCafe')
 
 @section('content')
   <div class="col-sm-12">
-      <h2>Booking</h2><br>
+      <h2>Editseat</h2><br>
 
       <style type="text/css">
       .ui-accordion .ui-accordion-content {
@@ -10,13 +11,12 @@
       }
       </style>
 
-
-
 <script id="code">
   // General Parameters for this app, used during initialization
   var AllowTopLevel = false;
   var CellSize = new go.Size(50, 50);
   function init() {
+
     if (window.goSamples) goSamples();  // init for these samples -- you don't need to call this
     var $ = go.GraphObject.make;
     myDiagram =
@@ -126,6 +126,7 @@
           new go.Binding("fill", "isHighlighted", function(h) { return h ? dropFill : groupFill; }).ofObject(),
           new go.Binding("stroke", "isHighlighted", function(h) { return h ? dropStroke: groupStroke; }).ofObject())
       );
+
     // decide what kinds of Parts can be added to a Group
     myDiagram.commandHandler.memberValidation = function(grp, node) {
       if (grp instanceof go.Group && node instanceof go.Group) return false;  // cannot add Groups to Groups
@@ -157,10 +158,8 @@
     };
     // start off with four "racks" that are positioned next to each other
     myDiagram.model = new go.GraphLinksModel([
-      { key: "G1", isGroup: true, pos: "0 0", size: "200 200" },
-      { key: "G2", isGroup: true, pos: "200 0", size: "200 200" },
-      { key: "G3", isGroup: true, pos: "0 200", size: "200 200" },
-      { key: "G4", isGroup: true, pos: "200 200", size: "200 200" }
+      { key: "G1", isGroup: true, pos: "0 0", size: "400 400" },
+
     ]);
     // this sample does not make use of any links
     jQuery("#accordion").accordion({
@@ -168,6 +167,19 @@
         myPaletteSmall.requestUpdate();
       }
     });
+
+    // when the document is modified, add a "*" to the title and enable the "Save" button
+    myDiagram.addDiagramListener("Modified", function(e) {
+      var button = document.getElementById("SaveButton");
+      if (button) button.disabled = !myDiagram.isModified;
+      var idx = document.title.indexOf("*");
+      if (myDiagram.isModified) {
+        if (idx < 0) document.title += "*";
+      } else {
+        if (idx >= 0) document.title = document.title.substr(0, idx);
+      }
+    });
+    load();
     // initialize the first Palette
     myPaletteSmall =
       $(go.Palette, "myPaletteSmall",
@@ -183,11 +195,60 @@
     myPaletteSmall.model = new go.GraphLinksModel([
       { key: "Seat", color: yellow }
     ]);
+
   }
+  // var tjs =   document.getElementById("savedModel").value;
+  //
+  // function save() {
+  // tjs = myDiagram.model.toJson();
+  // myDiagram.isModified = true;
+  //     }
+  function load() {
+    var tjs = document.getElementById("tjs").value
+    myDiagram.model = go.Model.fromJson(tjs);
+      }
+
 </script>
+
 </head>
 
 <body onload="init()">
+<form action="{{route('cafe.editseat.update',  $cafename)}}" method="post">
+  {{ csrf_field() }}
+
+
+<div class="form-group">
+  <input type="hidden" name="tjs" id="tjs" class="form-control" value="{{$user[0]->tojson}}">
+  <button onclick="myFunctionupdate()">Update</button>
+  <!-- <button onclick="myFunctionload()">Load</button> -->
+<script>
+function myFunctionupdate() {
+    document.getElementById("tjs").value = myDiagram.model.toJson();
+}
+</script>
+
+<!-- <script>
+function myFunctionload() {
+    var tjs = document.getElementById("tjs").value
+    myDiagram.model = go.Model.fromJson(tjs);
+}
+</script> -->
+
+  <!-- <input type="text" name="load" id="loadtjs" class="form-control" value="{{$user[0]->tojson}}">
+  <button onclick="myFunction()">Load</button>
+<script>
+function myFunction() {
+    var tjs = document.getElementById("loadtjs").value
+    myDiagram.model = go.Model.fromJson(tjs);
+}
+</script> -->
+
+</div>
+</form>
+
+
+
+
 <div id="sample">
   <div style="width: 100%; display: flex; justify-content: space-between">
     <div style="width: 135px; margin-right: 2px; background-color: whitesmoke; border: solid 1px black">
@@ -202,8 +263,10 @@
   </div>
 
   <div>
+    <!-- <button id="SaveButton" onclick="save()">Save</button>
+    <button onclick="load()">Load</button> -->
     Diagram Model saved in JSON format, automatically updated after each transaction:
-    <pre id="savedModel" style="height:250px"></pre>
+    <pre id="savedModel" style="height:250px" ></pre>
   </div>
 
 </div>
