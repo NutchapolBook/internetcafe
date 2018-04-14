@@ -204,6 +204,7 @@
   <div>
     Diagram Model saved in JSON format, automatically updated after each transaction:
     <pre id="savedModel" style="height:250px"></pre>
+
   </div>
 
 </div>

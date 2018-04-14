@@ -33,9 +33,7 @@ class SessionsController extends Controller
         'message' => 'email or password does not match.'
       ]);
     }
-
     //dd($request);
-
     if (Auth::user()->role === "admin")
         {
             $cafename = Auth::user()->cafename;
@@ -52,9 +50,7 @@ class SessionsController extends Controller
                           'cafename'=> $cafename,
                         ]);
         }
-    //
     //dd($cafename);
-
     //if so sign them in
     //redired to home
     //return redirect()->route('home',compact('cafename'));
