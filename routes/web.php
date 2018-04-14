@@ -38,9 +38,10 @@ Route::group([], function() {
         });
 
         #Edit Seat
-        // Route::group(['as' => 'editseat.' , 'prefix' => '{cafename}/editseat'], function() {
-        //     Route::get('/','EditseatController@index')->name('index');
-        // });
+        Route::group(['as' => 'editseat.' , 'prefix' => '{cafename}/editseat'], function() {
+            Route::get('/','EditseatController@index')->name('index');
+            Route::post('/','EditseatController@update')->name('update');
+        });
     });
 
 
@@ -55,5 +56,5 @@ Route::group([], function() {
 Route::get('/profile','ProfileController@index');
 Route::post('/profile','ProfileController@update');
 
-#Edit Seat
-Route::get('/editseat','EditseatController@index');
+// #Edit Seat
+// Route::get('/editseat','EditseatController@index');
