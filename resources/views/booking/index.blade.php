@@ -43,41 +43,91 @@
         });
     // Regular Nodes represent items to be put onto racks.
     // Nodes are currently resizable, but if that is not desired, just set resizable to false.
+    function showMessage(s) {
+      document.getElementById("changeMethodsMsg").style.color = "Blue";
+      document.getElementById("changeMethodsMsg").textContent = s;
+    }
+
+    function showMessagestatus(s) {
+      var ss = document.getElementById("changeMethodsMsgstatus");
+      if (s == "Busy") {
+        ss.style.color = "red";
+        ss.textContent = s;
+      }
+      else{
+        ss.style.color = "#00FF00";
+        ss.textContent = s;
+      }
+
+
+    }
+
     myDiagram.nodeTemplate =
       $(go.Node, "Auto",
-        {
-          resizable: false, resizeObjectName: "SHAPE",
-          // because the gridSnapCellSpot is Center, offset the Node's location
-          locationSpot: new go.Spot(0, 0, CellSize.width / 2, CellSize.height / 2),
-          // provide a visual warning about dropping anything onto an "item"
-          mouseDragEnter: function(e, node) {
-            e.handled = true;
-            node.findObject("SHAPE").fill = "red";
-            highlightGroup(node.containingGroup, false);
-          },
-          mouseDragLeave: function(e, node) {
-            node.updateTargetBindings();
-          },
-          mouseDrop: function(e, node) {  // disallow dropping anything onto an "item"
-            node.diagram.currentTool.doCancel();
-          }
+      {
+        resizable: false, resizeObjectName: "SHAPE",
+        // because the gridSnapCellSpot is Center, offset the Node's location
+        locationSpot: new go.Spot(0, 0, CellSize.width / 2, CellSize.height / 2),
+        // provide a visual warning about dropping anything onto an "item"
+        mouseDragEnter: function(e, node) {
+          e.handled = true;
+          node.findObject("SHAPE").fill = "red";
+          highlightGroup(node.containingGroup, false);
         },
+        mouseDragLeave: function(e, node) {
+          node.updateTargetBindings();
+        },
+        mouseDrop: function(e, node) {  // disallow dropping anything onto an "item"
+          node.diagram.currentTool.doCancel();
+        }
+      },
         // always save/load the point that is the top-left corner of the node, not the location
         new go.Binding("position", "pos", go.Point.parse).makeTwoWay(go.Point.stringify),
         // this is the primary thing people see
-        $(go.Shape, "Rectangle",
+        $(go.Shape, "RoundedRectangle",
           { name: "SHAPE",
             fill: "white",
+            strokeWidth: 2 ,
             minSize: CellSize,
             desiredSize: CellSize  // initially 1x1 cell
           },
-          new go.Binding("fill", "color"),
-          new go.Binding("desiredSize", "size", go.Size.parse).makeTwoWay(go.Size.stringify)),
+          new go.Binding("fill", "highlight", function(v) { return v ? "red" : "#B2FF59"; }),
+          new go.Binding("stroke", "highlight", function(v) { return v ? "black" : "black"; }),
+          new go.Binding("stroke", "isSelected", function(sel) {
+              return sel ? "black" : "black";
+            }).ofObject(),
+          new go.Binding("fill", "color")),  // no name means bind to the whole Part
+
+
         // with the textual key in the middle
         $(go.TextBlock,
           { alignment: go.Spot.Center, font: 'bold 16px sans-serif' },
-          new go.Binding("text", "key"))
+          new go.Binding("text", "key")),
+
+          {
+            click: function(e, obj)
+            {
+              if (obj.part.data.color == "red"){
+                // var busy = "Busy"
+                // var result = busy.fontcolor("red")
+                showMessage("" + obj.part.data.key)
+                showMessagestatus("Busy");
+              }
+              else{
+                showMessage("" + obj.part.data.key)
+                showMessagestatus("Available")
+              };
+              },
+
+              // showMessage("" + obj.part.data.key + " " + status); },
+            // selectionChanged: function(part) {
+            //   var shape = part.elt(0);
+            //   shape.fill = part.isSelected ? "red" : "#B2FF59";
+            // }
+          }
       );  // end Node
+
+
     // Groups represent racks where items (Nodes) can be placed.
     // Currently they are movable and resizable, but you can change that
     // if you want the racks to remain "fixed".
@@ -100,6 +150,7 @@
     var dropStroke = "red";
     myDiagram.groupTemplate =
       $(go.Group,
+        { selectionAdorned: false },
         {
           layerName: "Background",
           resizable: false, resizeObjectName: "SHAPE",
@@ -166,7 +217,23 @@
         myPaletteSmall.requestUpdate();
       }
     });
-    load();
+
+
+    var selectionButton = document.getElementById("seatname");
+    selectionButton.addEventListener("click", function() {
+    myDiagram.startTransaction("get key");
+    var it = myDiagram.selection.iterator;
+    while (it.next()) {
+      var node = it.value;
+      var shape = node.findObject("SHAPE");
+      var key = node.data.key;
+      document.getElementById("seatname").value = key;
+    }
+    myDiagram.commitTransaction("get key");
+  });
+
+  load();
+
     // initialize the first Palette
     myPaletteSmall =
       $(go.Palette, "myPaletteSmall",
@@ -182,6 +249,8 @@
     myPaletteSmall.model = new go.GraphLinksModel([
       { key: "Seat", color: yellow }
     ]);
+
+
   }
 
 
@@ -190,22 +259,289 @@
     myDiagram.model = go.Model.fromJson(tjs);
       }
 
+  function flash() {
+     var model = myDiagram.model;
+     // all model changes should happen in a transaction
+     model.startTransaction("flash");
+     var data = model.nodeDataArray[3];  // get the first node data
+     model.setDataProperty(data, "highlight", !data.highlight);
+     model.commitTransaction("flash");
+  }
+
+    function loop() {
+        setTimeout(function() { flash(); loop(); }, 500);
+      }
+
+
+
 
 </script>
 </head>
-<div class="form-group">
-  <input type="hidden" name="tjs" id="tjs" class="form-control" value="{{$user[0]->tojson}}">
-</div>
+  <div class="form-group">
+
+  </div>
+
 
 <body onload="init()">
+<form action="{{route('cafe.booking.update',  $cafename)}}" method="post">
+    {{ csrf_field() }}
+
+  <div class="form-group">
+      <strong for="date">Date  </strong>:
+      <span style="font-size:30px;" id="dates"></span>
+      <br>
+      <strong for="time">Time  </strong>:
+      <span style="font-size:30px;" id="clock"></span>
+      <script>
+      (function () {
+
+        var clockElement = document.getElementById( "clock" );
+        function updateClock ( clock ) {
+          clock.innerHTML = new Date().toLocaleTimeString();
+
+        }
+
+        setInterval(function () {
+          updateClock( clockElement );
+        }, 1);
+
+        var dateElement = document.getElementById( "dates" );
+        function updateTime ( clock ) {
+          clock.innerHTML = new Date().toDateString();
+
+        }
+
+        setInterval(function () {
+          updateTime( dateElement );
+        }, 1);
+
+      }());
+      </script>
+      <br>
+      <strong for="name">Seat Name </strong>: <input type="hidden" name="seatname" id="seatname" value="" >
+      <span id="changeMethodsMsg" style="font-size:25px;"></span>
+      <br>
+      <strong for="name">Status </strong>:
+      <!-- style="display:none" -->
+      <span style="font-size:25px;" id="changeMethodsMsgstatus"></span>
+
+      <!-- <script>
+      var span_Text = document.getElementById("changeMethodsMsgstatus").innerText;
+      </script> -->
+
+      <br>
+      <strong for="time">Time play: </strong>
+      <select  id="time" name="time" onchange="calculateAmount(this.value)" required>
+        <option value="" disabled selected>Choose your time</option>
+        <option value="1">1 hr</option>
+        <option value="2">2 hr</option>
+        <option value="3">3 hr</option>
+        <option value="4">4 hr</option>
+        <option value="5">5 hr</option>
+        <option value="6">6 hr</option>
+        <option value="7">7 hr</option>
+        <option value="8">8 hr</option>
+        <option value="9">9 hr</option>
+        <option value="10">10 hr</option>
+        <option value="11">11 hr</option>
+        <option value="12">12 hr</option>
+        <option value="13">13 hr</option>
+        <option value="14">14 hr</option>
+        <option value="15">15 hr</option>
+        <option value="16">16 hr</option>
+        <option value="17">17 hr</option>
+        <option value="18">18 hr</option>
+        <option value="19">19 hr</option>
+        <option value="20">20 hr</option>
+        <option value="21">21 hr</option>
+        <option value="22">22 hr</option>
+        <option value="23">23 hr</option>
+        <option value="24">24 hr</option>
+      </select>
+
+
+      <br>
+      <strong>Amount (THB)</strong>: <input type="text" name="amount" id="amount" readonly >
+      <br>
+      <script>
+      function calculateAmount(val)
+      {
+      var price = val * 12;
+      //display the result
+      var timeplay=price;
+      var divobj = document.getElementById('amount');
+      divobj.value = timeplay;
+      }
+      </script>
+
+      <input type="hidden" name="starttime" id="starttime" value="" >
+      <input type="hidden" name="endtime" id="endtime" value="" >
+      <input type="hidden" name="date" id="date" value="" >
+
+
+
+  </div>
+
+
+  <div class="form-group">
+  <input type="hidden" name="tjs" id="tjs" class="form-control" value="{{$user[0]->tojson}}">
+  <input type="hidden" name="balance" id="balance" class="form-control" value="{{$user1[0]->balance}}">
+
+     <!-- date_default_timezone_set("Asia/Bangkok");
+    $checktime = document.getElementById('clock').textContent;
+    echo date("h:i:sa", $checktime); -->
+
+
+  <button  id="selectionButton" >Choose</button>
+  <script>
+
+  var selectionButton = document.getElementById("selectionButton");
+  selectionButton.addEventListener("click", function() {
+    var bal = parseInt(document.getElementById("balance").value);
+    var amt = parseInt(document.getElementById("amount").value);
+    var status = document.getElementById('changeMethodsMsgstatus').textContent;
+    var seatname = document.getElementById('changeMethodsMsg').textContent;
+    var time = document.getElementById('clock').textContent;
+    var dd = new Date();
+    var date = dd.toDateString();
+    var hh = parseInt(dd.getHours());
+    var mm = dd.getMinutes();
+    var ss = dd.getSeconds();
+    var test =dd.toLocaleTimeString();
+
+    var timeplay = parseInt(document.getElementById("time").value);
+    var endtime = "";
+
+    if (mm < 10) {
+      if (hh+timeplay < 24) {
+        if(hh+timeplay < 10){
+          endtime = "0"+(hh+timeplay)+":"+"0"+mm+":"+ss;
+        }
+        else{
+          endtime = (hh+timeplay)+":"+"0"+mm+":"+ss;
+        }
+      }
+      else if (hh+timeplay > 24) {
+        if (hh+timeplay-24 < 10) {
+          var check = "0"+(hh+timeplay-24);
+          endtime = (check)+":"+"0"+mm+":"+ss;
+        }
+        else{
+          var check = (hh+timeplay-24);
+          endtime = (check)+":"+"0"+mm+":"+ss;
+        }
+      }
+      else{
+        var check = "00";
+        endtime = (check)+":"+"0"+mm+":"+ss;
+      }
+    }
+
+    else if(mm >= 10){
+      if (hh+timeplay < 24) {
+        if(hh+timeplay < 10){
+          endtime = "0"+(hh+timeplay)+":"+mm+":"+ss;
+        }
+        else{
+          endtime = (hh+timeplay)+":"+mm+":"+ss;
+        }
+      }
+      else if (hh+timeplay > 24) {
+        if (hh+timeplay-24 < 10) {
+          var check = "0"+(hh+timeplay-24);
+          endtime = (check)+":"+mm+":"+ss;
+        }
+        else{
+          var check = (hh+timeplay-24);
+          endtime = (check)+":"+mm+":"+ss;
+        }
+      }
+      else{
+        var check = "00";
+        endtime = (check)+":"+mm+":"+ss;
+      }
+    }
+
+      document.getElementById("starttime").value = time;
+      document.getElementById("endtime").value = endtime;
+      document.getElementById("date").value = date;
+
+
+
+
+    // dt.setHours(10, 30, 53);
+    // var endTime = (strtotime(selectedTime . +1 hours));
+
+    if (bal >= amt && document.getElementById("amount").value != "" && status == "Available") {
+        // alert(endtime);
+        alert("Your select seat "+seatname+" is complete \nStart at "+date+" time "+time+" "+"to"+" "+endtime);
+
+        myDiagram.startTransaction("change color");
+        var it = myDiagram.selection.iterator;
+
+
+        while (it.next()) {
+          var node = it.value;
+          var shape = node.findObject("SHAPE");
+          // If there was a GraphObject in the node named SHAPE, then set its fill to red:
+          if (shape !== null) {
+            shape.fill = "red";
+          }
+          myDiagram.model.setDataProperty(node.data, "color", "red");
+        }
+        document.getElementById("tjs").value = myDiagram.model.toJson();
+        myDiagram.commitTransaction("change color");
+
+      }
+      // else if(document.getElementById("seatname").value == "1"){
+      //     alert(document.getElementById("changeMethodsMsg").value);
+      //     alert("Please select your seat");
+      // }
+      else if (document.getElementById("amount").value == "" &&  document.getElementById("seatname").value == "") {
+
+          alert("Please select seat and your time play");
+        }
+      else if(status == "Busy"){
+          alert("This seat is busy try to select other seat")
+      }
+
+      else{
+      alert("Your balance has not enough");
+      }
+    });
+
+
+  </script>
+
+  <script>
+  var selectionButton = document.getElementById("selectionButton");
+  selectionButton.addEventListener("click", function() {
+  myDiagram.startTransaction("get key");
+  var it = myDiagram.selection.iterator;
+  while (it.next()) {
+    var node = it.value;
+    var shape = node.findObject("SHAPE");
+    var key = node.data.key;
+    document.getElementById("seatname").value = key;
+  }
+  myDiagram.commitTransaction("get key");
+  })
+  </script>
+
+
+
+  </div>
+
+
+
 <div id="sample">
   <div style="width: 100%; display: flex; justify-content: space-between">
 
-    <div id="myDiagramDiv" style="flex-grow: 1; height: 500px; border: solid 1px black"></div>
+    <div  id="myDiagramDiv" style="flex-grow: 1; height: 500px; border: solid 1px black"></div>
   </div>
 
   <div>
-    <pre  id="savedModel" style="height:250px"></pre>
+    <pre hidden id="savedModel" style="height:250px"></pre>
   </div>
 
 </div>

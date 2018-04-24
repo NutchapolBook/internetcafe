@@ -5,7 +5,7 @@ namespace App;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
-class User extends Authenticatable
+class seat extends Authenticatable
 {
     use Notifiable;
 
@@ -14,15 +14,12 @@ class User extends Authenticatable
      *
      * @var array
      */
-    protected $table = 'users';
-    protected $fillable = [
-        'name', 'email', 'password','role','cafename','status','tojson'
-    ];
+     protected $table = 'seats';
+     protected $fillable = [
+         'name', 'email', 'cafename','seatname','amount','time','status','starttime','endtime','date'
+     ];
 
-    // protected $table = 'seat';
-    // protected $fillable = [
-    //     'name', 'email', 'cafename','seatname','amount','time','status'
-    // ];
+
     /**
      * The attributes that should be hidden for arrays.
      *

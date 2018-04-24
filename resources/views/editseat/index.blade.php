@@ -65,13 +65,14 @@
         // always save/load the point that is the top-left corner of the node, not the location
         new go.Binding("position", "pos", go.Point.parse).makeTwoWay(go.Point.stringify),
         // this is the primary thing people see
-        $(go.Shape, "Rectangle",
+        $(go.Shape, "RoundedRectangle",
           { name: "SHAPE",
             fill: "white",
             minSize: CellSize,
             desiredSize: CellSize  // initially 1x1 cell
           },
           new go.Binding("fill", "color"),
+
           new go.Binding("desiredSize", "size", go.Size.parse).makeTwoWay(go.Size.stringify)),
         // with the textual key in the middle
         $(go.TextBlock,
@@ -179,7 +180,7 @@
         if (idx >= 0) document.title = document.title.substr(0, idx);
       }
     });
-    load();
+
     // initialize the first Palette
     myPaletteSmall =
       $(go.Palette, "myPaletteSmall",
@@ -193,8 +194,9 @@
     var yellow = '#FFEB3B';
     // specify the contents of the Palette
     myPaletteSmall.model = new go.GraphLinksModel([
-      { key: "Seat", color: yellow }
+      { key: "S ", color: green }
     ]);
+    load();
 
   }
   // var tjs =   document.getElementById("savedModel").value;
@@ -213,6 +215,7 @@
 </head>
 
 <body onload="init()">
+
 <form action="{{route('cafe.editseat.update',  $cafename)}}" method="post">
   {{ csrf_field() }}
 
@@ -220,12 +223,15 @@
 <div class="form-group">
   <input type="hidden" name="tjs" id="tjs" class="form-control" value="{{$user[0]->tojson}}">
   <button onclick="myFunctionupdate()">Update</button>
+
   <!-- <button onclick="myFunctionload()">Load</button> -->
 <script>
 function myFunctionupdate() {
     document.getElementById("tjs").value = myDiagram.model.toJson();
 }
 </script>
+
+
 
 <!-- <script>
 function myFunctionload() {
@@ -265,8 +271,8 @@ function myFunction() {
   <div>
     <!-- <button id="SaveButton" onclick="save()">Save</button>
     <button onclick="load()">Load</button> -->
-    Diagram Model saved in JSON format, automatically updated after each transaction:
-    <pre id="savedModel" style="height:250px" ></pre>
+
+    <pre hidden id="savedModel" style="height:250px" ></pre>
   </div>
 
 </div>

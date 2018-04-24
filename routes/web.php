@@ -34,6 +34,7 @@ Route::group([], function() {
         #Booking
         Route::group(['as' => 'booking.' , 'prefix' => '{cafename}/booking'], function() {
             Route::get('/','BookingController@index')->name('index');
+            Route::post('/','BookingController@update')->name('update');
             Route::get('cancle','BookingController@cancle')->name('cancle');
         });
 
