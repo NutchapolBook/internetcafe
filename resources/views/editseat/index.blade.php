@@ -271,8 +271,18 @@ function myFunction() {
   <div>
     <!-- <button id="SaveButton" onclick="save()">Save</button>
     <button onclick="load()">Load</button> -->
+<<<<<<< HEAD
 
     <pre hidden id="savedModel" style="height:250px" ></pre>
+=======
+    Diagram Model saved in JSON format, automatically updated after each transaction:
+<<<<<<< HEAD
+    <pre id="savedModel" style="height:250px"></pre>
+
+=======
+    <pre id="savedModel" style="height:250px" ></pre>
+>>>>>>> a91b76eb6d9b65d85ed85d58a89ab2304ace60df
+>>>>>>> 142666ab0ea428d37703c706349b22bec42e55e2
   </div>
 
 </div>
