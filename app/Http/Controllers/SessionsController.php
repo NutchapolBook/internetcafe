@@ -28,11 +28,12 @@ class SessionsController extends Controller
   }
 
   public function store(Request $request){
-    if (!auth()->attempt(request(['email','password']))) {
+    if (!auth()->attempt(request(['email','password','role']))) {
       return back()->withErrors([
-        'message' => 'email or password does not match.'
+        'message' => 'Role , Email or Password does not match.'
       ]);
     }
+
     //dd($request);
     if (Auth::user()->role === "admin")
         {
