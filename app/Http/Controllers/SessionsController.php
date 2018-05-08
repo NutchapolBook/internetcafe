@@ -33,7 +33,12 @@ class SessionsController extends Controller
         'message' => 'Role , Email or Password does not match.'
       ]);
     }
-
+    if(Auth::user()->status === "disable"){
+        auth()->logout();
+        return redirect()->back()->withErrors([
+          'message' => 'This account has been banned.'
+        ]);
+    }
     //dd($request);
     if (Auth::user()->role === "admin")
         {

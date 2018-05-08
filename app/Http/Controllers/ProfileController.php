@@ -48,7 +48,7 @@ class ProfileController extends Controller
                     'password' => bcrypt($input['password']),
                   ]);
       //redirect to the home
-      return redirect()->back();
+      return redirect()->back()->with('status', 'Profile updated!');
 
     }
 

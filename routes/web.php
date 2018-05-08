@@ -19,8 +19,12 @@ Route::group([], function() {
     Route::group(['as' => 'cafe.' , 'prefix' => 'cafe'], function() {
         Route::get('{cafename}','HomeController@indexCafe')->name('indexCafe');
         #Addcredit
-        Route::get('{cafename}/addcredit','AddcreditController@index')->name('addcredit');
-
+        Route::group(['as' => 'addcredit.' , 'prefix' => '{cafename}/addcredit'], function() {
+            Route::get('/indexuser','AddcreditController@index')->name('index');
+            Route::get('/indexadmin','AddcreditController@indexAdmin')->name('indexAdmin');
+            Route::post('post','AddcreditController@store')->name('post');
+            Route::post('update','AddcreditController@update')->name('update');
+        });
         #promotions
         Route::group(['as' => 'promotions.' , 'prefix' => '{cafename}/promotions'], function() {
             Route::get('/','PostsController@index')->name('index');
@@ -42,6 +46,16 @@ Route::group([], function() {
         Route::group(['as' => 'editseat.' , 'prefix' => '{cafename}/editseat'], function() {
             Route::get('/','EditseatController@index')->name('index');
             Route::post('/','EditseatController@update')->name('update');
+        });
+
+        Route::group(['as' => 'income.' , 'prefix' => '{cafename}/income'], function() {
+            Route::get('/','IncomeController@index')->name('index');
+            Route::post('create','IncomeController@create')->name('create');
+        });
+
+        Route::group(['as' => 'usersinfo.' , 'prefix' => '{cafename}/usersinfo'], function() {
+            Route::get('/','UsersinfoController@index')->name('index');
+            Route::post('update','UsersinfoController@update')->name('update');
         });
     });
 

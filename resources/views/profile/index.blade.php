@@ -7,6 +7,7 @@
 
 <div class="col-sm-8 blog-main">
     <h2>My profile Info</h2><br>
+    @include('layouts.status')
 
     <form action="/profile" method="post">
       {{ csrf_field() }}
@@ -14,13 +15,13 @@
 
     <div class="form-group">
       <label for="name">Name:</label>
-      <input type="text" name="name" id="name" class="form-control" value="{{$user[0]->name}}" >
+      <input type="text" name="name" id="name" class="form-control" value="{{$user[0]->name}}" required >
     </div>
 
 
     <div class="form-group">
       <label for="email">Email:</label>
-      <input type="email" name="email" id="email" class="form-control" value="{{$user[0]->email}}" >
+      <input type="email" name="email" id="email" class="form-control" value="{{$user[0]->email}}" required >
     </div>
 
     <div class="form-group">
