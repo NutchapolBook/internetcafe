@@ -48,14 +48,22 @@ Route::group([], function() {
             Route::post('/','EditseatController@update')->name('update');
         });
 
+        #income
         Route::group(['as' => 'income.' , 'prefix' => '{cafename}/income'], function() {
             Route::get('/','IncomeController@index')->name('index');
             Route::post('create','IncomeController@create')->name('create');
         });
 
+        #userinfo
         Route::group(['as' => 'usersinfo.' , 'prefix' => '{cafename}/usersinfo'], function() {
             Route::get('/','UsersinfoController@index')->name('index');
             Route::post('update','UsersinfoController@update')->name('update');
+        });
+
+        #editcafe
+        Route::group(['as' => 'editcafe.' , 'prefix' => '{cafename}/editcafe'], function() {
+            Route::get('/','EditcafeController@index')->name('index');
+            Route::post('update','EditcafeController@update')->name('update');
         });
     });
 

@@ -42,8 +42,6 @@
 
     <div class="container">
       <div class="row">
-          @if (Auth::check())
-          @endif
           @yield('content')
       </div><!-- /.row -->
 

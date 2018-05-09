@@ -21,7 +21,7 @@
         <a class="nav-link" href="{{route('cafe.usersinfo.index' , $cafename) }}">Users info</a>
         <a class="nav-link" href="{{route('cafe.income.index' , $cafename) }}">Income</a>
         <a class="nav-link" href="{{route('cafe.editseat.index' , $cafename) }}">Edit Seat</a>
-        <a class="nav-link ml-auto" href="#">Edit</a>
+        <a class="nav-link ml-auto" href="{{route('cafe.editcafe.index' , $cafename) }}">Edit</a>
         <a class="nav-link"  href="/profile">{{Auth::user()->name}}</a>
         <a class="nav-link" href="/logout">Logout</a>
       @endif

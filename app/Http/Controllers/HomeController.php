@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
@@ -23,11 +24,24 @@ class HomeController extends Controller
 
     public function indexCafe($cafename)
     {
-        return view('homeCafe',compact('cafename'));
+        $cafe = DB::table('internetcafes')
+           ->where('name','=',$cafename)
+           ->get();
+        //dd($cafe);
+        return view('homeCafe',compact('cafe','cafename'));
     }
 
     public function about()
     {
         return view('about');
+    }
+
+    public function aboutCafe()
+    {
+        $cafe = DB::table('internetcafes')
+           ->where('name','=',$cafename)
+           ->get();
+        //dd($cafe);
+        return view('aboutadmin.index',compact('cafe','cafename'));
     }
 }
