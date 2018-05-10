@@ -31,7 +31,7 @@ class EditcafeController extends Controller
 
     public function update(Request $request) {
       //dd($request);
-      $input = $request->only(['id','name','colour','location','tel','facebook','line','picture','icon']);
+      $input = $request->only(['id','price','name','colour','location','tel','facebook','line','picture','picture2','picture3','icon']);
       //dd($input);
       //$colour = $input['color'].value(0);
       //dd($colour);

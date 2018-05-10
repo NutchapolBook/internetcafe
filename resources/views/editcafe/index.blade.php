@@ -13,6 +13,11 @@
     </div>
 
     <div class="form-group">
+      <label for="price">Price per hour:</label>
+      <input type="text" name="price" id="price" class="form-control" value="" required >
+    </div>
+
+    <div class="form-group">
       <label for="colour">Colour:</label>
       <input type="color" name="colour" id="colour" value="{{$cafe[0]->colour}}" >
     </div>
@@ -40,6 +45,16 @@
     <div class="form-group">
       <label for="picture">Picture 1:</label>
       <input type="file" name="picture" id="picture" class="form-control-file">
+    </div>
+
+    <div class="form-group">
+      <label for="picture2">Picture 2:</label>
+      <input type="file" name="picture2" id="picture2" class="form-control-file">
+    </div>
+
+    <div class="form-group">
+      <label for="picture3">Picture 3:</label>
+      <input type="file" name="picture3" id="picture3" class="form-control-file">
     </div>
 
     <div class="form-group">

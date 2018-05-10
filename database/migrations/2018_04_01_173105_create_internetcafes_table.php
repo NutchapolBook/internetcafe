@@ -17,11 +17,15 @@ class CreateInternetcafesTable extends Migration
             $table->increments('id');
             $table->string('name')->unique();
             $table->string('colour')->nullable();
+            $table->integer('price')->default(12);
+            $table->string('icon')->nullable();
             $table->string('location')->nullable();
             $table->string('tel')->nullable();
             $table->string('facebook')->nullable();
             $table->string('line')->nullable();
-            $table->string('picture')->nullable();
+            $table->string('picture1')->nullable();
+            $table->string('picture2')->nullable();
+            $table->string('picture3')->nullable();
             $table->string('icon')->nullable();
             $table->timestamps();
         });
