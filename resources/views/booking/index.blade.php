@@ -14,7 +14,7 @@
 
 <script id="code">
   // General Parameters for this app, used during initialization
-  var AllowTopLevel = false;
+  var AllowTopLevel = true;
   var CellSize = new go.Size(50, 50);
   function init() {
     if (window.goSamples) goSamples();  // init for these samples -- you don't need to call this
@@ -91,19 +91,15 @@
             minSize: CellSize,
             desiredSize: CellSize  // initially 1x1 cell
           },
-          new go.Binding("fill", "highlight", function(v) { return v ? "red" : "#B2FF59"; }),
-          new go.Binding("stroke", "highlight", function(v) { return v ? "black" : "black"; }),
-          new go.Binding("stroke", "isSelected", function(sel) {
-              return sel ? "black" : "black";
-            }).ofObject(),
-          new go.Binding("fill", "color")),  // no name means bind to the whole Part
+          new go.Binding("fill", "color"),
+
+          new go.Binding("desiredSize", "size", go.Size.parse).makeTwoWay(go.Size.stringify)),
 
 
         // with the textual key in the middle
         $(go.TextBlock,
-          { alignment: go.Spot.Center, font: 'bold 16px sans-serif' },
+          { alignment: go.Spot.Center, font: 'bold 16px sans-serif',},
           new go.Binding("text", "key")),
-
           {
             click: function(e, obj)
             {
@@ -325,6 +321,8 @@
       <!-- style="display:none" -->
       <span style="font-size:25px;" id="changeMethodsMsgstatus"></span>
 
+
+      <input type="hidden" name="cafeprice" id="cafeprice" value="{{$cafe[0]->price}}">
       <!-- <script>
       var span_Text = document.getElementById("changeMethodsMsgstatus").innerText;
       </script> -->
@@ -366,7 +364,7 @@
       <script>
       function calculateAmount(val)
       {
-      var price = val * 12;
+      var price = val * document.getElementById('cafeprice').value;
       //display the result
       var timeplay=price;
       var divobj = document.getElementById('amount');
@@ -542,7 +540,7 @@
   </div>
 
   <div>
-    <pre hidden id="savedModel" style="height:250px"></pre>
+    <pre  id="savedModel" style="height:250px"></pre>
   </div>
 
 </div>
