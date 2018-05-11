@@ -30,13 +30,18 @@ class EditcafeController extends Controller
     }
 
     public function update(Request $request) {
-      //dd($request);
-      $input = $request->only(['id','price','name','colour','location','tel','facebook','line','picture1','picture2','picture3','icon']);
-      //dd($input);
-      //$colour = $input['color'].value(0);
-      //dd($colour);
-      //update
-      $data = DB::table('internetcafes')
+        $admin_id = Auth::user()->id;
+        //dd($request);
+        $input = $request->only(['id','price','name','colour','location','tel','facebook','line','picture1','picture2','picture3','icon']);
+        //dd($input);
+        //$colour = $input['color'].value(0);
+        //dd($colour);
+        //update
+        $data = DB::table('users')
+                    ->where('id',$admin_id)
+                    ->update(['cafename'=> $input['name'],]);
+
+        $data = DB::table('internetcafes')
                     ->where('id',$input['id'])
                     ->update([
                         'name'=> $input['name'],
@@ -47,38 +52,37 @@ class EditcafeController extends Controller
                         'line'=> $input['line'],
                         ]);
 
-      if ($input['picture1'] != null) {
-          $data = DB::table('internetcafes')
+        if ($input['picture1'] != null) {
+            $data = DB::table('internetcafes')
                         ->where('id',$input['id'])
                         ->update([
                             'picture1'=> $input['picture1'],
                             ]);
-      }
+        }
 
-      if ($input['picture2'] != null) {
-          $data = DB::table('internetcafes')
+        if ($input['picture2'] != null) {
+            $data = DB::table('internetcafes')
                         ->where('id',$input['id'])
                         ->update([
                             'picture2'=> $input['picture2'],
                             ]);
-      }
+        }
 
-      if ($input['picture3'] != null) {
-          $data = DB::table('internetcafes')
+        if ($input['picture3'] != null) {
+            $data = DB::table('internetcafes')
                         ->where('id',$input['id'])
                         ->update([
                             'picture3'=> $input['picture3'],
                             ]);
-      }
+        }
 
-      if ($input['icon'] != null) {
-          $data = DB::table('internetcafes')
+        if ($input['icon'] != null) {
+            $data = DB::table('internetcafes')
                         ->where('id',$input['id'])
                         ->update([
                             'icon'=> $input['icon'],
                             ]);
-      }
-      //redirect to the home
+        }
       return redirect()->back()->with('status', 'Internetcafe data updated!');
 
     }

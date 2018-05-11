@@ -54,6 +54,6 @@
       </div><!-- /.row -->
     </div><!-- /.container -->
 
-@include('layouts.footer')
+@include('layouts.footerCafe')
   </body>
 </html>

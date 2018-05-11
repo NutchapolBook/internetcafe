@@ -36,12 +36,12 @@ class HomeController extends Controller
         return view('about');
     }
 
-    public function aboutCafe()
+    public function aboutCafe($cafename)
     {
         $cafe = DB::table('internetcafes')
            ->where('name','=',$cafename)
            ->get();
         //dd($cafe);
-        return view('aboutadmin.index',compact('cafe','cafename'));
+        return view('aboutCafe',compact('cafe','cafename'));
     }
 }
