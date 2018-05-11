@@ -9,7 +9,7 @@
 
 @section('content')
 
-<div style="width:800px; margin:0 auto;" class="col-sm-10 blog-main " >
+<div style="width:768px; margin:0 auto;" class="col-sm-10 blog-main " >
 
 <div class="container">
   <div id="myCarousel" class="carousel slide" data-ride="carousel">
@@ -24,15 +24,15 @@
     <div class="carousel-inner">
 
       <div class="item active">
-        <img src="http://img.online-station.net/_news/2015/1018/87482_DSC01601.jpg" alt="Los Angeles" style="width:100%;">
+        <img src="{{asset('images/1.jpg')}}" alt="Los Angeles" style="width:100%;">
       </div>
 
       <div class="item">
-        <img src="https://lh6.googleusercontent.com/cJVuwmcjLcYd6zP_4MqrES4213r-nctiEXz2hFOGAuSWhliBoR-3gF9c0oytM2O06TPlXJtwu8H8Lb9UySc_fmnErBzIqHNfX71eF2dFvnnuw2ut0xQtvYO0nvlGfLbRoJlt5TGeiA" alt="Chicago" style="width:100%;">
+        <img src="{{asset('images/2.jpg')}}" alt="Chicago" style="width:100%;">
       </div>
 
       <div class="item">
-        <img src="https://www.fpsthailand.com/index/wp-content/uploads/2017/12/Pro-League-Day-2-30.jpg" alt="New York" style="width:100%;">
+        <img src="{{asset('images/3.jpg')}}" alt="New York" style="width:100%;">
       </div>
 
     </div>

@@ -30,18 +30,35 @@
         <!-- Wrapper for slides -->
         <div class="carousel-inner">
             {{-- {{$cafe[0]->picture}} --}}
-          <div class="item active">
-            <img src="{{asset('images/').'/'.$cafe[0]->picture}}" alt="cafepic1" height="432">
-          </div>
+            @if ($cafe[0]->picture1 == '')
+                <div class="item active">
+                  <img src="{{asset('images/ex1.jpg')}}" alt="cafepic1" height="432">
+                </div>
+            @else
+                <div class="item active">
+                  <img src="{{asset('images/').'/'.$cafe[0]->picture1}}" alt="cafepic1" height="432">
+                </div>
+            @endif
 
-          <div class="item">
-            <img src="{{asset('images/2.jpg')}}" alt="Chicago" height="432">
-          </div>
+            @if ($cafe[0]->picture2 == '')
+                <div class="item">
+                  <img src="{{asset('images/ex2.jpg')}}" alt="cafepic2" height="432">
+                </div>
+            @else
+                <div class="item">
+                  <img src="{{asset('images/').'/'.$cafe[0]->picture2}}" alt="cafepic2" height="432">
+                </div>
+            @endif
 
-          <div class="item">
-            <img src="{{asset('images/3.jpg')}}" alt="New York" height="432">
-          </div>
-
+            @if ($cafe[0]->picture3 == '')
+                <div class="item">
+                  <img src="{{asset('images/ex3.jpg')}}" alt="cafepic3" height="432">
+                </div>
+            @else
+                <div class="item">
+                  <img src="{{asset('images/').'/'.$cafe[0]->picture3}}" alt="cafepic3" height="432">
+                </div>
+            @endif
         </div>
 
         <!-- Left and right controls -->
