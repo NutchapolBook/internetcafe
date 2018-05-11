@@ -318,7 +318,7 @@
       }());
       </script>
       <br>
-      <strong for="name">Seat Name </strong>: <input type="hidden" name="seatname" id="seatname" value="" >
+      <strong for="name">Seat Number </strong>: <input type="hidden" name="seatname" id="seatname" value="" >
       <span id="changeMethodsMsg" style="font-size:25px;"></span>
       <br>
       <strong for="name">Status </strong>:
@@ -330,33 +330,33 @@
       </script> -->
 
       <br>
-      <strong for="time">Time play: </strong>
+      <strong for="time">Hours: </strong>
       <select  id="time" name="time" onchange="calculateAmount(this.value)" required>
         <option value="" disabled selected>Choose your time</option>
         <option value="1">1 hr</option>
-        <option value="2">2 hr</option>
-        <option value="3">3 hr</option>
-        <option value="4">4 hr</option>
-        <option value="5">5 hr</option>
-        <option value="6">6 hr</option>
-        <option value="7">7 hr</option>
-        <option value="8">8 hr</option>
-        <option value="9">9 hr</option>
-        <option value="10">10 hr</option>
-        <option value="11">11 hr</option>
-        <option value="12">12 hr</option>
-        <option value="13">13 hr</option>
-        <option value="14">14 hr</option>
-        <option value="15">15 hr</option>
-        <option value="16">16 hr</option>
-        <option value="17">17 hr</option>
-        <option value="18">18 hr</option>
-        <option value="19">19 hr</option>
-        <option value="20">20 hr</option>
-        <option value="21">21 hr</option>
-        <option value="22">22 hr</option>
-        <option value="23">23 hr</option>
-        <option value="24">24 hr</option>
+        <option value="2">2 hrs</option>
+        <option value="3">3 hrs</option>
+        <option value="4">4 hrs</option>
+        <option value="5">5 hrs</option>
+        <option value="6">6 hrs</option>
+        <option value="7">7 hrs</option>
+        <option value="8">8 hrs</option>
+        <option value="9">9 hrs</option>
+        <option value="10">10 hrs</option>
+        <option value="11">11 hrs</option>
+        <option value="12">12 hrs</option>
+        <option value="13">13 hrs</option>
+        <option value="14">14 hrs</option>
+        <option value="15">15 hrs</option>
+        <option value="16">16 hrs</option>
+        <option value="17">17 hrs</option>
+        <option value="18">18 hrs</option>
+        <option value="19">19 hrs</option>
+        <option value="20">20 hrs</option>
+        <option value="21">21 hrs</option>
+        <option value="22">22 hrs</option>
+        <option value="23">23 hrs</option>
+        <option value="24">24 hrs</option>
       </select>
 
 
@@ -377,6 +377,7 @@
       <input type="hidden" name="starttime" id="starttime" value="" >
       <input type="hidden" name="endtime" id="endtime" value="" >
       <input type="hidden" name="date" id="date" value="" >
+      <input type="hidden" name="status" id="status" value="" >
 
 
 
@@ -392,7 +393,7 @@
     echo date("h:i:sa", $checktime); -->
 
 
-  <button  id="selectionButton" >Choose</button>
+  <button  id="selectionButton" >Purchase</button>
   <script>
 
   var selectionButton = document.getElementById("selectionButton");
@@ -465,6 +466,7 @@
       document.getElementById("starttime").value = time;
       document.getElementById("endtime").value = endtime;
       document.getElementById("date").value = date;
+      document.getElementById("status").value = status;
 
 
 
@@ -498,7 +500,6 @@
       //     alert("Please select your seat");
       // }
       else if (document.getElementById("amount").value == "" &&  document.getElementById("seatname").value == "") {
-
           alert("Please select seat and your time play");
         }
       else if(status == "Busy"){
