@@ -31,11 +31,10 @@ class EditcafeController extends Controller
 
     public function update(Request $request) {
       //dd($request);
-      $input = $request->only(['id','price','name','colour','location','tel','facebook','line','picture','picture2','picture3','icon']);
+      $input = $request->only(['id','price','name','colour','location','tel','facebook','line','picture1','picture2','picture3','icon']);
       //dd($input);
       //$colour = $input['color'].value(0);
       //dd($colour);
-      $cafename = Auth::user()->cafename;
       //update
       $data = DB::table('internetcafes')
                     ->where('id',$input['id'])
@@ -48,11 +47,27 @@ class EditcafeController extends Controller
                         'line'=> $input['line'],
                         ]);
 
-      if ($input['picture'] != null) {
+      if ($input['picture1'] != null) {
           $data = DB::table('internetcafes')
                         ->where('id',$input['id'])
                         ->update([
-                            'picture'=> $input['picture'],
+                            'picture1'=> $input['picture1'],
+                            ]);
+      }
+
+      if ($input['picture2'] != null) {
+          $data = DB::table('internetcafes')
+                        ->where('id',$input['id'])
+                        ->update([
+                            'picture2'=> $input['picture2'],
+                            ]);
+      }
+
+      if ($input['picture3'] != null) {
+          $data = DB::table('internetcafes')
+                        ->where('id',$input['id'])
+                        ->update([
+                            'picture3'=> $input['picture3'],
                             ]);
       }
 
