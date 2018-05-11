@@ -50,7 +50,7 @@ class BookingController extends Controller
 
     public function update(Request $request) {
       // dd($request);
-      $input = $request->only(['name','email','cafename','seatname','time','amount','tjs','starttime','endtime','date']);
+      $input = $request->only(['name','email','cafename','seatname','time','amount','tjs','starttime','endtime','date','status']);
       // dd($input);
       $name = Auth::user()->name;
       $cafename = Auth::user()->cafename;
@@ -63,7 +63,7 @@ class BookingController extends Controller
       $balance = Auth::user()->balance;
       $amount = $input['amount'];
 
-      if ($balance >= $amount) {
+      if ($balance >= $amount && $input['status'] == 'Available') {
       $data = DB::table('users')
                   ->where([
                     ['cafename',Auth::user()->cafename],

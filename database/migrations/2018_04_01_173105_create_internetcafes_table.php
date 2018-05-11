@@ -25,7 +25,6 @@ class CreateInternetcafesTable extends Migration
             $table->string('picture1')->nullable();
             $table->string('picture2')->nullable();
             $table->string('picture3')->nullable();
-            $table->string('icon')->nullable();
             $table->timestamps();
         });
     }
