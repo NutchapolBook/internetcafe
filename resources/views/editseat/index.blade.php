@@ -76,8 +76,11 @@
           new go.Binding("desiredSize", "size", go.Size.parse).makeTwoWay(go.Size.stringify)),
         // with the textual key in the middle
         $(go.TextBlock,
-          { alignment: go.Spot.Center, font: 'bold 16px sans-serif' },
-          new go.Binding("text", "key"))
+
+          { alignment: go.Spot.Center, font: 'bold 16px sans-serif',editable: true , isMultiline: false },
+
+
+          new go.Binding("text", "key").makeTwoWay())
       );  // end Node
     // Groups represent racks where items (Nodes) can be placed.
     // Currently they are movable and resizable, but you can change that
@@ -166,6 +169,8 @@
     jQuery("#accordion").accordion({
       activate: function(event, ui) {
         myPaletteSmall.requestUpdate();
+        myPaletteTall.requestUpdate();
+        myPaletteWide.requestUpdate();
       }
     });
 
@@ -190,12 +195,41 @@
           layout: $(go.GridLayout)
         });
     var green = '#B2FF59';
-    var blue = '#81D4FA';
-    var yellow = '#FFEB3B';
+
     // specify the contents of the Palette
     myPaletteSmall.model = new go.GraphLinksModel([
       { key: "S ", color: green }
     ]);
+
+    myPaletteTall =
+    $(go.Palette, "myPaletteTall",
+      { // share the templates with the main Diagram
+        nodeTemplate: myDiagram.nodeTemplate,
+        groupTemplate: myDiagram.groupTemplate,
+        layout: $(go.GridLayout)
+      });
+
+  // specify the contents of the Palette
+    myPaletteTall.model = new go.GraphLinksModel([
+      { key: "Door", color: '#EEDD82', size: "50 100" },
+
+    ]);
+
+    myPaletteWide =
+    $(go.Palette, "myPaletteWide",
+      { // share the templates with the main Diagram
+        nodeTemplate: myDiagram.nodeTemplate,
+        groupTemplate: myDiagram.groupTemplate,
+        layout: $(go.GridLayout)
+      });
+
+  // specify the contents of the Palette
+    myPaletteWide.model = new go.GraphLinksModel([
+      { key: "Wall", color: '#AFEEEE' , size: "100 25" },
+
+    ]);
+
+
     load();
 
   }
@@ -227,7 +261,17 @@
   <!-- <button onclick="myFunctionload()">Load</button> -->
 <script>
 function myFunctionupdate() {
-    document.getElementById("tjs").value = myDiagram.model.toJson();
+      // myDiagram.startTransaction("change name");
+      //
+      // var it = myDiagram.selection.iterator;
+      // var node = it.value;
+      // var shape = node.findObject("SHAPE");
+      //
+      // myDiagram.model.setDataProperty(node.data, "key",e.subject);
+      //
+      // document.getElementById("tjs").value = myDiagram.model.toJson();
+      // myDiagram.commitTransaction("change name");
+      document.getElementById("tjs").value = myDiagram.model.toJson();
 }
 </script>
 
@@ -259,9 +303,17 @@ function myFunction() {
   <div style="width: 100%; display: flex; justify-content: space-between">
     <div style="width: 135px; margin-right: 2px; background-color: whitesmoke; border: solid 1px black">
       <div id="accordion">
-        <h4>Drag a seat</h4>
+        <h4>Seat Item</h4>
         <div>
-          <div id="myPaletteSmall" style="width: 140px; height: 360px"></div>
+          <div id="myPaletteSmall" style="width: 130px; height: 140px"></div>
+        </div>
+        <h4>Door Item</h4>
+        <div>
+          <div id="myPaletteTall" style="width: 130px; height: 140px"></div>
+        </div>
+        <h4>Wall Item</h4>
+        <div>
+          <div id="myPaletteWide" style="width: 130px; height: 140px"></div>
         </div>
       </div>
     </div>
@@ -272,7 +324,7 @@ function myFunction() {
     <!-- <button id="SaveButton" onclick="save()">Save</button>
     <button onclick="load()">Load</button> -->
 
-    <pre hidden id="savedModel" style="height:250px" ></pre>
+    <pre  id="savedModel" style="height:250px" ></pre>
 
 
 </div>

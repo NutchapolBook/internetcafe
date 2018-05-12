@@ -28,7 +28,11 @@ class BookingController extends Controller
           ->where('cafename','=',$cafename)
           ->get();
 
-      return view('booking.index',compact('user','tojson','cafename','user1','balance','seat','seatname','status','time'));
+      $cafe = DB::table('internetcafes')
+          ->where('name','=',$cafename)
+          ->get();
+
+      return view('booking.index',compact('user','tojson','cafename','user1','balance','seat','seatname','status','time','cafe','price'));
 
     }
 
@@ -40,6 +44,7 @@ class BookingController extends Controller
         $seat = DB::table('seats')
             ->where('cafename','=',$cafename)
             ->where('email','=',$email)
+            ->where('status','=','Available')
             ->get();
         // $user = $user->toArray();
         // dd($user);

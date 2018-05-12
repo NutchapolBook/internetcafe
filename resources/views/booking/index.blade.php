@@ -14,7 +14,7 @@
 
 <script id="code">
   // General Parameters for this app, used during initialization
-  var AllowTopLevel = false;
+  var AllowTopLevel = true;
   var CellSize = new go.Size(50, 50);
   function init() {
     if (window.goSamples) goSamples();  // init for these samples -- you don't need to call this
@@ -54,8 +54,12 @@
         ss.style.color = "red";
         ss.textContent = s;
       }
-      else{
+      else if(s == "Available"){
         ss.style.color = "#00FF00";
+        ss.textContent = s;
+      }
+      else{
+        ss.style.color = "#CC33CC";
         ss.textContent = s;
       }
 
@@ -91,19 +95,15 @@
             minSize: CellSize,
             desiredSize: CellSize  // initially 1x1 cell
           },
-          new go.Binding("fill", "highlight", function(v) { return v ? "red" : "#B2FF59"; }),
-          new go.Binding("stroke", "highlight", function(v) { return v ? "black" : "black"; }),
-          new go.Binding("stroke", "isSelected", function(sel) {
-              return sel ? "black" : "black";
-            }).ofObject(),
-          new go.Binding("fill", "color")),  // no name means bind to the whole Part
+          new go.Binding("fill", "color"),
+
+          new go.Binding("desiredSize", "size", go.Size.parse).makeTwoWay(go.Size.stringify)),
 
 
         // with the textual key in the middle
         $(go.TextBlock,
-          { alignment: go.Spot.Center, font: 'bold 16px sans-serif' },
+          { alignment: go.Spot.Center, font: 'bold 16px sans-serif',},
           new go.Binding("text", "key")),
-
           {
             click: function(e, obj)
             {
@@ -113,9 +113,13 @@
                 showMessage("" + obj.part.data.key)
                 showMessagestatus("Busy");
               }
+              else if (obj.part.data.color == '#B2FF59') {
+                showMessage("" + obj.part.data.key)
+                showMessagestatus("Available");
+              }
               else{
                 showMessage("" + obj.part.data.key)
-                showMessagestatus("Available")
+                showMessagestatus("None")
               };
               },
 
@@ -325,6 +329,8 @@
       <!-- style="display:none" -->
       <span style="font-size:25px;" id="changeMethodsMsgstatus"></span>
 
+
+      <input type="hidden" name="cafeprice" id="cafeprice" value="{{$cafe[0]->price}}">
       <!-- <script>
       var span_Text = document.getElementById("changeMethodsMsgstatus").innerText;
       </script> -->
@@ -366,7 +372,7 @@
       <script>
       function calculateAmount(val)
       {
-      var price = val * 12;
+      var price = val * document.getElementById('cafeprice').value;
       //display the result
       var timeplay=price;
       var divobj = document.getElementById('amount');
@@ -475,7 +481,7 @@
     // var endTime = (strtotime(selectedTime . +1 hours));
 
     if (bal >= amt && document.getElementById("amount").value != "" && status == "Available") {
-        // alert(endtime);
+      if (confirm("Confirm Seat")) {
         alert("Your select seat "+seatname+" is complete \nStart at "+date+" time "+time+" "+"to"+" "+endtime);
 
         myDiagram.startTransaction("change color");
@@ -493,19 +499,24 @@
         }
         document.getElementById("tjs").value = myDiagram.model.toJson();
         myDiagram.commitTransaction("change color");
-
+        }
+        else{
+          document.getElementById("status").value = "Busy";
+        }
       }
       // else if(document.getElementById("seatname").value == "1"){
       //     alert(document.getElementById("changeMethodsMsg").value);
       //     alert("Please select your seat");
       // }
       else if (document.getElementById("amount").value == "" &&  document.getElementById("seatname").value == "") {
-          alert("Please select seat and your time play");
+          alert("Please select seat and hours");
         }
       else if(status == "Busy"){
-          alert("This seat is busy try to select other seat")
+          alert("This seat is busy try to selecting another seat")
       }
-
+      else if(status == "None"){
+        alert("Try to selecting a seat")
+      }
       else{
       alert("Your balance has not enough");
       }
@@ -542,7 +553,7 @@
   </div>
 
   <div>
-    <pre hidden id="savedModel" style="height:250px"></pre>
+    <pre  id="savedModel" style="height:250px"></pre>
   </div>
 
 </div>
