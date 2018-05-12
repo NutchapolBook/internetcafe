@@ -54,8 +54,12 @@
         ss.style.color = "red";
         ss.textContent = s;
       }
-      else{
+      else if(s == "Available"){
         ss.style.color = "#00FF00";
+        ss.textContent = s;
+      }
+      else{
+        ss.style.color = "#CC33CC";
         ss.textContent = s;
       }
 
@@ -109,9 +113,13 @@
                 showMessage("" + obj.part.data.key)
                 showMessagestatus("Busy");
               }
+              else if (obj.part.data.color == '#B2FF59') {
+                showMessage("" + obj.part.data.key)
+                showMessagestatus("Available");
+              }
               else{
                 showMessage("" + obj.part.data.key)
-                showMessagestatus("Available")
+                showMessagestatus("None")
               };
               },
 
@@ -473,7 +481,7 @@
     // var endTime = (strtotime(selectedTime . +1 hours));
 
     if (bal >= amt && document.getElementById("amount").value != "" && status == "Available") {
-        // alert(endtime);
+      if (confirm("Confirm Seat")) {
         alert("Your select seat "+seatname+" is complete \nStart at "+date+" time "+time+" "+"to"+" "+endtime);
 
         myDiagram.startTransaction("change color");
@@ -491,19 +499,24 @@
         }
         document.getElementById("tjs").value = myDiagram.model.toJson();
         myDiagram.commitTransaction("change color");
-
+        }
+        else{
+          document.getElementById("status").value = "Busy";
+        }
       }
       // else if(document.getElementById("seatname").value == "1"){
       //     alert(document.getElementById("changeMethodsMsg").value);
       //     alert("Please select your seat");
       // }
       else if (document.getElementById("amount").value == "" &&  document.getElementById("seatname").value == "") {
-          alert("Please select seat and your time play");
+          alert("Please select seat and hours");
         }
       else if(status == "Busy"){
-          alert("This seat is busy try to select other seat")
+          alert("This seat is busy try to selecting another seat")
       }
-
+      else if(status == "None"){
+        alert("Try to selecting a seat")
+      }
       else{
       alert("Your balance has not enough");
       }

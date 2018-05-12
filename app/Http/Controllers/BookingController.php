@@ -44,6 +44,7 @@ class BookingController extends Controller
         $seat = DB::table('seats')
             ->where('cafename','=',$cafename)
             ->where('email','=',$email)
+            ->where('status','=','Available')
             ->get();
         // $user = $user->toArray();
         // dd($user);

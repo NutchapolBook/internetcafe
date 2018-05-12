@@ -63,7 +63,7 @@
 
       <table>
         <th>Name</th>
-        <th>SeatName</th>
+        <th>Seat_Number</th>
         <th>Date</th>
         <th>Start_time</th>
         <th>End_time</th>
