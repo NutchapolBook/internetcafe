@@ -45,6 +45,7 @@ class EditcafeController extends Controller
                     ->where('id',$input['id'])
                     ->update([
                         'name'=> $input['name'],
+                        'price'=> $input['price'],
                         'colour'=> $input['colour'],
                         'location'=> $input['location'],
                         'tel'=> $input['tel'],

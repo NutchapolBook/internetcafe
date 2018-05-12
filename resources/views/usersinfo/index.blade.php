@@ -9,9 +9,15 @@
     @php
         $sum=0;
     @endphp
-    <div class="form-group">
-        <input class="form-control col-sm-2 " type="text" id="search" placeholder="Search...">
+    
+    <div class="form-group form-row">
+        <div class="col-sm-8"></div>
+        <div class="w3-col" style="width:50px">
+            <i class="fa fa-search" style="font-size:34px"></i>
+        </div>
+        <input class="form-control col-sm-3" type="text" id="search" placeholder="Search..." >
     </div>
+    <br>
 
     <table class="table table-bordered table-hover shadow" id="tablera">
         <thead>
@@ -56,22 +62,28 @@
                            {{ csrf_field() }}
                            <div class="text-center">
                                @if ($user->status == 'useable' )
-                                   <button type="button" class="btn btn-sm btn-success show-dialog" title="delete" data-toggle="tooltip" data-activity="{{ $user->id }}"> {{$user->status}} </button>
+                                   <button type="button" class="btn btn-sm btn-success" title="enabled" data-toggle="modal" data-target="#exampleModal"> Enabled </button>
                                @elseif ($user->status == 'disable' )
-                                   <button type="button" class="btn btn-sm btn-danger show-dialog" title="delete" data-toggle="tooltip" data-activity="{{ $user->id }}"> {{$user->status}} </button>
+                                   <button type="button" class="btn btn-sm btn-danger" title="disable" data-toggle="modal" data-target="#exampleModal"> Disabled </button>
                                @endif
-                                <dialog id="dialog-activity-{{ $user->id }}" class="mdl-dialog">
-                                    <div class="mdl-dialog__content">
-                                        <h4>
-                                            Are you sure to change status this ID?
-                                        </h4>
-                                    </div>
-                                    <div class="mdl-dialog__actions">
-                                        <button type="button" class="mdl-button close">Close</button>
-                                        <input type="hidden" name="id" id="id" value="{{$user->id}}">
-                                        <input type="submit" name="status" id="status" class="mdl-button confirm" value="{{$user->status}}"/>
-                                    </div>
-                                </dialog>
+                               <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                   <div class="modal-dialog" role="document">
+                                       <div class="modal-content">
+                                           <div class="modal-header">
+                                               <h5 class="modal-title" id="exampleModalLabel">Are you sure to change status ID: {{$user->name}}?</h5>
+                                               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                   <span aria-hidden="true">&times;</span>
+                                               </button>
+                                           </div>
+                                           <div class="modal-footer">
+                                               <input type="hidden" name="id" id="id" value="{{$user->id}}">
+                                               <input type="hidden" name="status" id="status" value="{{$user->status}}">
+                                               <button type="submit" class="btn btn-primary">Save changes</button>
+                                               <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                           </div>
+                                       </div>
+                                   </div>
+                                </div>
                             </div>
                         </form>
                     </td>
@@ -94,32 +106,6 @@
           $(this).toggle(id.indexOf(value) !== -1);
           });
       });
-</script>
-
-<script>
-    var dialog = document.querySelector('dialog');
-    // var showDialogButton = document.querySelector('#show-dialog');
-
-    if (! dialog.showModal) {
-        dialogPolyfill.registerDialog(dialog);
-    }
-
-    // showDialogButton.addEventListener('click', function() {
-    //   dialog.showModal();
-    // });
-
-    $('.show-dialog').on('click', function(){
-        dialog = document.querySelector('#dialog-activity-'+$(this).data('activity'));
-        dialog.showModal();
-    });
-
-    // dialog.querySelector('.close').addEventListener('click', function() {
-    //   dialog.close();
-    // });
-
-    $('.close').on('click', function(){
-        dialog.close();
-    });
 </script>
 @endsection
 

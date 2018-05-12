@@ -9,9 +9,15 @@
     @php
         $sum=0;
     @endphp
-    <div class="form-group">
-        <input class="form-control col-sm-2 " type="text" id="search" placeholder="Search...">
+
+    <div class="form-group form-row">
+        <div class="col-sm-8"></div>
+        <div class="w3-col" style="width:50px">
+            <i class="fa fa-search" style="font-size:34px"></i>
+        </div>
+        <input class="form-control col-sm-3 " type="text" id="search" placeholder="Search..." >
     </div>
+    <br><br>
 
     {{-- <form method="POST" action="{{route('cafe.income.create',  $cafename)}}">
         {{ csrf_field() }}
@@ -35,10 +41,11 @@
        {{ csrf_field() }}
        <div class="form-group">
           <div class="form-group row" >
-            <label for="startdate" class="col-md-1 control-label">Start date</label>
-            <div class="col-md-3">
-                <input type="date" class="form-control" id="startdate" name="startdate" required>
-            </div>
+              <div class="col-sm-1"></div>
+              <label for="startdate" class="col-md-1 control-label">Start date</label>
+              <div class="col-md-3">
+                  <input type="date" class="form-control" id="startdate" name="startdate" required>
+              </div>
 
             <label for="enddate" class="col-md-1 control-label">End date</label>
             <div class="col-md-3">
