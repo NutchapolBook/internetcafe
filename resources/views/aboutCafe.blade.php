@@ -1,6 +1,6 @@
 @extends('layouts.masterCafe')
-
 @section('content')
+@include('layouts.editstyle')
 
 <div class="col-sm-10 blog-main " >
 <div class="container">

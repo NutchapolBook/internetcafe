@@ -1,5 +1,7 @@
 @extends('layouts.masterCafe')
 @section('content')
+@include('layouts.editstyle')
+
 <div class="col-md-6 mid">
      @include('layouts.status')
     <form action="/profile" method="post" class="w3-container w3-card-4 w3-light-grey w3-margin">

@@ -12,13 +12,19 @@ class AddcreditController extends Controller
 {
     public function index($cafename){
         $cafename = Auth::user()->cafename;
-        return view('addcredit.index',compact('cafename'));
+        $cafe = DB::table('internetcafes')
+           ->where('name','=',$cafename)
+           ->get();
+        return view('addcredit.index',compact('cafename','cafe'));
 
     }
 
     public function indexAdmin($cafename){
         $cafename = Auth::user()->cafename;
-        return view('addcredit.indexAdmin',compact('cafename'));
+        $cafe = DB::table('internetcafes')
+           ->where('name','=',$cafename)
+           ->get();
+        return view('addcredit.indexAdmin',compact('cafename','cafe'));
     }
 
     public function store(){

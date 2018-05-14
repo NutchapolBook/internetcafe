@@ -5,8 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
-    <link rel="icon" href="../../favicon.ico">
+    {{-- <link rel="icon" href="{{asset('images/').'/'.$cafe[0]->icon}}"> --}}
     <title>{{Auth::user()->cafename}}</title>
+
+    {{-- font --}}
+    <link href="https://fonts.googleapis.com/css?family=Karla:400" rel="stylesheet" type="text/css">
 
     {{-- script --}}
     <link href="{{ asset('css/jquery-ui.min.css') }}" rel="stylesheet"/>
@@ -33,13 +36,9 @@
   <body>
       @include('layouts.navCafe')
 
-      <div class="blog-header">
+        <div class="blog-header">
             <div class="container">
-              @if (Auth::user()->role === "admin")
                   <h1 class="blog-title">{{Auth::user()->cafename}}</h1>
-              @elseif (Auth::user()->role === "user")
-                  <h1 class="blog-title">{{$cafename}}</h1>
-              @endif
         {{-- <p class="lead blog-description">An example blog template built with Bootstrap.</p> --}}
             </div>
         </div>

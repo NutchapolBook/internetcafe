@@ -28,7 +28,10 @@ class ProfileController extends Controller
            ->get();
         //dd($user[0]);
         //dd($cafename);
-        return view('profile.index',compact('user','cafename'));
+        $cafe = DB::table('internetcafes')
+           ->where('name','=',$cafename)
+           ->get();
+        return view('profile.index',compact('user','cafename','cafe'));
     }
 
     public function update(Request $request) {

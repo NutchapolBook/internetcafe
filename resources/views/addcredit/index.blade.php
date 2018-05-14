@@ -1,6 +1,7 @@
 @extends('layouts.masterCafe')
-
 @section('content')
+@include('layouts.editstyle')
+
     <div class="col-sm-8">
         <h2>Add Credit</h2><br>
         @include('layouts.status')

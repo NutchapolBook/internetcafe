@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use App\Post;
 
@@ -16,15 +17,22 @@ class PostsController extends Controller
     public function index(){
       // $posts = Post::all();
       $cafename = Auth::user()->cafename;
+      $cafe = DB::table('internetcafes')
+         ->where('name','=',$cafename)
+         ->get();
       $posts = Post::latest()
                 ->where('cafename','=',$cafename)
                 ->get();
-      return view('posts.index',compact('cafename','posts'));
+
+      return view('posts.index',compact('cafename','posts','cafe'));
     }
 
     public function create(){
         $cafename = Auth::user()->cafename;
-        return view('posts.create',compact('cafename'));
+        $cafe = DB::table('internetcafes')
+           ->where('name','=',$cafename)
+           ->get();
+        return view('posts.create',compact('cafename','cafe'));
     }
 
     public function store(){
@@ -63,7 +71,10 @@ class PostsController extends Controller
 
     public function show( $cafename  , Post $post){
         $cafename = Auth::user()->cafename;
-        return view('posts.show',compact('post','cafename'));
+        $cafe = DB::table('internetcafes')
+           ->where('name','=',$cafename)
+           ->get();
+        return view('posts.show',compact('post','cafename','cafe'));
     }
 
 

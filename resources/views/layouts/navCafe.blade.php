@@ -1,33 +1,30 @@
 <div class="blog-masthead">
-  <div class="container">
-    <nav class="nav blog-nav">
-      <a class="nav-link active" href="{{route('cafe.indexCafe' , $cafename) }}" >Home</a>
+    <nav class="icon-bar ">
+        <a href="{{route('cafe.indexCafe' , $cafename) }}" ><i class="fa fa-home"></i></a>
 
-      @if (!Auth::check())
-          <a class="nav-link ml-auto" href="/login">Login</a>
-          <a class="nav-link" href="/register">Register</a>
+      @if (Auth::user()->role === "user")
+        <a  href="{{route('cafe.promotions.index' , $cafename) }}">Promotions</a>
+        <a  href="{{route('cafe.booking.index' , $cafename) }}"><i class="fas fa-gamepad"></i></a>
+        <a  href=" {{route('cafe.booking.cancle' , $cafename) }}">Check Booking</a>
 
-      @elseif (Auth::user()->role === "user")
-        <a class="nav-link" href="{{route('cafe.promotions.index' , $cafename) }}">Promotions</a>
-        <a class="nav-link" href="{{route('cafe.booking.index' , $cafename) }}">Booking</a>
-        <a class="nav-link" href=" {{route('cafe.booking.cancle' , $cafename) }}">Check Booking</a>
-        <a class="nav-link ml-auto" href="{{route('cafe.addcredit.index' , $cafename) }}">Balance: {{Auth::user()->balance}} BAHT</a>
-        <a class="nav-link" href="/profile">{{Auth::user()->name}}</a>
-        <a class="nav-link" href="/logout">Logout</a>
+        <div class="icon-bar-right">
+            <a href="/logout"><i class="fa fa-sign-out"></i></a>
+            <a href="/profile"><i class="fa fa-user-circle"></i> {{Auth::user()->name}} </a>
+            <a  href="{{route('cafe.addcredit.index' , $cafename) }}">Balance {{Auth::user()->balance}} ฿</a>
+        </div>
 
       @elseif (Auth::user()->role === "admin")
-        <a class="nav-link" href="{{route('cafe.promotions.index' , $cafename) }}" >Promotions</a>
-        <a class="nav-link" href="{{route('cafe.addcredit.indexAdmin' , $cafename) }}">Add credit</a>
-        <a class="nav-link" href="{{route('cafe.usersinfo.index' , $cafename) }}">Users info</a>
-        <a class="nav-link" href="{{route('cafe.income.index' , $cafename) }}">Income</a>
-        <a class="nav-link" href="{{route('cafe.editseat.index' , $cafename) }}">Edit Seat</a>
-        <a class="nav-link ml-auto" href="{{route('cafe.editcafe.index' , $cafename) }}">Edit</a>
-        <a class="nav-link"  href="/profile">{{Auth::user()->name}}</a>
-        <a class="nav-link" href="/logout">Logout</a>
+        <a  href="{{route('cafe.promotions.index' , $cafename) }}" >Promotions</a>
+        <a  href="{{route('cafe.addcredit.indexAdmin' , $cafename) }}"><i class="fas fa-dollar-sign"></i></a>
+        <a  href="{{route('cafe.usersinfo.index' , $cafename) }}"><i class="fas fa-users"></i></a>
+        <a  href="{{route('cafe.income.index' , $cafename) }}"><i class="fas fa-hand-holding-usd"></i></a>
+        <a  href="{{route('cafe.editseat.index' , $cafename) }}">Edit Seat</a>
+
+        <div class="icon-bar-right">
+            <a href="/logout"><i class="fa fa-sign-out"></i></a>
+            <a href="/profile"><i class="fa fa-user-circle"></i> {{Auth::user()->name}} </a>
+            <a href="{{route('cafe.editcafe.index' , $cafename) }}"><i class="fa fa-cogs"></i></a>
+        </div>
       @endif
-
-
-
     </nav>
-  </div>
 </div>

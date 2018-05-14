@@ -1,5 +1,7 @@
 @extends('layouts.masterCafe')
 @section('content')
+@include('layouts.editstyle')
+
 <div class="col-md-10 mid blog-main">
     @include('layouts.status')
     @include('layouts.error')
@@ -22,16 +24,21 @@
         </div>
     </div>
 
-    @if ($cafe[0]->colour == '')
+    @if ($cafe[0]->tabtextcolour == '')
         <div class="w3-row w3-section">
           <div class="w3-col" style="width:50px"><i class="w3-xxlarge fa fa-tint"></i></div>
-          <input type="color" name="colour" id="colour" value="#CDDDEB" >
+          <label for="colour">Tab text colour</label>
+          <input type="color" name="tabtextcolour" id="tabtextcolour" value="#CDDDEB" >
+          <label for="colour">Tab Colour</label>
+          <input type="color" name="tabcolour" id="tabcolour" value="#ffffff">
         </div>
     @else
         <div class="w3-row w3-section">
             <div class="w3-col" style="width:50px"><i class="w3-xxlarge fa fa-tint"></i></div>
-            <label for="colour">Colour</label>
-            <input type="color" name="colour" id="colour" value="{{$cafe[0]->colour}}" >
+            <label for="colour">Tab text colour</label>
+            <input type="color" name="tabtextcolour" id="tabtextcolour" value="{{$cafe[0]->tabtextcolour}}" >
+            <label for="colour">Tab Colour</label>
+            <input type="color" name="tabcolour" id="tabcolour" value="{{$cafe[0]->tabcolour}}" >
         </div>
     @endif
 

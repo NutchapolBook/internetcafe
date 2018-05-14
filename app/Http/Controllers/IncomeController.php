@@ -27,7 +27,10 @@ class IncomeController extends Controller
            ->where('cafename','=',$cafename)
            ->get();
         //dd($income);
-        return view('income.index',compact('incomes','cafename'));
+        $cafe = DB::table('internetcafes')
+           ->where('name','=',$cafename)
+           ->get();
+        return view('income.index',compact('incomes','cafename','cafe'));
     }
 
     public function create(Request $request) {
@@ -35,14 +38,24 @@ class IncomeController extends Controller
       $input = $request->only(['startdate','enddate']);
       //dd($input);
       $cafename = Auth::user()->cafename;
-      //update
-      //dd($input['startdate']);
-      $incomes = Addcredit::where('created_at', '>=' ,$input['startdate'])
-         ->where('created_at', '<=' ,$input['enddate'])
+      $cafe = DB::table('internetcafes')
+         ->where('name','=',$cafename)
          ->get();
-         //dd($incomes);
-      //redirect to the home
-      return view('income.index',compact('incomes','cafename'));
+      //update
+      if ($input['startdate'] === $input['enddate']) {
+          $incomes = Addcredit::whereDate('created_at', '=' ,$input['startdate'])
+                   ->get();
+            //dd($incomes);
+      }
+      else {
+          $incomes = Addcredit::whereDate('created_at', '>=' ,$input['startdate'])
+                                ->whereDate('created_at', '<=' ,$input['enddate'])
+                                ->get();
+      }
+
+      //dd($incomes);
+      //redirect
+      return view('income.index',compact('incomes','cafename','cafe'));
 
     }
 

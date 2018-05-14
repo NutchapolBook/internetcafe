@@ -1,6 +1,7 @@
 @extends('layouts.masterCafe')
 
 @section('content')
+@include('layouts.editstyle')
 <div class="col-sm-8 blog-main">
   <h2>Create a promotion</h2>
 

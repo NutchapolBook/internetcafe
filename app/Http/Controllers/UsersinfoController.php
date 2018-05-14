@@ -26,7 +26,10 @@ class UsersinfoController extends Controller
         $users = User::where('role', '=' ,'user')
            ->get();
         // dd($users);
-        return view('usersinfo.index',compact('users','cafename'));
+        $cafe = DB::table('internetcafes')
+           ->where('name','=',$cafename)
+           ->get();
+        return view('usersinfo.index',compact('users','cafename','cafe'));
     }
 
     public function update(Request $request) {
