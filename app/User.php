@@ -16,7 +16,9 @@ class User extends Authenticatable
      */
     protected $table = 'users';
     protected $fillable = [
-        'name', 'email', 'password','role','cafename','status','tojson'
+        'name', 'email', 'password','role','cafename','status','tojson','tojson2','tojson3','tojson4','tojson5','tojson6','tojson7'
+        ,'tojson8','tojson9','tojson10','tojson11','tojson12','tojson13','tojson14','tojson15','tojson16','tojson17','tojson18'
+        ,'tojson19','tojson20','tojson21','tojson22','tojson23','tojson24'
     ];
 
     // protected $table = 'seat';

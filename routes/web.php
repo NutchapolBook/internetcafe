@@ -19,7 +19,7 @@ Route::group([], function() {
         #Cafe Home
         Route::get('{cafename}','HomeController@indexCafe')->name('indexCafe');
         #aboutCafe
-        Route::get('{cafename}/about','HomeController@aboutCafe')->name('aboutCafe');    
+        Route::get('{cafename}/about','HomeController@aboutCafe')->name('aboutCafe');
         #Addcredit
         Route::group(['as' => 'addcredit.' , 'prefix' => '{cafename}/addcredit'], function() {
             Route::get('/indexuser','AddcreditController@index')->name('index');

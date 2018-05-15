@@ -4,7 +4,9 @@
 @section('content')
   <div class="col-md-8">
     <h1>User Login</h1><br>
-
+    <script type="text/javascript">
+      sessionStorage.clear();
+    </script>
     <form action="/login" method="post">
         {{ csrf_field() }}
         <div class="form-group">

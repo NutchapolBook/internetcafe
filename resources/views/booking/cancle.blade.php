@@ -1,5 +1,4 @@
 @extends('layouts.masterCafe')
-
 @section('content')
 
 <div class="col-sm-8 blog-main">
@@ -16,6 +15,7 @@
       <strong for="time">Time  </strong>:
       <span style="font-size:30px;" id="clock"></span>
       <script>
+      // sessionStorage.clear();
       (function () {
 
         var clockElement = document.getElementById( "clock" );
@@ -65,8 +65,8 @@
         <th>Name</th>
         <th>Seat_Number</th>
         <th>Date</th>
-        <th>Start_time</th>
-        <th>End_time</th>
+        <th>Start_Booking</th>
+        <th>Play_time</th>
         <?php foreach($seat as $user): ?>
         <tr>
             <td><?php echo $user->name; ?></td>

@@ -324,7 +324,7 @@ function myFunction() {
     <!-- <button id="SaveButton" onclick="save()">Save</button>
     <button onclick="load()">Load</button> -->
 
-    <pre  id="savedModel" style="height:250px" ></pre>
+    <pre hidden id="savedModel" style="height:250px" ></pre>
 
 
 </div>
