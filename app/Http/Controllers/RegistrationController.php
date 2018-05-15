@@ -20,6 +20,7 @@ class RegistrationController extends Controller
         'email' => 'required|string|email|max:255|unique:users',
         'password' => 'required|string|min:4|confirmed',
         'role'=>'required',
+        'g-recaptcha-response'=>'required|recaptcha',
       ]);
 
      #ถ้าเป็น admin จะสร้างตาราง intercafes เพิ่มลง DB
@@ -36,7 +37,7 @@ class RegistrationController extends Controller
       //เข้ารหัส
       $input['password'] = bcrypt($input['password']);
       //dd($input);
-      
+
       //create and save the user
       $user = User::create($input);
 

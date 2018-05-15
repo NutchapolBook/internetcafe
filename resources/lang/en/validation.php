@@ -98,10 +98,9 @@ return [
     | specify a specific custom language line for a given attribute rule.
     |
     */
-
     'custom' => [
-        'attribute-name' => [
-            'rule-name' => 'custom-message',
+    'g-recaptcha-response' => [
+        'recaptcha' => 'האם אתה רובוט?', // Google translate
         ],
     ],
 

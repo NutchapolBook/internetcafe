@@ -4,6 +4,7 @@
 
 <div class="col-md-6 mid">
      @include('layouts.status')
+     @include('layouts.error')
     <form action="/profile" method="post" class="w3-container w3-card-4 w3-light-grey w3-margin">
         {{ csrf_field() }}
         <h1 class="w3-center">Profile Info</h1><br>
@@ -34,11 +35,6 @@
       <button type="submit" class="btn btn-primary">Update</button>
       <button type="reset" class="btn btn-primary">Cancle</button>
     </div>
-
-    @include('layouts.error')
-
-</>
-
 
 </div><!-- /.blog-main -->
 

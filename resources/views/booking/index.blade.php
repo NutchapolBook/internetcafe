@@ -1,16 +1,14 @@
 @extends('layouts.masterCafe')
 @section('content')
 @include('layouts.editstyle')
+<style type="text/css">
+    .ui-accordion .ui-accordion-content {
+      padding: 1px;
+    }
+</style>
+
   <div class="col-sm-12">
       <h2>Booking</h2><br>
-
-      <style type="text/css">
-      .ui-accordion .ui-accordion-content {
-        padding: 1px;
-      }
-      </style>
-
-
 
 <script id="code">
   // General Parameters for this app, used during initialization
@@ -312,35 +310,36 @@
 
 
   <!-- onchange="options[selectedIndex].value&&self.location.reload(true);" -->
-  <strong for="date">Time to play  </strong>:
-  <select id="target" >
-            <option value="" selected="selected">Selecting Time</option>
-            <option value="{{$user[0]->tojson}}">00.00 - 01.00</option>
-            <option value="{{$user[0]->tojson2}}">01.00 - 02.00</option>
-            <option value="{{$user[0]->tojson3}}">02.00 - 03.00</option>
-            <option value="{{$user[0]->tojson4}}">03.00 - 04.00</option>
-            <option value="{{$user[0]->tojson5}}">04.00 - 05.00</option>
-            <option value="{{$user[0]->tojson6}}">05.00 - 06.00</option>
-            <option value="{{$user[0]->tojson7}}">06.00 - 07.00</option>
-            <option value="{{$user[0]->tojson8}}">07.00 - 08.00</option>
-            <option value="{{$user[0]->tojson9}}">08.00 - 09.00</option>
-            <option value="{{$user[0]->tojson10}}">09.00 - 10.00</option>
-            <option value="{{$user[0]->tojson11}}">10.00 - 11.00</option>
-            <option value="{{$user[0]->tojson12}}">11.00 - 12.00</option>
-            <option value="{{$user[0]->tojson13}}">12.00 - 13.00</option>
-            <option value="{{$user[0]->tojson14}}">13.00 - 14.00</option>
-            <option value="{{$user[0]->tojson15}}">14.00 - 15.00</option>
-            <option value="{{$user[0]->tojson16}}">15.00 - 16.00</option>
-            <option value="{{$user[0]->tojson17}}">16.00 - 17.00</option>
-            <option value="{{$user[0]->tojson18}}">17.00 - 18.00</option>
-            <option value="{{$user[0]->tojson19}}">18.00 - 19.00</option>
-            <option value="{{$user[0]->tojson20}}">19.00 - 20.00</option>
-            <option value="{{$user[0]->tojson21}}">20.00 - 21.00</option>
-            <option value="{{$user[0]->tojson22}}">21.00 - 22.00</option>
-            <option value="{{$user[0]->tojson23}}">22.00 - 23.00</option>
-            <option value="{{$user[0]->tojson24}}">23.00 - 00.00</option>
-
-    </select>
+  <div class="w3-row w3-section col-sm-4">
+      <label style="font-size:30px;" for="date">Time to play</label>
+      <select class="custom-select" id="target" >
+                <option value="" selected="selected">Selecting Time</option>
+                <option value="{{$user[0]->tojson}}">00.00 - 01.00</option>
+                <option value="{{$user[0]->tojson2}}">01.00 - 02.00</option>
+                <option value="{{$user[0]->tojson3}}">02.00 - 03.00</option>
+                <option value="{{$user[0]->tojson4}}">03.00 - 04.00</option>
+                <option value="{{$user[0]->tojson5}}">04.00 - 05.00</option>
+                <option value="{{$user[0]->tojson6}}">05.00 - 06.00</option>
+                <option value="{{$user[0]->tojson7}}">06.00 - 07.00</option>
+                <option value="{{$user[0]->tojson8}}">07.00 - 08.00</option>
+                <option value="{{$user[0]->tojson9}}">08.00 - 09.00</option>
+                <option value="{{$user[0]->tojson10}}">09.00 - 10.00</option>
+                <option value="{{$user[0]->tojson11}}">10.00 - 11.00</option>
+                <option value="{{$user[0]->tojson12}}">11.00 - 12.00</option>
+                <option value="{{$user[0]->tojson13}}">12.00 - 13.00</option>
+                <option value="{{$user[0]->tojson14}}">13.00 - 14.00</option>
+                <option value="{{$user[0]->tojson15}}">14.00 - 15.00</option>
+                <option value="{{$user[0]->tojson16}}">15.00 - 16.00</option>
+                <option value="{{$user[0]->tojson17}}">16.00 - 17.00</option>
+                <option value="{{$user[0]->tojson18}}">17.00 - 18.00</option>
+                <option value="{{$user[0]->tojson19}}">18.00 - 19.00</option>
+                <option value="{{$user[0]->tojson20}}">19.00 - 20.00</option>
+                <option value="{{$user[0]->tojson21}}">20.00 - 21.00</option>
+                <option value="{{$user[0]->tojson22}}">21.00 - 22.00</option>
+                <option value="{{$user[0]->tojson23}}">22.00 - 23.00</option>
+                <option value="{{$user[0]->tojson24}}">23.00 - 00.00</option>
+        </select>
+  </div>
 
       <script>
 
@@ -435,14 +434,13 @@
 
 
 
-  <div class="form-group">
-
-      <strong for="date">Date  </strong>:
-      <span style="font-size:30px;" id="dates"></span>
-      <br>
-      <strong for="time">Time  </strong>:
-      <span style="font-size:30px;" id="clock"></span>
-      <br>
+  <div class="col-sm-8 w3-container w3-card-4 w3-light-grey w3-margin">
+      <div class="w3-row w3-section">
+          <label style="font-size:30px;" for="time">Time: </label>
+          <span style="font-size:30px;" id="clock"></span>
+          <label style="font-size:30px;" for="time">/ </label>
+          <span style="font-size:30px;" id="dates"></span>
+      </div>
       <script>
       (function () {
 
@@ -469,19 +467,27 @@
       }());
       </script>
       <input type="hidden" name="amount" id="amount" value="{{$cafe[0]->price}}">
-      <strong>Amount </strong>: <span style="font-size:20px;" id="cafeprice"></span>
+      <div class="w3-row w3-section">
+          <label style="font-size:30px;">Amout: </label>
+          <span style="font-size:30px;" id="cafeprice"></span>
+      </div>
+
       <script >
           var amounts = document.getElementById("amount").value;
           cafeprice.innerHTML = amounts+ " Baht/hour";
       </script>
 
-      <br>
-      <strong for="name">Seat Number </strong>: <input type="hidden" name="seatname" id="seatname" value="" >
-      <span id="changeMethodsMsg" style="font-size:25px;"></span>
-      <br>
-      <strong for="name">Status </strong>:
+      <div class="w3-row w3-section">
+          <label style="font-size:30px;">Seat Number </label>
+          <input type="hidden" name="seatname" id="seatname" value="" >
+          <span id="changeMethodsMsg" style="font-size:32px;"></span>
+      </div>
+      <div class="w3-row w3-section">
+          <label style="font-size:30px;">Status </label>
+          <span style="font-size:32px;" id="changeMethodsMsgstatus"></span>
+      </div>
       <!-- style="display:none" -->
-      <span style="font-size:25px;" id="changeMethodsMsgstatus"></span>
+
 
 
 
@@ -578,7 +584,7 @@
     echo date("h:i:sa", $checktime); -->
 
 
-  <button  id="selectionButton" >Purchase</button>
+  <button  class="btn btn-primary" id="selectionButton" >Purchase</button>
   <script>
 
   var selectionButton = document.getElementById("selectionButton");
@@ -677,7 +683,7 @@
           }
           myDiagram.model.setDataProperty(node.data, "color", "red");
         }
-        
+
 
         document.getElementById("tjs").value = myDiagram.model.toJson();
         sessionStorage.setItem('SelectedItem', document.getElementById("tjs").value);

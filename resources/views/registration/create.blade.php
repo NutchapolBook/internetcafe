@@ -1,6 +1,7 @@
 @extends('layouts.master')
 @section('content')
   <div class="col-md-6 mid">
+      @include('layouts.error')
       <form action="/register" method="post" class="w3-container w3-card-4 w3-light-grey w3-text-blue w3-margin">
         {{ csrf_field() }}
         <h1 class="w3-center">Register</h1>
@@ -38,12 +39,14 @@
             <input type="password" name="password_confirmation" id="password_confirmation" class="form-control col-sm-10" placeholder="Password Confirmation" required>
         </div><br>
 
+        <div class="form-group ">
+            <div class="g-recaptcha" data-sitekey="6LcuYVkUAAAAAHTYPVMzBzj4yUohGj4Vdzug5eWt"></div>
+        </div>
+
         <div class="form-group w3-center">
           <button type="submit" class="btn btn-primary">Register</button>
           <button type="reset" class="btn btn-primary">Cancle</button>
         </div>
-
-          @include('layouts.error')
 
       </>
 

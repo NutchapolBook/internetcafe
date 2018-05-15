@@ -2,19 +2,27 @@
 @section('content')
 @include('layouts.editstyle')
 
-<div class="col-sm-8 blog-main">
+<div class="col-sm-12 blog-main">
     <h2>Check Booking</h2><br>
+    <div class="form-group form-row">
+        <div class="col-sm-8"></div>
+        <div class="w3-col" style="width:50px">
+            <i class="fa fa-search" style="font-size:34px"></i>
+        </div>
+        <input class="form-control col-sm-3" type="text" id="search" placeholder="Search..." >
+    </div>
 
     <!-- <form action="/profile" method="post">
       {{ csrf_field() }} -->
 
 
     <div class="form-group">
-      <strong for="date">Date  </strong>:
+      <strong style="font-size:30px;" for="date">Date  </strong>:
       <span style="font-size:30px;" id="dates"></span>
       <br>
-      <strong for="time">Time  </strong>:
-      <span style="font-size:30px;" id="clock"></span>
+      <strong style="font-size:30px;" for="time">Time  </strong>:
+      <span style="font-size:30px;" id="clock"></span><br><br>
+
       <script>
       // sessionStorage.clear();
       (function () {
@@ -42,32 +50,13 @@
       }());
 
       </script>
-      <head>
-        <style>
-        table {
-            font-family: arial, sans-serif;
-            border-collapse: collapse;
-            width: 100%;
-        }
 
-        td, th {
-            border: 1px solid #dddddd;
-            text-align: left;
-            padding: 8px;
-        }
-
-        tr:nth-child(even) {
-            background-color: #dddddd;
-        }
-        </style>
-        </head>
-
-      <table>
+      <table class="table table-bordered table-hover shadow">
         <th>Name</th>
-        <th>Seat_Number</th>
+        <th>Seat Number</th>
         <th>Date</th>
-        <th>Start_Booking</th>
-        <th>Play_time</th>
+        <th>Start Booking</th>
+        <th>Play Time</th>
         <?php foreach($seat as $user): ?>
         <tr>
             <td><?php echo $user->name; ?></td>
@@ -82,6 +71,18 @@
 
 
     </div>
+
+    <script>
+          $("#search").keyup(function() {
+              var value = this.value;
+
+          $("table").find("tr").each(function(index) {
+              if (index === 0) return;
+              var id = $(this).find("td").text();
+              $(this).toggle(id.indexOf(value) !== -1);
+              });
+          });
+    </script>
 
     @include('layouts.error')
 

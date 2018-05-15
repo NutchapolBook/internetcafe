@@ -28,11 +28,16 @@ class SessionsController extends Controller
   }
 
   public function store(Request $request){
+      $this->validate($request, [
+        'g-recaptcha-response'=>'required|recaptcha',
+      ]);
+
     if (!auth()->attempt(request(['email','password','role']))) {
       return back()->withErrors([
         'message' => 'Role , Email or Password does not match.'
       ]);
     }
+
     if(Auth::user()->status === "disable"){
         auth()->logout();
         return redirect()->back()->withErrors([
@@ -62,6 +67,13 @@ class SessionsController extends Controller
     //return redirect()->route('home',compact('cafename'));
     return redirect()->route('cafe.indexCafe',compact('cafename'));
   }
+
+  public function rules()
+{
+    return [
+        'g-recaptcha-response'=>'required|recaptcha'
+    ];
+}
 
 
 }

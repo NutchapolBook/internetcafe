@@ -8,7 +8,7 @@
 
         <form method="POST" action="{{route('cafe.addcredit.update',  $cafename)}}" class="w3-container w3-card-4 w3-light-grey w3-margin">
             {{ csrf_field() }}
-            <h1 class="w3-center">Profile Info</h1><br>
+            <h1 class="w3-center">Add Credit</h1><br>
 
             <div class="w3-row w3-section">
                 <label for="code">Code</label>

@@ -4,14 +4,14 @@
       <h2 class="text-center w3-text-black">Contact Us</h2><br>
           <div class="row col-sm-10">
               <div class="col-sm-3"></div>
-              <div class="col-sm-5">
+              <div class="col-sm-4">
                   <p><i class="w3-xxlarge fa fa-map-marker w3-text-orange"></i> Bangkok , Thailand</p>
-                  <p><i class="w3-xxlarge fa fa-envelope w3-text-yellow"></i> Nutchapol.poongasem@gmail.com </p>
-                  <p><i class="w3-xxlarge fa fa-phone-square"></i> 081-3456789</p>
+                  <p><i class="w3-xxlarge fa fa-envelope w3-text-yellow"></i> Nutchapol.poongasem@gmail.com / thanapech.t@hotmail.com</p>
+                  <p><i class="w3-xxlarge fa fa-phone-square"></i> 081-3456789 / 083-7833460</p>
               </div>
               <div class="slideanim">
-                  <p><i class="w3-xxlarge fab fa-facebook-f w3-text-blue"></i>  Nutchapol.poonkasem</p>
-                  <p><i class="w3-xxlarge fab fa-line w3-text-green"></i> Bookncp</p>
+                  <p><i class="w3-xxlarge fab fa-facebook-f w3-text-blue"></i>  Nutchapol.poonkasem / Thanapech.tunwanarutsakul</p>
+                  <p><i class="w3-xxlarge fab fa-line w3-text-green"></i> Bookncp / thanapech</p>
                 </div>
               </div>
           </div><br>
