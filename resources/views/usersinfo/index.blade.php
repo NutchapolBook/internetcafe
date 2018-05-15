@@ -61,24 +61,24 @@
                     <td>
                         <form method="POST" action="{{route('cafe.usersinfo.update',  $cafename)}}">
                            {{ csrf_field() }}
+                           <input type="hidden" name="id" id="id" value="{{$user->id}}">
+                           <input type="hidden" name="status" id="status" value="{{$user->status}}">
                            <div class="text-center">
                                @if ($user->status == 'useable' )
-                                   <button type="button" class="btn btn-sm btn-success" title="enabled" data-toggle="modal" data-target="#exampleModal"> Enabled </button>
+                                   <button type="button" class="btn btn-sm btn-success" title="enabled" data-toggle="modal" data-target="#exampleModal{{$user->id}}"> Enabled </button>
                                @elseif ($user->status == 'disable' )
-                                   <button type="button" class="btn btn-sm btn-danger" title="disable" data-toggle="modal" data-target="#exampleModal"> Disabled </button>
+                                   <button type="button" class="btn btn-sm btn-danger" title="disable" data-toggle="modal" data-target="#exampleModal{{$user->id}}"> Disabled </button>
                                @endif
-                               <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                               <div class="modal fade" id="exampleModal{{$user->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel-{{$user->id}}" aria-hidden="true">
                                    <div class="modal-dialog" role="document">
                                        <div class="modal-content">
                                            <div class="modal-header">
-                                               <h5 class="modal-title" id="exampleModalLabel">Are you sure to change status ID: {{$user->name}}?</h5>
+                                               <h5 class="modal-title" id="exampleModalLabel-{{$user->id}}">Are you sure to change status ID: {{$user->name}}?</h5>
                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                                    <span aria-hidden="true">&times;</span>
                                                </button>
                                            </div>
                                            <div class="modal-footer">
-                                               <input type="hidden" name="id" id="id" value="{{$user->id}}">
-                                               <input type="hidden" name="status" id="status" value="{{$user->status}}">
                                                <button type="submit" class="btn btn-primary">Save changes</button>
                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                                            </div>
@@ -88,6 +88,7 @@
                             </div>
                         </form>
                     </td>
+
                     <td>
                         {{ $user->created_at}}
                     </td>

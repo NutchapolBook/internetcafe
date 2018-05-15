@@ -256,7 +256,7 @@
 
 <div class="form-group">
   <input type="hidden" name="tjs" id="tjs" class="form-control" value="{{$user[0]->tojson}}">
-  <button onclick="myFunctionupdate()">Update</button>
+  <button class="btn btn-primary" onclick="myFunctionupdate()">Update</button>
 
   <!-- <button onclick="myFunctionload()">Load</button> -->
 <script>
