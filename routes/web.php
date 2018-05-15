@@ -67,15 +67,7 @@ Route::group([], function() {
             Route::get('/','EditcafeController@index')->name('index');
             Route::post('update','EditcafeController@update')->name('update');
         });
-
-
     });
-
-
-    Route::group([], function() {
-
-    });
-
 
 });
 

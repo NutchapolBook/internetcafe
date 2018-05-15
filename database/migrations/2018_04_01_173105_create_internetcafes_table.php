@@ -16,7 +16,8 @@ class CreateInternetcafesTable extends Migration
         Schema::create('internetcafes', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name')->unique();
-            $table->string('colour')->nullable();
+            $table->string('tabcolour')->nullable();
+            $table->string('tabtextcolour')->nullable();
             $table->integer('price')->default(12);
             $table->string('location')->nullable();
             $table->string('tel')->nullable();

@@ -31,21 +31,36 @@ class EditcafeController extends Controller
 
     public function update(Request $request) {
         $admin_id = Auth::user()->id;
+        $cafename = Auth::user()->cafename;
         //dd($request);
-        $input = $request->only(['id','price','name','colour','location','tel','facebook','line','picture1','picture2','picture3','icon']);
+        $input = $request->only(['id','price','name','tabtextcolour','tabcolour','location','tel','facebook','line','picture1','picture2','picture3','icon']);
         //dd($input);
         //$colour = $input['color'].value(0);
         //dd($colour);
         //update
-        $data = DB::table('users')
+        $user = DB::table('users')
                     ->where('id',$admin_id)
                     ->update(['cafename'=> $input['name'],]);
 
-        $data = DB::table('internetcafes')
+        $seat = DB::table('seats')
+                    ->where('cafename',$cafename)
+                    ->update(['cafename'=> $input['name'],]);
+
+        $post = DB::table('posts')
+                    ->where('cafename',$cafename)
+                    ->update(['cafename'=> $input['name'],]);
+
+        $addcredit = DB::table('addcredits')
+                    ->where('cafename',$cafename)
+                    ->update(['cafename'=> $input['name'],]);
+
+        $internetcafe = DB::table('internetcafes')
                     ->where('id',$input['id'])
                     ->update([
                         'name'=> $input['name'],
-                        'colour'=> $input['colour'],
+                        'price'=> $input['price'],
+                        'tabtextcolour'=> $input['tabtextcolour'],
+                        'tabcolour'=> $input['tabcolour'],
                         'location'=> $input['location'],
                         'tel'=> $input['tel'],
                         'facebook'=> $input['facebook'],
