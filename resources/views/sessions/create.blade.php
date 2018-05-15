@@ -1,16 +1,7 @@
 @extends('layouts.master')
 @section('content')
-<<<<<<< HEAD
-  <div class="col-md-8">
-    <h1>User Login</h1><br>
-    <script type="text/javascript">
-      sessionStorage.clear();
-    </script>
-    <form action="/login" method="post">
-=======
   <div class="col-md-6 mid">
     <form action="/login" method="post" class="w3-container w3-card-4 w3-light-grey w3-text-blue w3-margin">
->>>>>>> 7f5290a94f3d229912208592bf109671a4efb7ae
         {{ csrf_field() }}
         <h1 class="w3-center">Login</h1>
 
@@ -64,4 +55,7 @@
     }
   </script>
 
+  <script type="text/javascript">
+    sessionStorage.clear();
+  </script>
 @endsection
