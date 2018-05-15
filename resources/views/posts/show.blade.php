@@ -1,7 +1,7 @@
 @extends('layouts.masterCafe')
 @section('content')
 @include('layouts.editstyle')
-  <div class="col-sm-8 blog-main">
+  <div class="col-sm-12 blog-main w3-container w3-card-4 w3-margin">
       <h1>{{$post->title}}</h1>
       <hr>
       {{$post->body}}
@@ -38,7 +38,7 @@
         </form>
         {{-- @include('layouts.error) --}}
 
-      </div>
+    </div><br>
 
   </div>
 

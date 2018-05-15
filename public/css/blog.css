@@ -1,6 +1,10 @@
 /*
  * Globals
  */
+@font-face {
+     font-family: SIMPLIFICA;
+     src: url('/public/fonts/SIMPLIFICA.tff');
+}
 
 @media (min-width: 48em) {
     html {
@@ -15,8 +19,6 @@ body {
 
 h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6 {
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-    /* font-family: SIMPLIFICA;
-    src: url('{{ public_path('fonts/SIMPLIFICA.tff') }}'); */
     font-weight: normal;
     color: #333;
 }
@@ -158,7 +160,6 @@ h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6 {
 .blog-footer {
     padding: 2.5rem 0;
     color: #999;
-    text-align: center;
     background-color: #f9f9f9;
     border-top: .05rem solid #e5e5e5;
 }
@@ -222,6 +223,7 @@ h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6 {
     margin: auto;
 } */
 
+/* icon-bar */
 .icon-bar {
     width: 100%;
     background-color: rgba(#0b0de2, 0.81);
@@ -329,27 +331,4 @@ img {vertical-align: middle;}
 
 .active, .dot:hover {
   background-color: #717171;
-}
-
-/* Fading animation */
-.fade {
-  -webkit-animation-name: fade;
-  -webkit-animation-duration: 1.5s;
-  animation-name: fade;
-  animation-duration: 1.5s;
-}
-
-@-webkit-keyframes fade {
-  from {opacity: .4}
-  to {opacity: 1}
-}
-
-@keyframes fade {
-  from {opacity: .4}
-  to {opacity: 1}
-}
-
-/* On smaller screens, decrease text size */
-@media only screen and (max-width: 300px) {
-  .prev, .next,.text {font-size: 11px}
 }

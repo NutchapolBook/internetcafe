@@ -27,25 +27,31 @@
     @if ($cafe[0]->tabtextcolour == '')
         <div class="w3-row w3-section">
           <div class="w3-col" style="width:50px"><i class="w3-xxlarge fa fa-tint"></i></div>
-          <label for="colour">Tab text colour</label>
-          <input type="color" name="tabtextcolour" id="tabtextcolour" value="#CDDDEB" >
-          <label for="colour">Tab Colour</label>
-          <input type="color" name="tabcolour" id="tabcolour" value="#ffffff">
+          <label for="colour">Theme</label>
+          <input type="color" name="tabcolour" id="tabcolour" value="#CDDDEB ">
+          <label for="colour">Tab text</label>
+          <input type="color" name="tabtextcolour" id="tabtextcolour" value="#ffffff" >
         </div>
     @else
         <div class="w3-row w3-section">
             <div class="w3-col" style="width:50px"><i class="w3-xxlarge fa fa-tint"></i></div>
-            <label for="colour">Tab text colour</label>
-            <input type="color" name="tabtextcolour" id="tabtextcolour" value="{{$cafe[0]->tabtextcolour}}" >
-            <label for="colour">Tab Colour</label>
+            <label for="colour">Theme</label>
             <input type="color" name="tabcolour" id="tabcolour" value="{{$cafe[0]->tabcolour}}" >
+            <label for="colour">Tab text</label>
+            <input type="color" name="tabtextcolour" id="tabtextcolour" value="{{$cafe[0]->tabtextcolour}}">
         </div>
+
     @endif
 
         <div class="w3-row w3-section">
             <div class="w3-col" style="width:50px"><i class="w3-xxlarge fa fa-map-marker w3-text-orange"></i></div>
             <label for="location">Location</label>
             <textarea type="text" name="location" id="location" class="form-control col-sm-6" rows="6" required >{{$cafe[0]->location}}</textarea>
+        </div>
+
+        <div class="w3-row w3-section">
+            <div class="w3-col" style="width:50px"><i class="w3-xxlarge fa fa-envelope w3-text-yellow"></i></div>
+            <input type="email" name="email" id="email" class="form-control col-sm-6" value="{{$cafe[0]->email}}" required>
         </div>
 
         <div class="w3-row w3-section">

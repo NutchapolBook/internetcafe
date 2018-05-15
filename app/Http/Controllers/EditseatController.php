@@ -16,7 +16,11 @@ class EditseatController extends Controller
       $user = DB::table('users')
           ->where('email','=',$email)
          ->get();
-      return view('editseat.index',compact('user','tojson','cafename'));
+
+      $cafe = DB::table('internetcafes')
+            ->where('name','=',$cafename)
+            ->get();
+      return view('editseat.index',compact('user','tojson','cafename','cafe'));
 
   }
 

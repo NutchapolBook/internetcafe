@@ -1,7 +1,7 @@
-
 @extends('layouts.masterCafe')
-
 @section('content')
+@include('layouts.editstyle')
+
   <div class="col-sm-12">
       <h2>Edit Seat</h2><br>
 

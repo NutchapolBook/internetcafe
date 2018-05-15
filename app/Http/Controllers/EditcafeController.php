@@ -33,7 +33,7 @@ class EditcafeController extends Controller
         $admin_id = Auth::user()->id;
         $cafename = Auth::user()->cafename;
         //dd($request);
-        $input = $request->only(['id','price','name','tabtextcolour','tabcolour','location','tel','facebook','line','picture1','picture2','picture3','icon']);
+        $input = $request->only(['id','email','price','name','tabtextcolour','tabcolour','location','tel','facebook','line','picture1','picture2','picture3','icon']);
         //dd($input);
         //$colour = $input['color'].value(0);
         //dd($colour);
@@ -62,6 +62,7 @@ class EditcafeController extends Controller
                         'tabtextcolour'=> $input['tabtextcolour'],
                         'tabcolour'=> $input['tabcolour'],
                         'location'=> $input['location'],
+                        'email'=> $input['email'],
                         'tel'=> $input['tel'],
                         'facebook'=> $input['facebook'],
                         'line'=> $input['line'],

@@ -1,6 +1,6 @@
 @extends('layouts.masterCafe')
-
 @section('content')
+@include('layouts.editstyle')
   <div class="col-sm-12">
       <h2>Booking</h2><br>
 

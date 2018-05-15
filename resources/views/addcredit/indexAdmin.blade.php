@@ -2,12 +2,11 @@
 @section('content')
 @include('layouts.editstyle')
 
-  <div class="col-sm-8">
+  <div class="col-sm-6 mid">
       @php
           $code = uniqid(true);
       @endphp
 
-      <h2>Add Credit</h2><br>
       @if (session('status'))
           <div class="alert alert-success">
               {{ session('status') }}
@@ -15,18 +14,19 @@
       @endif
       @include('layouts.error')
 
-      <form method="POST" action="{{route('cafe.addcredit.post',  $cafename)}}">
+      <form method="POST" action="{{route('cafe.addcredit.post',  $cafename)}}" class="w3-container w3-card-4 w3-light-grey w3-margin">
          {{ csrf_field() }}
+         <h1 class="w3-center">Add Credit</h2><br>
 
-        <div class="form-group">
+        <div class="w3-row w3-section">
           <label for="amount">Amount</label>
-          <input type="number" class="form-control col-sm-6" id="amount" name="amount" required>
+          <input type="number" class="form-control col-sm-6" id="amount" name="amount" placeholder="Amount"required>
         </div>
 
         <div class="form-group">
           {{-- <label for="code">Code</label> --}}
           <input type="hidden" class="form-control col-sm-6" id="code" name="code" value="{{$code}}" >
-        </div>
+      </div>
 
         {{-- <div class="form-group">
             <button type="submit" class="btn btn-primary">Submit</button>
@@ -44,7 +44,7 @@
                             </button>
                         </div>
                         <div class="modal-body">
-                            <p>code: {{$code}}</p>
+                            <p>Code: {{$code}}</p>
                         </div>
                         <div class="modal-footer">
                             <button type="button" onclick="myFunction()" onmouseout="outFunc()" class="btn btn-default">

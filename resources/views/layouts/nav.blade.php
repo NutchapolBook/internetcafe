@@ -1,20 +1,31 @@
 <div class="blog-masthead">
-  <div class="container">
-    <nav class="nav blog-nav">
-      <a class="nav-link active" href="/">Home</a>
+    <nav class="icon-bar">
+        <a href="/" ><i class="fa fa-home"></i></a>
         @if (!Auth::check())
-            <a class="nav-link ml-auto" href="/login">Login</a>
-            <a class="nav-link" href="/register">Register</a>
+            <div class="icon-bar-right">
+                <a href="/register">Register</a>
+                <a href="/login">Login</a>
+            </div>
         @else
             @if (Auth::user()->role === "admin")
-                <a class="nav-link ml-auto" href="{{route('cafe.indexCafe' , Auth::user()->cafename) }}" >{{Auth::user()->cafename}}</a>
-                <a class="nav-link"  href="/profile">{{Auth::user()->name}}</a>
-                <a class="nav-link" href="/logout">Logout</a>
+                <div class="icon-bar-right">
+                    <a data-toggle="tooltip" data-placement="bottom" title="Logout" href="/logout"><i class="fa fa-sign-out"></i></a>
+                    <a data-toggle="tooltip" data-placement="bottom" title="Profile" href="/profile"><i class="fa fa-user-circle"></i> {{Auth::user()->name}} </a>
+                    <a data-toggle="tooltip" data-placement="bottom" title="Go to your site" href="{{route('cafe.indexCafe' , Auth::user()->cafename) }}" ><i class="fa fa-desktop"></i> {{Auth::user()->cafename}}</a>
+                </div>
+
             @else
-                <a class="nav-link ml-auto"  href="/profile">{{Auth::user()->name}}</a>
-                <a class="nav-link" href="/logout">Logout</a>
+                <div class="icon-bar-right">
+                    <a data-toggle="tooltip" data-placement="bottom" title="Logout" href="/logout"><i class="fa fa-sign-out"></i></a>
+                    <a data-toggle="tooltip" data-placement="bottom" title="Profile" href="/profile"><i class="fa fa-user-circle"></i> {{Auth::user()->name}} </a>
+                </div>
             @endif
         @endif
     </nav>
-  </div>
 </div>
+
+<script>
+    $(document).ready(function(){
+        $('[data-toggle="tooltip"]').tooltip();
+    });
+</script>

@@ -32,6 +32,7 @@ class BookingController extends Controller
           ->where('name','=',$cafename)
           ->get();
 
+
       return view('booking.index',compact('user','tojson','cafename','user1','balance','seat','seatname','status','time','cafe','price'));
 
     }
@@ -46,10 +47,14 @@ class BookingController extends Controller
             ->where('email','=',$email)
             ->where('status','=','Available')
             ->get();
+
+        $cafe = DB::table('internetcafes')
+                ->where('name','=',$cafename)
+               ->get();
         // $user = $user->toArray();
         // dd($user);
         // compact('user','name','email','cafename','seatname','amount','time','starttime','endtime','date')
-        return view('booking.cancle',compact( 'seat',['seats' => $seat],'cafename'));
+        return view('booking.cancle',compact( 'seat',['seats' => $seat],'cafename','cafe'));
 
     }
 

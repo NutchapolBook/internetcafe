@@ -7,31 +7,31 @@
 
         <div class="slideshow-container">
             @if ($cafe[0]->picture1 == '')
-                <div class="mySlides" align="center">
+                <div class="mySlides w3-animate-opacity" align="center">
                   <img src="{{asset('images/ex1.jpg')}}" alt="cafepic1" height="432">
                 </div>
             @else
-                <div class="mySlides" align="center">
+                <div class="mySlides w3-animate-opacity" align="center">
                   <img src="{{asset('images/').'/'.$cafe[0]->picture1}}" alt="cafepic1" height="432">
                 </div>
             @endif
 
             @if ($cafe[0]->picture2 == '')
-                <div class="mySlides" align="center">
+                <div class="mySlides w3-animate-opacity" align="center">
                   <img src="{{asset('images/ex2.jpg')}}" alt="cafepic2" height="432">
                 </div>
             @else
-                <div class="mySlides" align="center">
+                <div class="mySlides w3-animate-opacity" align="center">
                   <img src="{{asset('images/').'/'.$cafe[0]->picture2}}" alt="cafepic2" height="432">
                 </div>
             @endif
 
             @if ($cafe[0]->picture3 == '')
-                <div class="mySlides" align="center">
+                <div class="mySlides w3-animate-opacity" align="center">
                   <img src="{{asset('images/ex3.jpg')}}" alt="cafepic3" height="432">
                 </div>
             @else
-                <div class="mySlides" align="center">
+                <div class="mySlides w3-animate-opacity" align="center">
                   <img src="{{asset('images/').'/'.$cafe[0]->picture3}}" alt="cafepic3" height="432">
                 </div>
             @endif

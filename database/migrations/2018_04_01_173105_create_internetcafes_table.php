@@ -19,6 +19,7 @@ class CreateInternetcafesTable extends Migration
             $table->string('tabcolour')->nullable();
             $table->string('tabtextcolour')->nullable();
             $table->integer('price')->default(12);
+            $table->string('email')->nullable();
             $table->string('location')->nullable();
             $table->string('tel')->nullable();
             $table->string('facebook')->nullable();

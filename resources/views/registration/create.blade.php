@@ -25,7 +25,7 @@
 
         <div class="form-group">
           <div class="w3-col" style="width:50px"><i class="w3-xxlarge fa fa-envelope w3-text-yellow"></i></div>
-          <input type="email" name="email" id="email" class="form-control col-sm-10 w3-text-yellow" placeholder="Email" required>
+          <input type="email" name="email" id="email" class="form-control col-sm-10" placeholder="Email" required>
         </div>
 
         <div class="form-group">
