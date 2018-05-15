@@ -238,6 +238,7 @@
 
   load();
 
+
     // initialize the first Palette
     myPaletteSmall =
       $(go.Palette, "myPaletteSmall",
@@ -258,10 +259,14 @@
   }
 
 
-  function load() {
-    var tjs = document.getElementById("tjs").value
-    myDiagram.model = go.Model.fromJson(tjs);
-      }
+    function load() {
+      // var tjs = document.getElementById("tjs").value
+      var tjs = sessionStorage.getItem("SelectedItem");
+      myDiagram.model = go.Model.fromJson(tjs);
+        }
+
+
+
 
   function flash() {
      var model = myDiagram.model;
@@ -278,24 +283,166 @@
 
 
 
-
 </script>
 </head>
-  <div class="form-group">
+  <!-- <div class="form-group">
+    <p align="center">
+    <form name="jump" class="center">
+    <select name="menu" onchange="gotoPage(this)">
+    <option value="#">Select an option</option>
+    <option value="/cafe/{{$user1[0]->cafename}}/booking/">Link 1</option>
+    <option value="/cafe/{{$user1[0]->cafename}}/booking/booking2">Link 2</option>
 
+    </select>
+    <input type="button" onClick="location=document.jump.menu.options[document.jump.menu.selectedIndex].value;" value="GO">
+    </form>
+    </p>
+
+    <script type="text/javascript">
+    function gotoPage(select){
+        window.location = select.value;
+    }
+    </script>
+  </div> -->
+
+  <div>
+  <h2 align="center" id="showtime"></h2>
   </div>
+
+
+
+  <!-- onchange="options[selectedIndex].value&&self.location.reload(true);" -->
+  <strong for="date">Time to play  </strong>:
+  <select id="target" >
+            <option value="" selected="selected">Selecting Time</option>
+            <option value="{{$user[0]->tojson}}">00.00 - 01.00</option>
+            <option value="{{$user[0]->tojson2}}">01.00 - 02.00</option>
+            <option value="{{$user[0]->tojson3}}">02.00 - 03.00</option>
+            <option value="{{$user[0]->tojson4}}">03.00 - 04.00</option>
+            <option value="{{$user[0]->tojson5}}">04.00 - 05.00</option>
+            <option value="{{$user[0]->tojson6}}">05.00 - 06.00</option>
+            <option value="{{$user[0]->tojson7}}">06.00 - 07.00</option>
+            <option value="{{$user[0]->tojson8}}">07.00 - 08.00</option>
+            <option value="{{$user[0]->tojson9}}">08.00 - 09.00</option>
+            <option value="{{$user[0]->tojson10}}">09.00 - 10.00</option>
+            <option value="{{$user[0]->tojson11}}">10.00 - 11.00</option>
+            <option value="{{$user[0]->tojson12}}">11.00 - 12.00</option>
+            <option value="{{$user[0]->tojson13}}">12.00 - 13.00</option>
+            <option value="{{$user[0]->tojson14}}">13.00 - 14.00</option>
+            <option value="{{$user[0]->tojson15}}">14.00 - 15.00</option>
+            <option value="{{$user[0]->tojson16}}">15.00 - 16.00</option>
+            <option value="{{$user[0]->tojson17}}">16.00 - 17.00</option>
+            <option value="{{$user[0]->tojson18}}">17.00 - 18.00</option>
+            <option value="{{$user[0]->tojson19}}">18.00 - 19.00</option>
+            <option value="{{$user[0]->tojson20}}">19.00 - 20.00</option>
+            <option value="{{$user[0]->tojson21}}">20.00 - 21.00</option>
+            <option value="{{$user[0]->tojson22}}">21.00 - 22.00</option>
+            <option value="{{$user[0]->tojson23}}">22.00 - 23.00</option>
+            <option value="{{$user[0]->tojson24}}">23.00 - 00.00</option>
+
+    </select>
+
+      <script>
+
+      // $("#target").on('change', function () {
+      //   var check = ($(this).find('option:selected').attr('id'));
+      //   alert(check);
+      // });
+
+      // var i = selMovType.selectedIndex;
+      // aleart(selMovType.options[i].text);
+
+      // var selectedItem = sessionStorage.getItem("SelectedItem");
+      // alert(selectedItem);
+
+
+
+
+      // $("#target").change(function() {
+      //   var id = $("#target option:selected").attr("id")
+      //   id = selectedItem;
+      // });
+      // $("select#target option[value="+dropVal+"]").attr('selected', true);
+      var selMovType = document.getElementById('target');
+      var selecteditem = sessionStorage.getItem('SelectedItem');
+      var selectedID = sessionStorage.getItem('Selectedid');
+      var check = sessionStorage.getItem('test');
+
+      var checks = sessionStorage.getItem('timplay');
+
+      // document.getElementById('showtime').textContent = checks;
+        document.getElementById('showtime').textContent = checks;
+        // document.getElementById('amount').textContent = amount;
+
+
+      // if(check == selectedID){
+
+        // selMovType.value = selecteditem;
+      // }
+
+
+
+
+      $('#target').change(function() {
+        var dropVal = $(this).val();
+        var dropValid = $("#target option:selected").attr("id");
+        var myvar = selMovType.options[selMovType.selectedIndex].id;
+
+        sessionStorage.setItem("SelectedItem", dropVal);
+        sessionStorage.setItem("Selectedid", dropValid);
+        sessionStorage.setItem("test", myvar);
+
+        var index = document.getElementById("target").selectedIndex;
+        var result = document.getElementById("target").options[index].text;
+
+
+        sessionStorage.setItem("timplay", result);
+
+
+        window.location.reload(true);
+
+        // alert("value =" + document.getElementById("target").value); // show selected value
+        // alert("text =" + result); // show selected text
+
+      });
+
+      </script>
 
 
 <body onload="init()">
 <form action="{{route('cafe.booking.update',  $cafename)}}" method="post">
     {{ csrf_field() }}
 
+
+    <!-- <select  id="booktjs" name="booktjs" onchange="bjson(this.value)">
+      <option value="" disabled selected>Choose your time</option>
+      <option value="{{$user[0]->tojson}}">00.00-01.00</option>
+      <option value="">01.00-02.00</option>
+      <option value="">02.00-03.00</option>
+
+    </select>
+    <script>
+    function bjson(val)
+    {
+
+    var btjs=val;
+    var divobj = document.getElementById('tjs');
+    divobj.value = btjs;
+    document.location = '/cafe/test_cafe/booking';
+    }
+    </script> -->
+
+
+
+
   <div class="form-group">
+
       <strong for="date">Date  </strong>:
       <span style="font-size:30px;" id="dates"></span>
       <br>
       <strong for="time">Time  </strong>:
       <span style="font-size:30px;" id="clock"></span>
+      <br>
       <script>
       (function () {
 
@@ -321,6 +468,13 @@
 
       }());
       </script>
+      <input type="hidden" name="amount" id="amount" value="{{$cafe[0]->price}}">
+      <strong>Amount </strong>: <span style="font-size:20px;" id="cafeprice"></span>
+      <script >
+          var amounts = document.getElementById("amount").value;
+          cafeprice.innerHTML = amounts+ " Baht/hour";
+      </script>
+
       <br>
       <strong for="name">Seat Number </strong>: <input type="hidden" name="seatname" id="seatname" value="" >
       <span id="changeMethodsMsg" style="font-size:25px;"></span>
@@ -330,15 +484,15 @@
       <span style="font-size:25px;" id="changeMethodsMsgstatus"></span>
 
 
-      <input type="hidden" name="cafeprice" id="cafeprice" value="{{$cafe[0]->price}}">
+
       <!-- <script>
       var span_Text = document.getElementById("changeMethodsMsgstatus").innerText;
       </script> -->
 
       <br>
-      <strong for="time">Hours: </strong>
-      <select  id="time" name="time" onchange="calculateAmount(this.value)" required>
-        <option value="" disabled selected>Choose your time</option>
+      <!-- <strong for="time">Hours: </strong> -->
+      <input hidden  id="time" name="time" value="1">
+        <!-- <option value="" disabled selected>Choose your hours</option>
         <option value="1">1 hr</option>
         <option value="2">2 hrs</option>
         <option value="3">3 hrs</option>
@@ -363,13 +517,11 @@
         <option value="22">22 hrs</option>
         <option value="23">23 hrs</option>
         <option value="24">24 hrs</option>
-      </select>
+      </select> -->
 
 
-      <br>
-      <strong>Amount (THB)</strong>: <input type="text" name="amount" id="amount" readonly >
-      <br>
-      <script>
+      <!-- <br> -->
+      <!-- <script>
       function calculateAmount(val)
       {
       var price = val * document.getElementById('cafeprice').value;
@@ -378,12 +530,13 @@
       var divobj = document.getElementById('amount');
       divobj.value = timeplay;
       }
-      </script>
+      </script> -->
 
       <input type="hidden" name="starttime" id="starttime" value="" >
       <input type="hidden" name="endtime" id="endtime" value="" >
       <input type="hidden" name="date" id="date" value="" >
       <input type="hidden" name="status" id="status" value="" >
+      <input type="hidden" name="showtime2" id="showtime2" value="" >
 
 
 
@@ -391,7 +544,33 @@
 
 
   <div class="form-group">
-  <input type="hidden" name="tjs" id="tjs" class="form-control" value="{{$user[0]->tojson}}">
+    <!-- type="hidden" -->
+  <input type="hidden" name="tjs" id="tjs" class="form-control" value="" >
+  <!-- <input type="hidden" name="tjs2" id="tjs2" class="form-control" value = "{{$user[0]->tojson2}}">
+  <input type="hidden" name="tjs3" id="tjs3" class="form-control" value = "{{$user[0]->tojson3}}">
+  <input type="hidden" name="tjs4" id="tjs4" class="form-control" value = "{{$user[0]->tojson4}}">
+  <input type="hidden" name="tjs5" id="tjs5" class="form-control" value = "{{$user[0]->tojson5}}">
+  <input type="hidden" name="tjs6" id="tjs6" class="form-control" value = "{{$user[0]->tojson6}}">
+  <input type="hidden" name="tjs7" id="tjs7" class="form-control" value = "{{$user[0]->tojson7}}">
+  <input type="hidden" name="tjs8" id="tjs8" class="form-control" value = "{{$user[0]->tojson8}}">
+  <input type="hidden" name="tjs9" id="tjs9" class="form-control" value = "{{$user[0]->tojson9}}">
+  <input type="hidden" name="tjs10" id="tjs10" class="form-control" value = "{{$user[0]->tojson10}}">
+  <input type="hidden" name="tjs11" id="tjs11" class="form-control" value = "{{$user[0]->tojson11}}">
+  <input type="hidden" name="tjs12" id="tjs12" class="form-control" value = "{{$user[0]->tojson12}}">
+  <input type="hidden" name="tjs13" id="tjs13" class="form-control" value = "{{$user[0]->tojson13}}">
+  <input type="hidden" name="tjs14" id="tjs14" class="form-control" value = "{{$user[0]->tojson14}}">
+  <input type="hidden" name="tjs15" id="tjs15" class="form-control" value = "{{$user[0]->tojson15}}">
+  <input type="hidden" name="tjs16" id="tjs16" class="form-control" value = "{{$user[0]->tojson16}}">
+  <input type="hidden" name="tjs17" id="tjs17" class="form-control" value = "{{$user[0]->tojson17}}">
+  <input type="hidden" name="tjs18" id="tjs18" class="form-control" value = "{{$user[0]->tojson18}}">
+  <input type="hidden" name="tjs19" id="tjs19" class="form-control" value = "{{$user[0]->tojson19}}">
+  <input type="hidden" name="tjs20" id="tjs20" class="form-control" value = "{{$user[0]->tojson20}}">
+  <input type="hidden" name="tjs21" id="tjs21" class="form-control" value = "{{$user[0]->tojson21}}">
+  <input type="hidden" name="tjs22" id="tjs22" class="form-control" value = "{{$user[0]->tojson22}}">
+  <input type="hidden" name="tjs23" id="tjs23" class="form-control" value = "{{$user[0]->tojson23}}">
+  <input type="hidden" name="tjs24" id="tjs24" class="form-control" value = "{{$user[0]->tojson24}}"> -->
+
+
   <input type="hidden" name="balance" id="balance" class="form-control" value="{{$user1[0]->balance}}">
 
      <!-- date_default_timezone_set("Asia/Bangkok");
@@ -416,73 +595,74 @@
     var ss = dd.getSeconds();
     var test =dd.toLocaleTimeString();
 
-    var timeplay = parseInt(document.getElementById("time").value);
-    var endtime = "";
 
-    if (mm < 10) {
-      if (hh+timeplay < 24) {
-        if(hh+timeplay < 10){
-          endtime = "0"+(hh+timeplay)+":"+"0"+mm+":"+ss;
-        }
-        else{
-          endtime = (hh+timeplay)+":"+"0"+mm+":"+ss;
-        }
-      }
-      else if (hh+timeplay > 24) {
-        if (hh+timeplay-24 < 10) {
-          var check = "0"+(hh+timeplay-24);
-          endtime = (check)+":"+"0"+mm+":"+ss;
-        }
-        else{
-          var check = (hh+timeplay-24);
-          endtime = (check)+":"+"0"+mm+":"+ss;
-        }
-      }
-      else{
-        var check = "00";
-        endtime = (check)+":"+"0"+mm+":"+ss;
-      }
-    }
+    // var timeplay = parseInt(document.getElementById("time").value);
+    var endtime = document.getElementById('showtime').textContent;
 
-    else if(mm >= 10){
-      if (hh+timeplay < 24) {
-        if(hh+timeplay < 10){
-          endtime = "0"+(hh+timeplay)+":"+mm+":"+ss;
-        }
-        else{
-          endtime = (hh+timeplay)+":"+mm+":"+ss;
-        }
-      }
-      else if (hh+timeplay > 24) {
-        if (hh+timeplay-24 < 10) {
-          var check = "0"+(hh+timeplay-24);
-          endtime = (check)+":"+mm+":"+ss;
-        }
-        else{
-          var check = (hh+timeplay-24);
-          endtime = (check)+":"+mm+":"+ss;
-        }
-      }
-      else{
-        var check = "00";
-        endtime = (check)+":"+mm+":"+ss;
-      }
-    }
+    // if (mm < 10) {
+    //   if (hh+timeplay < 24) {
+    //     if(hh+timeplay < 10){
+    //       endtime = "0"+(hh+timeplay)+":"+"0"+mm+":"+ss;
+    //     }
+    //     else{
+    //       endtime = (hh+timeplay)+":"+"0"+mm+":"+ss;
+    //     }
+    //   }
+    //   else if (hh+timeplay > 24) {
+    //     if (hh+timeplay-24 < 10) {
+    //       var check = "0"+(hh+timeplay-24);
+    //       endtime = (check)+":"+"0"+mm+":"+ss;
+    //     }
+    //     else{
+    //       var check = (hh+timeplay-24);
+    //       endtime = (check)+":"+"0"+mm+":"+ss;
+    //     }
+    //   }
+    //   else{
+    //     var check = "00";
+    //     endtime = (check)+":"+"0"+mm+":"+ss;
+    //   }
+    // }
+    //
+    // else if(mm >= 10){
+    //   if (hh+timeplay < 24) {
+    //     if(hh+timeplay < 10){
+    //       endtime = "0"+(hh+timeplay)+":"+mm+":"+ss;
+    //     }
+    //     else{
+    //       endtime = (hh+timeplay)+":"+mm+":"+ss;
+    //     }
+    //   }
+    //   else if (hh+timeplay > 24) {
+    //     if (hh+timeplay-24 < 10) {
+    //       var check = "0"+(hh+timeplay-24);
+    //       endtime = (check)+":"+mm+":"+ss;
+    //     }
+    //     else{
+    //       var check = (hh+timeplay-24);
+    //       endtime = (check)+":"+mm+":"+ss;
+    //     }
+    //   }
+    //   else{
+    //     var check = "00";
+    //     endtime = (check)+":"+mm+":"+ss;
+    //   }
+    // }
 
       document.getElementById("starttime").value = time;
       document.getElementById("endtime").value = endtime;
       document.getElementById("date").value = date;
       document.getElementById("status").value = status;
-
+      document.getElementById("showtime2").value = checks;
 
 
 
     // dt.setHours(10, 30, 53);
     // var endTime = (strtotime(selectedTime . +1 hours));
 
-    if (bal >= amt && document.getElementById("amount").value != "" && status == "Available") {
+    if (bal >= amt && status == "Available") {
       if (confirm("Confirm Seat")) {
-        alert("Your select seat "+seatname+" is complete \nStart at "+date+" time "+time+" "+"to"+" "+endtime);
+        alert("Your select seat "+seatname+" is complete \nStart at "+date+" time "+checks);
 
         myDiagram.startTransaction("change color");
         var it = myDiagram.selection.iterator;
@@ -497,8 +677,13 @@
           }
           myDiagram.model.setDataProperty(node.data, "color", "red");
         }
+        
+
         document.getElementById("tjs").value = myDiagram.model.toJson();
+        sessionStorage.setItem('SelectedItem', document.getElementById("tjs").value);
         myDiagram.commitTransaction("change color");
+
+
         }
         else{
           document.getElementById("status").value = "Busy";
@@ -508,18 +693,23 @@
       //     alert(document.getElementById("changeMethodsMsg").value);
       //     alert("Please select your seat");
       // }
-      else if (document.getElementById("amount").value == "" &&  document.getElementById("seatname").value == "") {
-          alert("Please select seat and hours");
+
+        else if (status == "") {
+
+            alert("Please select seat");
+
+          }
+        else if(status == "Busy"){
+            alert("This seat is busy try to selecting another seat")
         }
-      else if(status == "Busy"){
-          alert("This seat is busy try to selecting another seat")
-      }
-      else if(status == "None"){
-        alert("Try to selecting a seat")
-      }
-      else{
-      alert("Your balance has not enough");
-      }
+        else if(status == "None"){
+          alert("Try to selecting a seat")
+        }
+        else{
+        alert("Your balance has not enough");
+        }
+
+
     });
 
 
@@ -553,7 +743,7 @@
   </div>
 
   <div>
-    <pre  id="savedModel" style="height:250px"></pre>
+    <pre hidden id="savedModel" style="height:250px"></pre>
   </div>
 
 </div>

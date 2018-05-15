@@ -18,7 +18,7 @@ class CreateSeatsTable extends Migration
           $table->string('name');
           $table->string('email');
           $table->string('cafename')->nullable();
-          $table->string('seatname');
+          $table->string('seatname')->nullable();
           $table->integer('amount');
           $table->integer('time');
           $table->string('starttime');
