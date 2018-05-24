@@ -7,7 +7,7 @@
       {{$post->body}}
       <hr><br>
 
-      <div class="comment">
+      {{-- <div class="comment">
           <h3>Comments</h1>
       @foreach ($post->comments as $comment)
 
@@ -19,11 +19,11 @@
       @endforeach
       </div>
 
-      <hr>
+      <hr> --}}
 
       {{-- //add comment --}}
 
-      <div class="card">
+      {{-- <div class="card">
         <div class="card-block">
           <form action="{{route('cafe.promotions.comments'  , ['post' => $post->id, 'cafename' =>  $cafename]) }}" method="POST">
           {{ csrf_field() }}
@@ -35,10 +35,10 @@
                 <button type="submit" class="btn btn-primary">Add comment</button>
             </div>
         </div>
-        </form>
+        </form> --}}
         {{-- @include('layouts.error) --}}
 
-    </div><br>
+    {{-- </div><br> --}}
 
   </div>
 

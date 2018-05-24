@@ -5,7 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
-    {{-- <link rel="icon" href="{{asset('images/').'/'.$cafe[0]->icon}}"> --}}
+    @if ($cafe[0]->icon != '')
+        <link rel="icon" href="{{asset('images/').'/'.$cafe[0]->icon}}">
+    @endif
     <title>{{Auth::user()->cafename}}</title>
 
     {{-- font --}}

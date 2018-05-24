@@ -14,10 +14,23 @@
                     <p><i class="w3-xxlarge fab fa-facebook-f w3-text-blue"></i>   {{$cafe[0]->facebook}}</p>
                     <p><i class="w3-xxlarge fab fa-line w3-text-green"></i>   {{$cafe[0]->line}}</p>
                   </div>
-                </div>
             </div><br>
+
             <div class="text-center">
                 <a href="#">Back to top</a>
+                <a onclick="modal()" >Policies</a>
+                @if ($cafe[0]->policy != null)
+                     <img class="hidden" id="myImg" src="{{asset('images/').'/'.$cafe[0]->policy}}" style="display:none">
+                @else
+                    <img class="hidden" id="myImg" src="{{asset('images/no.jpg')}}"  style="display:none">
+                @endif
+
+
+                <div id="myModal" class="modal">
+                    <span class="close">&times;</span>
+                    <img class="modal-content" id="img01">
+                     <div id="caption"></div>
+                </div>
             </div>
         @else
             <div class="text-center">
@@ -25,10 +38,29 @@
                 <a href="#">Back to top</a>
             </div>
         @endif
-
-
-
     </div>
+
+    <script>
+      function modal(){
+          // Get the modal
+          var modal = document.getElementById('myModal');
+
+          // Get the image and insert it inside the modal - use its "alt" text as a caption
+          var img = document.getElementById('myImg');
+          var modalImg = document.getElementById("img01");
+
+          modal.style.display = "block";
+          modalImg.src = myImg.src;
+
+          // Get the <span> element that closes the modal
+          var span = document.getElementsByClassName("close")[0];
+
+          // When the user clicks on <span> (x), close the modal
+          span.onclick = function() {
+              modal.style.display = "none";
+          }
+      }
+  </script>
 
 </footer>
 

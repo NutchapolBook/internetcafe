@@ -1,9 +1,9 @@
 <div class="blog-masthead">
-    <nav class="icon-bar">
+    <nav class="icon-bar" id="myTopnav">
         <a href="/" ><i class="fa fa-home"></i></a>
         @if (!Auth::check())
             <div class="icon-bar-right">
-                <a href="/register">Register</a>
+                <a class="icon-bar-hightlight" href="/register">Register</a>
                 <a href="/login">Login</a>
             </div>
         @else
@@ -21,6 +21,9 @@
                 </div>
             @endif
         @endif
+        <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+            <i class="fa fa-bars"></i>
+        </a>
     </nav>
 </div>
 
@@ -28,4 +31,15 @@
     $(document).ready(function(){
         $('[data-toggle="tooltip"]').tooltip();
     });
+</script>
+
+<script>
+function myFunction() {
+    var x = document.getElementById("myTopnav");
+    if (x.className === "icon-bar") {
+        x.className += " responsive";
+    } else {
+        x.className = "icon-bar";
+    }
+}
 </script>

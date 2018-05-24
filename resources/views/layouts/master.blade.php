@@ -7,7 +7,7 @@
     <meta name="author" content="">
     <link rel="icon" href="../../favicon.ico">
 
-    <title>InternetCafe</title>
+    <title>SConline</title>
 
     {{-- script --}}
     <link href="{{ asset('css/jquery-ui.min.css') }}" rel="stylesheet"/>
@@ -41,7 +41,8 @@
 
     <div class="blog-header">
       <div class="container">
-        <h1 class="blog-title">InternetCafe</h1>
+        <h1 class="blog-title">SC online</h1>
+        <h2>Create your Service InternetCafe Website</h2>
         {{-- <p class="lead blog-description">An example blog template built with Bootstrap.</p> --}}
       </div>
     </div>

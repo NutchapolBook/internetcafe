@@ -24,9 +24,11 @@ class CreateInternetcafesTable extends Migration
             $table->string('tel')->nullable();
             $table->string('facebook')->nullable();
             $table->string('line')->nullable();
+            $table->string('policy')->nullable();
             $table->string('picture1')->nullable();
             $table->string('picture2')->nullable();
             $table->string('picture3')->nullable();
+            $table->string('icon')->nullable();
             $table->timestamps();
         });
     }

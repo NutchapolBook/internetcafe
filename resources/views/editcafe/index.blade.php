@@ -28,7 +28,7 @@
         <div class="w3-row w3-section">
           <div class="w3-col" style="width:50px"><i class="w3-xxlarge fa fa-tint"></i></div>
           <label for="colour">Theme</label>
-          <input type="color" name="tabcolour" id="tabcolour" value="#CDDDEB ">
+          <input type="color" name="tabcolour" id="tabcolour" value="#0b0de2">
           <label for="colour">Tab text</label>
           <input type="color" name="tabtextcolour" id="tabtextcolour" value="#ffffff" >
         </div>
@@ -67,6 +67,15 @@
         <div class="w3-row w3-section">
             <div class="w3-col" style="width:50px"><i class="w3-xxlarge fab fa-line w3-text-green"></i></div>
             <input type="text" name="line" id="line" class="form-control col-sm-6" value="{{$cafe[0]->line}}" required >
+        </div>
+
+        <div class="w3-row w3-section">
+            <div class="custom-file">
+                <div class="col-sm-5">
+                    <input type="file" name="policy" id="policy" class="custom-file-input">
+                    <label class="custom-file-label" for="customFile">Policy</label>
+                </div>
+            </div>
         </div>
 
         <div class="w3-row w3-section">

@@ -39,8 +39,8 @@
             <input type="password" name="password_confirmation" id="password_confirmation" class="form-control col-sm-10" placeholder="Password Confirmation" required>
         </div><br>
 
-        <div class="form-group ">
-            <div class="g-recaptcha" data-sitekey="6LcuYVkUAAAAAHTYPVMzBzj4yUohGj4Vdzug5eWt"></div>
+        <div class="form-group w3-center">
+            <div class="g-recaptcha" style="display: inline-block;" data-sitekey="6LcuYVkUAAAAAHTYPVMzBzj4yUohGj4Vdzug5eWt"></div>
         </div>
 
         <div class="form-group w3-center">
