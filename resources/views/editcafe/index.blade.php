@@ -117,7 +117,7 @@
         <div class="form-group w3-center">
             <input type="hidden" name="id" id="id" value="{{$cafe[0]->id}}">
             <button type="submit" function="function()" class="btn btn-primary" id="submit">Update</button>
-            <button type="reset" class="btn btn-primary">Cancle</button>
+            <button type="reset" class="btn btn-primary">Cancel</button>
         </div>
 
 </div>

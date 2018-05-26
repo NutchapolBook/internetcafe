@@ -39,7 +39,7 @@
 
         <div class="form-group w3-center">
           <button type="submit" class="btn btn-primary">Login</button>
-          <button type="reset" onclick="cancle()" class="btn btn-primary">Cancle</button>
+          <button type="reset" onclick="cancel()" class="btn btn-primary">Cancel</button>
         </div>
 
     </form>
@@ -55,7 +55,7 @@
   </script>
 
   <script>
-    function cancle(){
+    function cancel(){
         $('.cafename').show();
     }
   </script>

@@ -3,13 +3,14 @@
 @include('layouts.editstyle')
 
   <div class="col-sm-12">
-      <h2>Edit Seat</h2><br>
-
-      <style type="text/css">
-      .ui-accordion .ui-accordion-content {
-        padding: 1px;
-      }
-      </style>
+        <h2>Edit Seat</h2>
+        <p class="lead blog-description">Select items on the left hand side and drag onto the right matrix.
+        Edit item text such as seat number , door and counter. Then click the update button.</p>
+        <style type="text/css">
+        .ui-accordion .ui-accordion-content {
+            padding: 1px;
+        }
+        </style>
 
 <script id="code">
   // General Parameters for this app, used during initialization

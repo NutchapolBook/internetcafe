@@ -5,9 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
-    <link rel="icon" href="../../favicon.ico">
+    <link rel="icon" href="{{asset('images/logo.jpg')}}">
 
-    <title>SConline</title>
+    <title>SaaS for InternetCafe management | Sic.com</title>
 
     {{-- script --}}
     <link href="{{ asset('css/jquery-ui.min.css') }}" rel="stylesheet"/>
@@ -38,20 +38,15 @@
   <body>
 
 @include('layouts.nav')
-
-    <div class="blog-header">
-      <div class="container">
-        <h1 class="blog-title">SC online</h1>
-        <h2>Create your Service InternetCafe Website</h2>
-        {{-- <p class="lead blog-description">An example blog template built with Bootstrap.</p> --}}
-      </div>
-    </div>
-
     <div class="container">
       <div class="row">
           @yield('content')
       </div><!-- /.row -->
     </div><!-- /.container -->
+
+    <div class="row">
+        @yield('home')
+    </div><!-- /.row -->
 
 @include('layouts.footer')
   </body>

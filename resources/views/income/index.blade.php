@@ -104,7 +104,11 @@
                         {{ $income->admin_id }}
                     </td>
                     <td>
-                        {{ $income->status }}
+                        @if ($income->status == 'useable')
+                            Available
+                        @else
+                            Unavailable
+                        @endif
                     </td>
                     <td>
                         {{ $income->amount }}
@@ -123,8 +127,11 @@
         </tbody>
     </table>
     <br>
-    <div class="form-group right">
-        <h2><label for="sum">Income summary {{$sum}} BATH</label></h2>
+    <div class="form-group form-row col-sm-12">
+        <div class="col-sm-7"></div>
+        <div class="col-sm-5">
+            <h2><label for="sum">Income summary: {{$sum}} ฿</label></h2>
+        </div>
     </div>
 </div><!-- /.blog-main -->
 

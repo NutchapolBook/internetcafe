@@ -3,7 +3,7 @@
  */
 @font-face {
      font-family: SIMPLIFICA;
-     src: url('/public/fonts/SIMPLIFICA.tff');
+     src: url("fonts/SIMPLIFICA.tff");
 }
 
 @media (min-width: 48em) {
@@ -22,6 +22,20 @@ h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6 {
     font-weight: normal;
     color: #333;
 }
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+.right {
+    position: absolute;
+    right: 0px;
+    width: 300px;
+    border: 3px solid #73AD21;
+    padding: 10px;
+}
+
 
 /*
  * Override Bootstrap's default container.
@@ -231,6 +245,7 @@ h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6 {
     margin: 0;
     display: table;
     font-weight: 100;
+    height: 100px;
     /* font-family: SIMPLIFICA;
     src: url('{{ public_path('fonts/SIMPLIFICA.tff') }}'); */
 }
@@ -240,19 +255,28 @@ h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6 {
     display: block;
     width: 9%;
     text-align: center;
-    padding: 12px 0;
+    padding: 25px 0;
     transition: all 0.3s ease;
     color: white;
-    font-size: 24px;
+    font-size: 29px;
     text-decoration: none;
+    height: 100px;
+}
+
+.icon-bar-big a {
+    padding: 5px 0;
 }
 
 .icon-bar-right a{
     float:right;
 }
 
+.icon-bar-right-big a{
+    padding: 5px 0;
+}
+
 .icon-bar-hightlight {
-    background-color: rgb(247, 146, 48);
+    background-color: rgba(44, 63, 252, 0.82);
 }
 
 .icon-bar a:hover {
@@ -444,4 +468,14 @@ img {vertical-align: middle;}
     .modal-content {
         width: 100%;
     }
+}
+
+.logo-wrapper #logo {
+    position: relative;
+    display: block;
+    text-indent: -9999px;
+    width: 125px;
+    height: 100px;
+    background-image: url("/images/logo.png");
+    background-size: 120px 100px;
 }

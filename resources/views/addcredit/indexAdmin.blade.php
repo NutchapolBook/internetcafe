@@ -82,7 +82,7 @@
             document.getElementById('exampleModalLabel').innerHTML = "Please enter your amount!";
         }
         else {
-            document.getElementById('exampleModalLabel').innerHTML = "Are you sure to addcredit amount " +Amount+ " Baht?";
+            document.getElementById('exampleModalLabel').innerHTML = "Are you sure to add credit amount " +Amount+ " ฿?";
         }
     }
 

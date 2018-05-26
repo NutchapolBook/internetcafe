@@ -8,7 +8,7 @@
     @if ($cafe[0]->icon != '')
         <link rel="icon" href="{{asset('images/').'/'.$cafe[0]->icon}}">
     @endif
-    <title>{{Auth::user()->cafename}}</title>
+    <title>{{Auth::user()->cafename}} | InternetCafe</title>
 
     {{-- font --}}
     <link href="https://fonts.googleapis.com/css?family=Karla:400" rel="stylesheet" type="text/css">
@@ -43,9 +43,11 @@
       @include('layouts.navCafe')
 
         <div class="blog-header">
-            <div class="container">
-                  <h1 class="blog-title">{{Auth::user()->cafename}}</h1>
-        {{-- <p class="lead blog-description">An example blog template built with Bootstrap.</p> --}}
+            <div class="w3-container row col-sm-12">
+                <div class="col-sm-1"></div>
+                <div class="col-sm-11">
+                    <h1 class="blog-title">{{Auth::user()->cafename}}</h1>
+                </div>
             </div>
         </div>
 

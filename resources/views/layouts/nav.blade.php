@@ -1,5 +1,8 @@
 <div class="blog-masthead">
     <nav class="icon-bar" id="myTopnav">
+        <div class="logo-wrapper">
+            <a href="/" id="logo"></a>
+        </div>
         <a href="/" ><i class="fa fa-home"></i></a>
         @if (!Auth::check())
             <div class="icon-bar-right">

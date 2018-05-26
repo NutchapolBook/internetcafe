@@ -313,7 +313,7 @@
   <div class="w3-row w3-section col-sm-4">
       <label style="font-size:30px;" for="date">Time to play</label>
       <select class="custom-select" id="target" >
-                <option value="" selected="selected">Selecting Time</option>
+                <option value="" selected="selected">Select Time</option>
                 <option value="{{$user[0]->tojson}}">00.00 - 01.00</option>
                 <option value="{{$user[0]->tojson2}}">01.00 - 02.00</option>
                 <option value="{{$user[0]->tojson3}}">02.00 - 03.00</option>
@@ -430,17 +430,19 @@
     document.location = '/cafe/test_cafe/booking';
     }
     </script> -->
-
-
-
-
   <div class="col-sm-8 w3-container w3-card-4 w3-light-grey w3-margin">
       <div class="w3-row w3-section">
-          <label style="font-size:30px;" for="time">Time: </label>
-          <span style="font-size:30px;" id="clock"></span>
-          <label style="font-size:30px;" for="time">/ </label>
+          <label style="font-size:30px;" for="time">Time:&nbsp;</label>
           <span style="font-size:30px;" id="dates"></span>
+          <label style="font-size:30px;" for="time">/&nbsp;</label>
+          <span style="font-size:30px;" id="clock"></span>
       </div>
+
+      <div class="w3-row w3-section">
+        <label style="font-size:30px;">Booked time: &nbsp;</label>
+        <span id="showtime" style="font-size:30px;"></span>
+    </div>
+
       <script>
       (function () {
 
@@ -466,24 +468,25 @@
 
       }());
       </script>
+
       <input type="hidden" name="amount" id="amount" value="{{$cafe[0]->price}}">
       <div class="w3-row w3-section">
-          <label style="font-size:30px;">Amout: </label>
+          <label style="font-size:30px;">Amount &nbsp;</label>
           <span style="font-size:30px;" id="cafeprice"></span>
       </div>
 
       <script >
           var amounts = document.getElementById("amount").value;
-          cafeprice.innerHTML = amounts+ " Baht/hour";
+          cafeprice.innerHTML = amounts+ " ฿/hour";
       </script>
 
       <div class="w3-row w3-section">
-          <label style="font-size:30px;">Seat Number </label>
+          <label style="font-size:30px;">Seat Number &nbsp;</label>
           <input type="hidden" name="seatname" id="seatname" value="" >
           <span id="changeMethodsMsg" style="font-size:32px;"></span>
       </div>
       <div class="w3-row w3-section">
-          <label style="font-size:30px;">Status </label>
+          <label style="font-size:30px;">Status &nbsp;</label>
           <span style="font-size:32px;" id="changeMethodsMsgstatus"></span>
       </div>
       <!-- style="display:none" -->
@@ -582,9 +585,8 @@
      <!-- date_default_timezone_set("Asia/Bangkok");
     $checktime = document.getElementById('clock').textContent;
     echo date("h:i:sa", $checktime); -->
-
-
-  <button  class="btn btn-primary" id="selectionButton" >Purchase</button>
+  <br>
+  <button  class="btn btn-primary" id="selectionButton" >Purchase</button><br>
   <script>
 
   var selectionButton = document.getElementById("selectionButton");
@@ -758,7 +760,7 @@
 
 
       @include('layouts.error')
-
+      <br><br>
   </div>
 
 @endsection

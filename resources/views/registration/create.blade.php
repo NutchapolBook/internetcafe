@@ -45,7 +45,7 @@
 
         <div class="form-group w3-center">
           <button type="submit" class="btn btn-primary">Register</button>
-          <button type="reset" class="btn btn-primary">Cancle</button>
+          <button type="reset" class="btn btn-primary">Cancel</button>
         </div>
 
       </>

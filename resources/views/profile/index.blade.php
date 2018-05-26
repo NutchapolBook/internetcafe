@@ -33,7 +33,7 @@
 
     <div class="form-group w3-center">
       <button type="submit" class="btn btn-primary">Update</button>
-      <button type="reset" class="btn btn-primary">Cancle</button>
+      <button type="reset" class="btn btn-primary">Cancel</button>
     </div>
 
 </div><!-- /.blog-main -->

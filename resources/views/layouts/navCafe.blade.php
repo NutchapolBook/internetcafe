@@ -5,12 +5,14 @@
       @if (Auth::user()->role === "user")
         <a href="{{route('cafe.promotions.index' , $cafename) }}">News</a>
         <a data-toggle="tooltip" data-placement="bottom" title="Booking" href="{{route('cafe.booking.index' , $cafename) }}"><i class="fas fa-gamepad"></i></a>
-        <a href=" {{route('cafe.booking.cancle' , $cafename) }}">Check Booking</a>
+        <div class="icon-bar-big">
+            <a href=" {{route('cafe.booking.cancle' , $cafename) }}">Check Booking</a>
+        </div>
 
         <div class="icon-bar-right">
             <a data-toggle="tooltip" data-placement="bottom" title="Logout" href="/logout"><i class="fa fa-sign-out"></i></a>
             <a data-toggle="tooltip" data-placement="bottom" title="Profile" href="/profile"><i class="fa fa-user-circle"></i> {{Auth::user()->name}} </a>
-            <a  href="{{route('cafe.addcredit.index' , $cafename) }}">Balance {{Auth::user()->balance}} ฿</a>
+            <a style="padding:5px;"href="{{route('cafe.addcredit.index' , $cafename) }}">Balance {{Auth::user()->balance}} ฿</a>
         </div>
 
       @elseif (Auth::user()->role === "admin")
@@ -22,7 +24,7 @@
 
         <div class="icon-bar-right">
             <a data-toggle="tooltip" data-placement="bottom" title="Logout" href="/logout"><i class="fa fa-sign-out"></i></a>
-            <a data-toggle="tooltip" data-placement="bottom" title="Profile" href="/profile"><i class="fa fa-user-circle"></i> {{Auth::user()->name}} </a>
+            <a data-toggle="tooltip" data-placement="bottom" title="Profile" href="/profile" style="padding:5px;"><i class="fa fa-user-circle"></i> {{Auth::user()->name}} </a>
             <a data-toggle="tooltip" data-placement="bottom" title="Edit Internetcafe info" href="{{route('cafe.editcafe.index' , $cafename) }}"><i class="fa fa-cogs"></i></a>
         </div>
       @endif
