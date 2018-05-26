@@ -51,10 +51,17 @@ img {
 
 .blog-masthead {
     margin-bottom: 3rem;
-    background-color: #428bca;
+    background-color: #2b93c6;
     -webkit-box-shadow: inset 0 -.1rem .25rem rgba(0, 0, 0, .1);
     box-shadow: inset 0 -.1rem .25rem rgba(0, 0, 0, .1);
 }
+
+.blog-home {
+    background-color: #2b93c6;
+    -webkit-box-shadow: inset 0 -.1rem .25rem rgba(0, 0, 0, .1);
+    box-shadow: inset 0 -.1rem .25rem rgba(0, 0, 0, .1);
+}
+
 
 /* Nav links */
 
@@ -108,7 +115,7 @@ img {
 
 .blog-description {
     font-size: 1.1rem;
-    color: #999;
+    color: rgba(#ffffff, 0);
 }
 
 @media (min-width: 40em) {
@@ -245,9 +252,7 @@ img {
     margin: 0;
     display: table;
     font-weight: 100;
-    height: 100px;
-    /* font-family: SIMPLIFICA;
-    src: url('{{ public_path('fonts/SIMPLIFICA.tff') }}'); */
+    height: 80 px;
 }
 
 .icon-bar a {
@@ -255,12 +260,12 @@ img {
     display: block;
     width: 9%;
     text-align: center;
-    padding: 25px 0;
+    padding: 20px 0;
     transition: all 0.3s ease;
     color: white;
-    font-size: 29px;
+    font-size: 24px;
     text-decoration: none;
-    height: 100px;
+    height: 80px;
 }
 
 .icon-bar-big a {
@@ -410,8 +415,8 @@ img {vertical-align: middle;}
 .modal-content {
     margin: auto;
     display: block;
-    width: 80%;
-    height: 90%;
+    width: 100%;
+    height: 100%;
     max-width: 700px;
 }
 
@@ -474,8 +479,17 @@ img {vertical-align: middle;}
     position: relative;
     display: block;
     text-indent: -9999px;
-    width: 125px;
-    height: 100px;
+    width: 95px;
+    height: 80px;
     background-image: url("/images/logo.png");
-    background-size: 120px 100px;
+    background-size: 95px 80px;
+}
+
+.text-block {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgba(77, 77, 77, 0.8);
+    color: white;
 }

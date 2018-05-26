@@ -1,11 +1,15 @@
-@extends('layouts.master')
+@extends('layouts.masterHome')
 @section('home')
 
-<div style="width:768px; margin:0 auto;" class="col-sm-12 blog-main " >
-    <div class="w3-container row col-sm-12">
-        <div class="col-sm-1"></div>
-        <div class="col-sm-11">
-            <img src="{{asset('images/logo.jpg')}}" alt="logo">
+<div style="width:768px; margin:0 auto;" class="col-sm-12 blog-main" >
+    <div class="w3-container row" style="bottom: 0;">
+        <picture>
+            <source media="(min-width: 1441px)" srcset="{{asset('images/bg.jpg')}}">
+            <source media="(max-width: 400px)" srcset="{{asset('images/bg-mobile2.jpg')}}">
+            <img src="{{asset('images/bg.jpg')}}" alt="background" style="width:100%; height:100%;">
+        </picture>
+        <div class="text-block">
+            <img src="{{asset('images/logo.png')}}" alt="logo" class="w3-center">
             <p class="lead blog-description">SaaS for InternetCafe management</p>
         </div>
     </div>

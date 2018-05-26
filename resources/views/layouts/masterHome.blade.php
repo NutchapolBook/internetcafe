@@ -36,7 +36,7 @@
   </head>
 
   <body>
-@include('layouts.nav')
+@include('layouts.navHome')
     <div class="container">
       <div class="row">
           @yield('content')

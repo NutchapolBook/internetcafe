@@ -11,7 +11,7 @@
                     <p><i class="w3-xxlarge fa fa-phone-square"></i>   {{$cafe[0]->tel}}</p>
                 </div>
                 <div class="slideanim">
-                    <p><i class="w3-xxlarge fab fa-facebook-f w3-text-blue"></i>   {{$cafe[0]->facebook}}</p>
+                    <p><i class="w3-xxlarge fab fa-facebook-f w3-text-blue"></i> <a href="{{$cafe[0]->facebook}}">{{$cafe[0]->name}}</a>  </p>
                     <p><i class="w3-xxlarge fab fa-line w3-text-green"></i>   {{$cafe[0]->line}}</p>
                   </div>
             </div><br>
