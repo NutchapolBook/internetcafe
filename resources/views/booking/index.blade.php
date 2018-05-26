@@ -303,9 +303,7 @@
     </script>
   </div> -->
 
-  <div>
-  <h2 align="center" id="showtime"></h2>
-  </div>
+
 
 
 
@@ -341,71 +339,7 @@
         </select>
   </div>
 
-      <script>
 
-      // $("#target").on('change', function () {
-      //   var check = ($(this).find('option:selected').attr('id'));
-      //   alert(check);
-      // });
-
-      // var i = selMovType.selectedIndex;
-      // aleart(selMovType.options[i].text);
-
-      // var selectedItem = sessionStorage.getItem("SelectedItem");
-      // alert(selectedItem);
-
-
-
-
-      // $("#target").change(function() {
-      //   var id = $("#target option:selected").attr("id")
-      //   id = selectedItem;
-      // });
-      // $("select#target option[value="+dropVal+"]").attr('selected', true);
-      var selMovType = document.getElementById('target');
-      var selecteditem = sessionStorage.getItem('SelectedItem');
-      var selectedID = sessionStorage.getItem('Selectedid');
-      var check = sessionStorage.getItem('test');
-
-      var checks = sessionStorage.getItem('timplay');
-
-      // document.getElementById('showtime').textContent = checks;
-        document.getElementById('showtime').textContent = checks;
-        // document.getElementById('amount').textContent = amount;
-
-
-      // if(check == selectedID){
-
-        // selMovType.value = selecteditem;
-      // }
-
-
-
-
-      $('#target').change(function() {
-        var dropVal = $(this).val();
-        var dropValid = $("#target option:selected").attr("id");
-        var myvar = selMovType.options[selMovType.selectedIndex].id;
-
-        sessionStorage.setItem("SelectedItem", dropVal);
-        sessionStorage.setItem("Selectedid", dropValid);
-        sessionStorage.setItem("test", myvar);
-
-        var index = document.getElementById("target").selectedIndex;
-        var result = document.getElementById("target").options[index].text;
-
-
-        sessionStorage.setItem("timplay", result);
-
-
-        window.location.reload(true);
-
-        // alert("value =" + document.getElementById("target").value); // show selected value
-        // alert("text =" + result); // show selected text
-
-      });
-
-      </script>
 
 
 <body onload="init()">
@@ -492,7 +426,71 @@
       <!-- style="display:none" -->
 
 
+      <script>
 
+      // $("#target").on('change', function () {
+      //   var check = ($(this).find('option:selected').attr('id'));
+      //   alert(check);
+      // });
+
+      // var i = selMovType.selectedIndex;
+      // aleart(selMovType.options[i].text);
+
+      // var selectedItem = sessionStorage.getItem("SelectedItem");
+      // alert(selectedItem);
+
+
+
+
+      // $("#target").change(function() {
+      //   var id = $("#target option:selected").attr("id")
+      //   id = selectedItem;
+      // });
+      // $("select#target option[value="+dropVal+"]").attr('selected', true);
+      var selMovType = document.getElementById('target');
+      var selecteditem = sessionStorage.getItem('SelectedItem');
+      var selectedID = sessionStorage.getItem('Selectedid');
+      var check = sessionStorage.getItem('test');
+
+      var checks = sessionStorage.getItem('timplay');
+
+      // document.getElementById('showtime').textContent = checks;
+        document.getElementById('showtime').textContent = checks;
+        // document.getElementById('amount').textContent = amount;
+
+
+      // if(check == selectedID){
+
+        // selMovType.value = selecteditem;
+      // }
+
+
+
+
+      $('#target').change(function() {
+        var dropVal = $(this).val();
+        var dropValid = $("#target option:selected").attr("id");
+        var myvar = selMovType.options[selMovType.selectedIndex].id;
+
+        sessionStorage.setItem("SelectedItem", dropVal);
+        sessionStorage.setItem("Selectedid", dropValid);
+        sessionStorage.setItem("test", myvar);
+
+        var index = document.getElementById("target").selectedIndex;
+        var result = document.getElementById("target").options[index].text;
+
+
+        sessionStorage.setItem("timplay", result);
+
+
+        window.location.reload(true);
+
+        // alert("value =" + document.getElementById("target").value); // show selected value
+        // alert("text =" + result); // show selected text
+
+      });
+
+      </script>
 
       <!-- <script>
       var span_Text = document.getElementById("changeMethodsMsgstatus").innerText;
@@ -755,9 +753,6 @@
   </div>
 
 </div>
-
-
-
 
       @include('layouts.error')
       <br><br>
