@@ -25,5 +25,9 @@
         background-color: {{$cafe[0]->tabtextcolour}}!important;
         color: {{$cafe[0]->tabcolour}}!important;
     }
+
+    .fas fa-trash-alt{
+        background-color: {{$cafe[0]->tabcolour}}!important;
+    }
     </style>
 @endif

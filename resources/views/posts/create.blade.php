@@ -2,6 +2,7 @@
 
 @section('content')
 @include('layouts.editstyle')
+
 <div class="col-sm-12 blog-main ">
   <h2>Create a news</h2><br>
 

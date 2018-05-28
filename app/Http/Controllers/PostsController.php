@@ -77,5 +77,19 @@ class PostsController extends Controller
         return view('posts.show',compact('post','cafename','cafe'));
     }
 
+    public function destroy($destroy , Post $post){
+        // dd($post);
+        $cafename = Auth::user()->cafename;
+        $cafe = DB::table('internetcafes')
+           ->where('name','=',$cafename)
+           ->get();
+        $delete = Post::find($destroy)->delete();
+        $posts = Post::latest()
+            ->where('cafename','=',$cafename)
+            ->get();
+        // $delete = DB::table('posts')->where('id', '=', $post)->delete();
+        return view('posts.index',compact('cafename','posts','cafe'));
+    }
+
 
 }

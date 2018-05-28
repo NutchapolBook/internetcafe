@@ -33,6 +33,7 @@ Route::group([], function() {
             Route::get('create','PostsController@create')->name('create');
             Route::post('posts','PostsController@store')->name('posts');
             Route::get('posts/{post}','PostsController@show')->name('post');
+            Route::delete('destroy','PostsController@destroy')->name('destroy');
         #comment
             Route::post('posts/{post}/comments','CommentsController@store')->name('comments');
         });
