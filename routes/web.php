@@ -81,3 +81,9 @@ Route::post('/profile','ProfileController@update');
 #Users Management
 Route::get('/users_management','UsersmanagementController@index');
 Route::post('/users_management/update','UsersmanagementController@update');
+#IncomeProvider
+Route::group(['as' => 'incomeProvider.' , 'prefix' => '/incomeProvider'], function() {
+    Route::get('/','IncomeProviderController@index')->name('index');
+    Route::get('/{cafename}','IncomeProviderController@income')->name('income');
+    Route::post('/create','IncomeProviderController@create')->name('create');
+});

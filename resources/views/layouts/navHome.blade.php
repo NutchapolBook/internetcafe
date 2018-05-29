@@ -18,7 +18,8 @@
                 </div>
 
             @elseif (Auth::user()->role === "provider")
-                <a  data-toggle="tooltip" data-placement="bottom" title="Admin & Users management" href="/users_management"><i class="fas fa-users"></i></a>
+                <a  data-toggle="tooltip" data-placement="bottom" title="Users & Admins management" href="/users_management"><i class="fas fa-users"></i></a>
+                <a  data-toggle="tooltip" data-placement="bottom" title="Income Provider" href="{{route('incomeProvider.index')}}"><i class="fas fa-hand-holding-usd"></i></a>
                 <div class="icon-bar-right">
                     <a data-toggle="tooltip" data-placement="bottom" title="Logout" href="/logout"><i class="fa fa-sign-out"></i></a>
                     <a data-toggle="tooltip" data-placement="bottom" title="Profile" href="/profile/provider" style="padding:5px;"><i style="padding:5px;" class="fa fa-user-circle"></i> {{Auth::user()->name}} </a>

@@ -3,13 +3,9 @@
 
 <div class="col-sm-12 blog-main">
     <br><br>
-    <h2>Users & Admin management</h2><br>
+    <h2>Users & Admins management</h2><br>
     @include('layouts.status')
     @include('layouts.error')
-
-    @php
-        $sum=0;
-    @endphp
 
     <div class="form-group form-row">
         <div class="col-sm-8"></div>
