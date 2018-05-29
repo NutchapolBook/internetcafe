@@ -74,7 +74,10 @@ Route::group([], function() {
 
 #Profile
 Route::get('/profile','ProfileController@index');
+Route::get('/profile/provider','ProfileController@indexProvider');
 Route::post('/profile','ProfileController@update');
 
-// #Edit Seat
-// Route::get('/editseat','EditseatController@index');
+#Provider
+#Users Management
+Route::get('/users_management','UsersmanagementController@index');
+Route::post('/users_management/update','UsersmanagementController@update');

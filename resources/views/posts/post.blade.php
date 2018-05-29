@@ -8,7 +8,7 @@
               <a class="right" data-toggle="tooltip" data-placement="bottom" title="Delete" href=""><i class="fas fa-trash-alt"></i></a> --}}
         </h2>
 
-        @if (Auth::user()->role === "admin")
+        @if (Auth::user()->role === "admin" || Auth::user()->role === "provider" )
             <h4><form action="{{route('cafe.promotions.destroy'  , ['post' => $post]) }}" method="post">
                 {{ csrf_field() }}
                 {{ method_field('DELETE') }}

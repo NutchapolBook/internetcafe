@@ -1,7 +1,8 @@
 @extends('layouts.masterHome')
 @section('home')
-
-<div style="width:768px; margin:0 auto;" class="col-sm-12 blog-main" >
+<div style="width:768px; margin:0 auto;" class="col-sm-12" >
+    @include('layouts.statushome')
+    @include('layouts.error')
     <div class="w3-container row" style="bottom:0; ">
         <picture>
             <source media="(min-width: 1441px)" srcset="{{asset('images/bg-xl.jpg')}}">

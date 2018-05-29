@@ -34,6 +34,18 @@ class ProfileController extends Controller
         return view('profile.index',compact('user','cafename','cafe'));
     }
 
+    public function indexProvider()
+    {
+        $email = Auth::user()->email;
+        //dd($email);
+        $user = DB::table('users')
+           ->where('email','=',$email)
+           ->get();
+        //dd($user[0]);
+        //dd($cafename);
+        return view('profile.indexProvider',compact('user'));
+    }
+
     public function update(Request $request) {
         $userid = Auth::user()->id;
         $this->validate($request, [

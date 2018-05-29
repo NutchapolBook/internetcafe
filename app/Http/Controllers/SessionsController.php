@@ -34,14 +34,14 @@ class SessionsController extends Controller
 
     if (!auth()->attempt(request(['email','password','role']))) {
       return back()->withErrors([
-        'message' => 'Role , Email or Password does not match.'
+        'message' => 'Email , Password or Role does not match.'
       ]);
     }
 
     if(Auth::user()->status === "disable"){
         auth()->logout();
         return redirect()->back()->withErrors([
-          'message' => 'This account has been banned.'
+          'message' => 'This account has been banned. Please contact to us.'
         ]);
     }
     //dd($request);
@@ -49,7 +49,7 @@ class SessionsController extends Controller
         {
             $cafename = Auth::user()->cafename;
         }
-    else
+    if(Auth::user()->role === "user")
         {
             $cafename = request('cafename');
             $data = DB::table('users')
@@ -61,6 +61,10 @@ class SessionsController extends Controller
                           'cafename'=> $cafename,
                         ]);
         }
+    else
+        {
+            return redirect()->home();
+        }
     //dd($cafename);
     //if so sign them in
     //redired to home
@@ -68,12 +72,10 @@ class SessionsController extends Controller
     return redirect()->route('cafe.indexCafe',compact('cafename'));
   }
 
-  public function rules()
-{
+  public function rules(){
     return [
         'g-recaptcha-response'=>'required|recaptcha'
     ];
-}
-
+    }
 
 }

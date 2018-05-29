@@ -13,14 +13,21 @@
             @if (Auth::user()->role === "admin")
                 <div class="icon-bar-right">
                     <a data-toggle="tooltip" data-placement="bottom" title="Logout" href="/logout"><i class="fa fa-sign-out"></i></a>
-                    <a data-toggle="tooltip" data-placement="bottom" title="Profile" href="/profile"><i class="fa fa-user-circle"></i> {{Auth::user()->name}} </a>
+                    <a data-toggle="tooltip" data-placement="bottom" title="Profile" href="/profile" style="padding:5px;"><i class="fa fa-user-circle"></i> {{Auth::user()->name}} </a>
                     <a data-toggle="tooltip" data-placement="bottom" title="Go to your site" href="{{route('cafe.indexCafe' , Auth::user()->cafename) }}" ><i class="fa fa-desktop"></i> {{Auth::user()->cafename}}</a>
+                </div>
+
+            @elseif (Auth::user()->role === "provider")
+                <a  data-toggle="tooltip" data-placement="bottom" title="Admin & Users management" href="/users_management"><i class="fas fa-users"></i></a>
+                <div class="icon-bar-right">
+                    <a data-toggle="tooltip" data-placement="bottom" title="Logout" href="/logout"><i class="fa fa-sign-out"></i></a>
+                    <a data-toggle="tooltip" data-placement="bottom" title="Profile" href="/profile/provider" style="padding:5px;"><i style="padding:5px;" class="fa fa-user-circle"></i> {{Auth::user()->name}} </a>
                 </div>
 
             @else
                 <div class="icon-bar-right">
                     <a data-toggle="tooltip" data-placement="bottom" title="Logout" href="/logout"><i class="fa fa-sign-out"></i></a>
-                    <a data-toggle="tooltip" data-placement="bottom" title="Profile" href="/profile"><i class="fa fa-user-circle"></i> {{Auth::user()->name}} </a>
+                    <a data-toggle="tooltip" data-placement="bottom" title="Profile" href="/profile" style="padding:5px;"><i class="fa fa-user-circle"></i> {{Auth::user()->name}} </a>
                 </div>
             @endif
         @endif

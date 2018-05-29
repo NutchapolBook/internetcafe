@@ -23,9 +23,19 @@ class RegistrationController extends Controller
         'g-recaptcha-response'=>'required|recaptcha',
       ]);
 
+      $input = $request->only(['name','email','password','role','cafename']);
+      //เข้ารหัส
+      $input['password'] = bcrypt($input['password']);
+      //dd($input);
+
      #ถ้าเป็น admin จะสร้างตาราง intercafes เพิ่มลง DB
       if ($request->role === "admin")
           {
+              $this->validate($request, [
+                'cafename' => 'unique:users',
+              ]);
+              #สร้างร้าน status admin จะ disable
+              $input['status'] = "disable";
               $inputcafe = array(
                   'name' => $request->cafename,
               );
@@ -33,10 +43,9 @@ class RegistrationController extends Controller
               $internetcafe = InternetCafe::create($inputcafe);
           }
 
-      $input = $request->only(['name','email','password','role','cafename']);
-      //เข้ารหัส
-      $input['password'] = bcrypt($input['password']);
-      //dd($input);
+    //dd($input);
+
+
 
       //create and save the user
       $user = User::create($input);
@@ -45,7 +54,7 @@ class RegistrationController extends Controller
       //auth()->login($user);
 
       //redirect to the home
-      return redirect()->home();
+      return redirect()->home()->with('status', 'Create Account. Successfully registered!');
 
     }
 }

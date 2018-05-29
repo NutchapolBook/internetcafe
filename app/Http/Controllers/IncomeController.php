@@ -21,7 +21,7 @@ class IncomeController extends Controller
     }
 
     public function index()
-    {
+    {    
         $cafename = Auth::user()->cafename;
         $incomes = DB::table('addcredits')
            ->where('cafename','=',$cafename)

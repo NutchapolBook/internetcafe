@@ -11,6 +11,7 @@
             <select class="custom-select" name="role" id="roleselector">
                 <option selected name="role" value="user">Cafe user</option>
                 <option name="role" value="admin">Cafe owner</option>
+                <option name="role" value="provider">SaaS Provider</option>
              </select>
         </div>
 
