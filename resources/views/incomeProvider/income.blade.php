@@ -10,6 +10,9 @@
     @include('layouts.status')
     @include('layouts.error')<br>
 
+    <div class="form-control col-sm-6">
+        <p>Start Time: {{$input['startdate']}} - End Time: {{$input['enddate']}}</p>
+    </div><br>
 
     <table class="table table-bordered table-hover shadow" id="myTable">
         <thead>
@@ -55,7 +58,7 @@
     <div class="form-group form-row col-sm-12">
         <div class="col-sm-7"></div>
         <div class="col-sm-5">
-            <h2><label for="sum">Income summary: {{$income}} ฿</label></h2>
+        <h2><label for="sum">Income summary: {{$input['income']}} ฿</label></h2>
         </div>
     </div>
 

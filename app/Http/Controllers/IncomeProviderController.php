@@ -81,7 +81,7 @@ class IncomeProviderController extends Controller
       //dd($input);
       //dd($cafename);
       //redirect
-      return view()->make('incomeProvider.income',compact('cafes','income') );
+      return view()->make('incomeProvider.income',compact('cafes','input') );
 
     }
 
