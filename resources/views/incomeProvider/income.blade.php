@@ -55,8 +55,7 @@
     <div class="form-group form-row col-sm-12">
         <div class="col-sm-7"></div>
         <div class="col-sm-5">
-            <h2><label for="sum">Income summary: 70 ฿</label></h2>
-            {{-- <h2><label for="sum">Income summary: {{$income}} ฿</label></h2> --}}
+            <h2><label for="sum">Income summary: {{$income}} ฿</label></h2>
         </div>
     </div>
 

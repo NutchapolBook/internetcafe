@@ -75,10 +75,13 @@ class IncomeProviderController extends Controller
       $cafename = $input['cafename'];
 
       $input['income'] = $income;
+      $cafes = DB::table('internetcafes')
+         ->where('name','=', $cafename )
+         ->get();
       //dd($input);
       //dd($cafename);
       //redirect
-      return redirect()->route('incomeProvider.income',compact('cafename','income') );
+      return view()->make('incomeProvider.income',compact('cafes','income') );
 
     }
 
