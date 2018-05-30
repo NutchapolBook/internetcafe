@@ -61,10 +61,6 @@ class SessionsController extends Controller
                           'cafename'=> $cafename,
                         ]);
         }
-    else
-        {
-            return redirect()->home();
-        }
     //dd($cafename);
     //if so sign them in
     //redired to home

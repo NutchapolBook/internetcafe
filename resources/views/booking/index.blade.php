@@ -364,18 +364,17 @@
     document.location = '/cafe/test_cafe/booking';
     }
     </script> -->
-  <div class="col-sm-8 w3-container w3-card-4 w3-light-grey w3-margin">
-      <div class="w3-row w3-section">
-          <label style="font-size:30px;" for="time">Time:&nbsp;</label>
-          <span style="font-size:30px;" id="dates"></span>
-          <label style="font-size:30px;" for="time">/&nbsp;</label>
-          <span style="font-size:30px;" id="clock"></span>
+  <div>
+      <div>
+          <label style="font-size:20px;" for="time">Time:</label>
+          <span style="font-size:20px;" id="dates"></span>
+          <label style="font-size:20px;" for="time">/</label>
+          <span style="font-size:20px;" id="clock"></span>
       </div>
 
-      <div class="w3-row w3-section">
-        <label style="font-size:30px;">Booked time: &nbsp;</label>
-        <span id="showtime" style="font-size:30px;"></span>
-    </div>
+
+
+
 
       <script>
       (function () {
@@ -404,9 +403,16 @@
       </script>
 
       <input type="hidden" name="amount" id="amount" value="{{$cafe[0]->price}}">
-      <div class="w3-row w3-section">
-          <label style="font-size:30px;">Amount &nbsp;</label>
-          <span style="font-size:30px;" id="cafeprice"></span>
+      <div >
+        <label style="font-size:20px;">Booked time:</label>
+        <span id="showtime" style="font-size:20px;"></span>
+          <label style="font-size:20px;">| Amount:</label>
+          <span style="font-size:20px;"id="cafeprice"></span>
+          <label style="font-size:20px;">| Seat Number &nbsp;</label>
+          <input type="hidden" name="seatname" id="seatname" value="" >
+          <span id="changeMethodsMsg" style="font-size:20px;"></span>
+          <label style="font-size:20px;">| Status &nbsp;</label>
+          <span style="font-size:20px;" id="changeMethodsMsgstatus"></span>
       </div>
 
       <script >
@@ -414,15 +420,7 @@
           cafeprice.innerHTML = amounts+ " ฿/hour";
       </script>
 
-      <div class="w3-row w3-section">
-          <label style="font-size:30px;">Seat Number &nbsp;</label>
-          <input type="hidden" name="seatname" id="seatname" value="" >
-          <span id="changeMethodsMsg" style="font-size:32px;"></span>
-      </div>
-      <div class="w3-row w3-section">
-          <label style="font-size:30px;">Status &nbsp;</label>
-          <span style="font-size:32px;" id="changeMethodsMsgstatus"></span>
-      </div>
+
       <!-- style="display:none" -->
 
 
