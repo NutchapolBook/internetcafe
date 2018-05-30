@@ -14,7 +14,7 @@
                 <div class="icon-bar-right">
                     <a data-toggle="tooltip" data-placement="bottom" title="Logout" href="/logout"><i class="fa fa-sign-out"></i></a>
                     <a data-toggle="tooltip" data-placement="bottom" title="Profile" href="/profile" style="padding:5px;"><i class="fa fa-user-circle"></i> {{Auth::user()->name}} </a>
-                    <a data-toggle="tooltip" data-placement="bottom" title="Go to your site" href="{{route('cafe.indexCafe' , Auth::user()->cafename) }}" ><i class="fa fa-desktop"></i> {{Auth::user()->cafename}}</a>
+                    <a data-toggle="tooltip" data-placement="bottom" title="Go to your site" href="{{route('cafe.indexCafe' , Auth::user()->cafename) }}" style="padding:5px;"><i class="fa fa-desktop"></i></a>
                 </div>
 
             @elseif (Auth::user()->role === "provider")

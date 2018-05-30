@@ -10,13 +10,6 @@
     @include('layouts.status')
     @include('layouts.error')
 
-    <div class="form-group form-row">
-        <div class="col-sm-8"></div>
-        <div class="w3-col" style="width:50px">
-            <i class="fa fa-search" style="font-size:34px"></i>
-        </div>
-        <input class="form-control col-sm-3 " type="text" id="search" placeholder="Search..." >
-    </div>
     <br><br>
 
     {{-- <form method="POST" action="{{route('cafe.income.create',  $cafename)}}">

@@ -274,6 +274,29 @@ img {
     height: 80px;
 }
 
+.icon-bar-home {
+    width: 100%;
+    background-color: rgba(#0b0de2, 0.81);
+    overflow: hidden;
+    margin: 0;
+    display: table;
+    font-weight: 100;
+    height: 80 px;
+}
+
+.icon-bar-home a {
+    float: left;
+    display: block;
+    width: 14%;
+    text-align: center;
+    padding: 20px 0;
+    transition: all 0.3s ease;
+    color: white;
+    font-size: 24px;
+    text-decoration: none;
+    height: 80px;
+}
+
 .icon-bar-big a {
     padding: 5px 0;
 }
