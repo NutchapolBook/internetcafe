@@ -5,9 +5,9 @@
       @if (Auth::user()->role === "user")
         <a href="{{route('cafe.promotions.index' , $cafename) }}">News</a>
         <a data-toggle="tooltip" data-placement="bottom" title="Booking" href="{{route('cafe.booking.index' , $cafename) }}"><i class="fas fa-gamepad"></i></a>
-        <div class="icon-bar-big">
+        {{-- <div class="icon-bar-big"> --}}
             <a href=" {{route('cafe.booking.cancle' , $cafename) }}">Check Booking</a>
-        </div>
+        {{-- </div> --}}
 
         <div class="icon-bar-right">
             <a data-toggle="tooltip" data-placement="bottom" title="Logout" href="/logout"><i class="fa fa-sign-out"></i></a>
